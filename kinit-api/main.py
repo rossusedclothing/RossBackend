@@ -128,4 +128,4 @@ def init_app(path: str):
 if __name__ == '__main__':
     # shell_app()
 
-    run("0.0.0.0", 9000)
+    run("127.0.0.1", 9000)
