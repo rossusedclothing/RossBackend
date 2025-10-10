@@ -359,7 +359,7 @@ function saveQuestion() {
   } else {
     // 新增问题
     addQuestionListApi({
-      question: editingQuestion.value
+      question: questionForm.question
     }).then((res) => {
       if (res.value) {
         questions.value.push({

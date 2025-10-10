@@ -20,6 +20,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { getActivationRecords } from '@/api/bot/activationcode/activationcode'
+import { ElButton, ElTable, ElTableColumn } from 'element-plus'
 
 const tableData = ref<any[]>([])
 const loading = ref(false)

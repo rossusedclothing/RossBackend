@@ -9,6 +9,10 @@ export const createActivationCode = (data: any) => {
   return request.post({ url: '/bot/activation/codes', data })
 }
 
+export const createGenerateCode = (data_id: number, data: any) => {
+  return request.get({ url: `/bot/activation/generate/codes`, data })
+}
+
 export const updateActivationCode = (data_id: number, data: any) => {
   return request.put({ url: `/bot/activation/codes/${data_id}`, data })
 }

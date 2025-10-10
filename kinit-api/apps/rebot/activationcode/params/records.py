@@ -5,11 +5,8 @@
 # @File           : records.py
 # @IDE            : PyCharm
 # @desc           : 使用记录
-from datetime import datetime
-from typing import Optional
 
 from fastapi import Depends
-from pydantic import Field, BaseModel
 
 from core.dependencies import Paging, QueryParams
 
@@ -17,6 +14,3 @@ from core.dependencies import Paging, QueryParams
 class RecordsParams(QueryParams):
     def __init__(self, params: Paging = Depends()):
         super().__init__(params)
-
-
-

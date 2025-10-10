@@ -13,7 +13,7 @@ from core.data_types import DatetimeStr
 
 class Codes(BaseModel):
     code: str = Field(..., title="激活码")
-    type: str = Field("trial", title="类型：trial-试用, personal-个人, team-团队, enterprise-企业")
+    type: str = Field("trial", title="类型：trial-试用, personal-个人, tems-团队, enterprise-企业, scope-数量")
     status: str = Field("active", title="状态：active-未使用, used-已使用, expired-已过期, revoked-已撤销")
     user_limit: int = Field(1, title="用户数量限制")
     duration_days: int = Field(30, title="有效期天数")
