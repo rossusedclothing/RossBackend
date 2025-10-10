@@ -30,7 +30,7 @@ class CodesDal(DalBase):
         if not data:
             return ErrorResponse("激活码不存在")
         # 检查是否过期
-        result = {
+        result: dict = {
             "expires_datetime": data.expires_datetime,
             "activated_datetime": data.activated_datetime
         }
@@ -38,6 +38,7 @@ class CodesDal(DalBase):
             result["is_expires"] = True
         else:
             result["is_expires"] = False
+        result["status"] = data.status
         return SuccessResponse(result)
 
 
