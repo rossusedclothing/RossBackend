@@ -35,8 +35,6 @@ async def get_codes_list(p: params.CodesParams = Depends(), auth: Auth = Depends
 async def create_codes(data: schemas.Codes, auth: Auth = Depends(AllUserAuth())):
     return SuccessResponse(await crud.CodesDal(auth.db).create_data(data=data))
 
-
-# 生成激活码
 @app.get("/generate/codes", summary="生成注册码|激活码", tags=["注册码|激活码"])
 async def get_generate_codes(p: params.GenerateCodesParams = Depends(), auth: Auth = Depends(AllUserAuth())):
     codes = []
@@ -45,22 +43,24 @@ async def get_generate_codes(p: params.GenerateCodesParams = Depends(), auth: Au
         codes.append(code)
     return SuccessResponse(data=codes, message=f"{p.count}")
 
-
 @app.delete("/codes", summary="删除注册码|激活码", description="硬删除", tags=["注册码|激活码"])
 async def delete_codes_list(ids: IdList = Depends(), auth: Auth = Depends(AllUserAuth())):
     await crud.CodesDal(auth.db).delete_datas(ids=ids.ids, v_soft=False)
     return SuccessResponse("删除成功")
 
-
 @app.put("/codes/{data_id}", summary="更新注册码|激活码", tags=["注册码|激活码"])
 async def put_codes(data_id: int, data: schemas.Codes, auth: Auth = Depends(AllUserAuth())):
     return SuccessResponse(await crud.CodesDal(auth.db).put_data(data_id, data))
-
 
 @app.get("/codes/{data_id}", summary="获取注册码|激活码信息", tags=["注册码|激活码"])
 async def get_codes(data_id: int, db: AsyncSession = Depends(db_getter)):
     schema = schemas.CodesSimpleOut
     return SuccessResponse(await crud.CodesDal(db).get_data(data_id, v_schema=schema))
+
+
+@app.get("/check/codes", summary="检查注册码|激活码", tags=["注册码|激活码"])
+async def check_codes(code: str, db: AsyncSession = Depends(db_getter)):
+    return await crud.CodesDal(db).check_code(code)
 
 
 ###########################################################
@@ -70,7 +70,6 @@ async def get_codes(data_id: int, db: AsyncSession = Depends(db_getter)):
 async def get_records_list(p: params.RecordsParams = Depends(), auth: Auth = Depends(AllUserAuth())):
     datas, count = await crud.RecordsDal(auth.db).get_datas(**p.dict(), v_return_count=True)
     return SuccessResponse(datas, count=count)
-
 
 @app.post("/records", summary="创建使用记录", tags=["使用记录"])
 async def create_records(

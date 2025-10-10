@@ -40,7 +40,7 @@
       class="mt-4"
       background
       layout="prev, pager, next"
-      :page-size="pageSize"
+      :page-size="searchForm.limit"
       :total="total"
       @current-change="loadData"
     />
@@ -138,6 +138,13 @@ const status = [
   { label: 'revoked-已撤销', value: 'revoked' }
 ]
 
+const searchForm = reactive({
+  page: 1,
+  limit: 10,
+  v_order: 'desc',
+  v_order_field: undefined
+})
+
 const form = reactive({
   id: null,
   code: '',
@@ -150,7 +157,8 @@ const form = reactive({
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await getActivationCodes()
+    const params = Object.assign(searchForm, {})
+    const res = await getActivationCodes(params)
     tableData.value = res.data || []
     total.value = res.data?.length || 0
   } finally {
