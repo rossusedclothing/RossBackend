@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Type
 
 from application.settings import BASE_DIR
+from apps.test.console.models.console import Console
 from core.database import Base
 from scripts.crud_generate.utils.dal_generate import DalGenerate
 from scripts.crud_generate.utils.generate_base import GenerateBase
@@ -22,7 +23,6 @@ from scripts.crud_generate.utils.view_generate import ViewGenerate
 
 
 class CrudGenerate(GenerateBase):
-
     APPS_ROOT = os.path.join(BASE_DIR, "apps")
     SCRIPT_DIR = os.path.join(BASE_DIR, 'scripts', 'crud_generate')
 
@@ -166,13 +166,14 @@ class CrudGenerate(GenerateBase):
         )
         view.write_generate_code()
 
+
 # scripts/crud_generate/main.py
-# if __name__ == '__main__':
-#     # from apps.xxx.your_app.models import YourModel
-#
-#     # crud = CrudGenerate(YourModel, "中文名", "en_name")
-#     crud = CrudGenerate(, "使用记录", "records")
-#     # 只打印代码，不执行创建写入
-#     crud.generate_codes()
-#     # 创建并写入代码
-#     crud.main()
+if __name__ == '__main__':
+    # from apps.xxx.your_app.models import YourModel
+
+    # crud = CrudGenerate(YourModel, "中文名", "en_name")
+    crud = CrudGenerate(Console, "测试控制台", "test_console")
+    # 只打印代码，不执行创建写入
+    crud.generate_codes()
+    # 创建并写入代码
+    crud.main()

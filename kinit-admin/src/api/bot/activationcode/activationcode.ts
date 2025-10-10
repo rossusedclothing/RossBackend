@@ -1,6 +1,5 @@
 import request from '@/config/axios'
 
-// 激活码相关
 export const getActivationCodes = (params?: any) => {
   return request.get({ url: '/bot/activation/codes', params })
 }

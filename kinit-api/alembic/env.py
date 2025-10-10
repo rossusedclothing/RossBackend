@@ -18,17 +18,6 @@ config = context.config
 # This line sets up loggers basically.
 fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
-# from myapp import mymodel
-# target_metadata = mymodel.Base.metadata
-# target_metadata = None
-
-# other values from the config, defined by the needs of env.py,
-# can be acquired:
-# my_important_option = config.get_main_option("my_important_option")
-# ... etc.
-
 # 添加当前项目路径到环境变量
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
@@ -39,16 +28,35 @@ sys.path.append(BASE_DIR)
 # from apps.vadmin.record.models import *
 # from apps.vadmin.help.models import *
 # from apps.vadmin.resource.models import *
-from apps.rebot.qa.models import *
-from apps.rebot.qa.models import *
+# from apps.rebot.qa.models import *
+from apps.test.console.models import *
 
 # 修改配置中的参数
 target_metadata = Base.metadata
 
 
+# 过滤函数 - 只迁移指定的表
+def include_object(object, name, type_, reflected, compare_to):
+    """
+    过滤要迁移的对象
+    """
+    # 只处理表类型的对象
+    if type_ == "table":
+        # 只包含以 'test_' 开头的表
+        if name.startswith('test_'):
+            print(f"包含表: {name}")  # 调试信息
+            return True
+        else:
+            print(f"排除表: {name}")  # 调试信息
+            return False
+
+    # 对于非表对象（索引、约束等），默认包含
+    return True
+
+
 def run_migrations_offline():
     """
-    以“脱机”模式运行迁移。
+    以"脱机"模式运行迁移。
     """
     url = config.get_main_option("sqlalchemy.url")
     context.configure(
@@ -57,7 +65,8 @@ def run_migrations_offline():
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
         compare_type=True,  # 是否检查字段类型，字段长度
-        compare_server_default=True  # 是否比较在数据库中的默认值
+        compare_server_default=True,  # 是否比较在数据库中的默认值
+        include_object=include_object  # 添加过滤函数
     )
 
     with context.begin_transaction():
@@ -66,7 +75,7 @@ def run_migrations_offline():
 
 def run_migrations_online():
     """
-    以“在线”模式运行迁移。
+    以"在线"模式运行迁移。
     """
     connectable = engine_from_config(
         config.get_section(config.config_ini_section),
@@ -79,7 +88,8 @@ def run_migrations_online():
             connection=connection,
             target_metadata=target_metadata,
             compare_type=True,  # 是否检查字段类型，字段长度
-            compare_server_default=True  # 是否比较在数据库中的默认值
+            compare_server_default=True,  # 是否比较在数据库中的默认值
+            include_object=include_object  # 添加过滤函数
         )
 
         with context.begin_transaction():
