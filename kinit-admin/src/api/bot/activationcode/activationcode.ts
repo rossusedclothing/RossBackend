@@ -9,8 +9,8 @@ export const createActivationCode = (data: any) => {
   return request.post({ url: '/bot/activation/codes', data })
 }
 
-export const createGenerateCode = (data_id: number, data: any) => {
-  return request.get({ url: `/bot/activation/generate/codes`, data })
+export const createGenerateCode = () => {
+  return request.get({ url: `/bot/activation/generate/codes` })
 }
 
 export const updateActivationCode = (data_id: number, data: any) => {
@@ -18,7 +18,7 @@ export const updateActivationCode = (data_id: number, data: any) => {
 }
 
 export const deleteActivationCodes = (ids: number[]) => {
-  return request.delete({ url: '/bot/activation/codes', data: { ids } })
+  return request.delete({ url: '/bot/activation/codes', data: ids })
 }
 
 // 生成激活码

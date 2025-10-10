@@ -14,22 +14,42 @@
       <el-table-column prop="status" label="状态" width="100" />
       <el-table-column prop="last_verified_datetime" label="最后验证时间" />
     </el-table>
+    <el-pagination
+      size="small"
+      layout="prev, pager, next"
+      :total="50"
+      @next-click="
+        (val) => {
+          searchForm.page = val
+          loadData()
+        }
+      "
+    />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { getActivationRecords } from '@/api/bot/activationcode/activationcode'
-import { ElButton, ElTable, ElTableColumn } from 'element-plus'
+import { ElButton, ElPagination, ElTable, ElTableColumn } from 'element-plus'
 
 const tableData = ref<any[]>([])
 const loading = ref(false)
+const searchForm = ref({
+  page: 1,
+  limit: 10,
+  v_order: 'desc',
+  v_order_field: undefined
+})
+const total = ref(0)
 
 const loadData = async () => {
   loading.value = true
   try {
-    const res = await getActivationRecords()
+    const params = Object.assign(searchForm.value, {})
+    const res = await getActivationRecords(params)
     tableData.value = res.data || []
+    total.value = res.data?.length || 0
   } finally {
     loading.value = false
   }

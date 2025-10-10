@@ -18,16 +18,30 @@
       @selection-change="handleSelectionChange"
       class="rounded-lg shadow"
     >
-      <el-table-column type="selection" width="50" />
+      <el-table-column fixed type="selection" width="50" />
       <el-table-column prop="id" label="ID" width="80" />
-      <el-table-column prop="code" label="激活码" tooltipEffect width="100" />
+      <el-table-column prop="code" label="激活码" tooltipEffect width="100">
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.code }}</label
+          >
+          <el-button size="small" bg dark @click="copyToClipboard(scope.row.code)">复制</el-button>
+        </template>
+      </el-table-column>
       <el-table-column prop="type" label="类型" width="100" />
       <el-table-column prop="status" label="状态" width="100" />
       <el-table-column prop="user_limit" label="用户数限制|激活次数" width="120" />
       <el-table-column prop="duration_days" label="有效天数" width="100" />
       <el-table-column prop="activated_by" label="激活人" />
       <el-table-column prop="activated_datetime" label="激活时间" />
-      <el-table-column label="操作" width="160">
+      <el-table-column fixed="right" label="操作" width="160">
         <template #default="scope">
           <el-button size="small" type="warning" @click="activeTest(scope.row)">激活测试</el-button>
           <el-button size="small" type="primary" @click="editRow(scope.row)">编辑</el-button>
@@ -123,7 +137,6 @@ const dialogVisible = ref(false)
 const editMode = ref(false)
 const selectedIds = ref<number[]>([])
 const total = ref(0)
-const pageSize = 10
 
 const types = [
   { label: 'trial-试用', value: 'trial' },
@@ -238,6 +251,17 @@ const generateCode = async () => {
   if (resp.data && resp.data.length > 0) {
     form.code = resp.data[0]
   }
+}
+
+const copyToClipboard = async (text: string) => {
+  navigator.clipboard
+    .writeText(text)
+    .then(() => {
+      ElMessage.success('复制成功')
+    })
+    .catch(() => {
+      ElMessage.error('复制失败')
+    })
 }
 
 onMounted(loadData)
