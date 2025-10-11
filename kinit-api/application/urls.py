@@ -15,10 +15,12 @@ from apps.vadmin.help.views import app as vadmin_help_app
 from apps.vadmin.resource.views import app as vadmin_resource_app
 from apps.rebot.qa.views import app as rebot_qa_app
 from apps.rebot.activationcode.views import app as rebot_activationcode_app
+from apps.rebot.panel.views import app as rebot_panel_app
 
 
 # 引入应用中的路由
 urlpatterns = [
+    {"ApiRouter": rebot_panel_app, "prefix": "/bot/panel", "tags": ["运行配置"]},
     {"ApiRouter": rebot_activationcode_app, "prefix": "/bot/activation", "tags": ["注册码|激活码"]},
     {"ApiRouter": rebot_qa_app, "prefix": "/bot/qa", "tags": ["问答配置"]},
     {"ApiRouter": auth_app, "prefix": "/auth", "tags": ["系统认证"]},

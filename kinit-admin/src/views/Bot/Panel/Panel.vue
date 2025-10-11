@@ -11,25 +11,32 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { ElTabs, ElTabPane } from 'element-plus'
-import ActivationCode from './components/ActivationCode.vue'
-import ActivationRecords from './components/ActivationRecords.vue'
+import ApiKeysPage from './components/ApiKeysPage.vue'
+import AppUpdate from './components/AppUpdate.vue'
+import FeedbackPage from './components/FeedbackPage.vue'
 
 // 响应式数据
-const activeTab = ref('ActivationCode')
+const activeTab = ref('apiKeys')
 
 // 标签页配置
 const tabs = [
   {
-    name: 'ActivationCode',
-    label: '注册|激活管理',
-    component: ActivationCode,
+    name: 'apiKeys',
+    label: 'API密钥管理',
+    component: ApiKeysPage,
     hidden: false
   },
   {
-    name: 'ActivationRecords',
-    label: '使用记录',
-    component: ActivationRecords,
+    name: 'appUpdate',
+    label: '应用更新',
+    component: AppUpdate,
     hidden: false
+  },
+  {
+    name: 'feedback',
+    label: '用户反馈',
+    component: FeedbackPage,
+    hidden: false // 可以根据需要显示/隐藏
   }
 ]
 

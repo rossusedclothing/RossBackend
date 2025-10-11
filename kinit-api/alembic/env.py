@@ -29,7 +29,9 @@ sys.path.append(BASE_DIR)
 # from apps.vadmin.help.models import *
 # from apps.vadmin.resource.models import *
 # from apps.rebot.qa.models import *
-from apps.test.console.models import *
+# from apps.test.console.models import *
+
+from apps.rebot.panel.models import *
 
 # 修改配置中的参数
 target_metadata = Base.metadata
@@ -42,8 +44,8 @@ def include_object(object, name, type_, reflected, compare_to):
     """
     # 只处理表类型的对象
     if type_ == "table":
-        # 只包含以 'test_' 开头的表
-        if name.startswith('test_'):
+        # 只包含以 'ross_panel' 开头的表
+        if name.startswith('ross_panel'):
             print(f"包含表: {name}")  # 调试信息
             return True
         else:

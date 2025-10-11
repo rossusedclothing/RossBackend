@@ -13,7 +13,9 @@ from pathlib import Path
 from typing import Type
 
 from application.settings import BASE_DIR
+from apps.rebot.panel.models.panel import ApiKeys, Feedback, AppUpdate
 from apps.test.console.models.console import Console
+from apps.vadmin.resource.models import RossFiles
 from core.database import Base
 from scripts.crud_generate.utils.dal_generate import DalGenerate
 from scripts.crud_generate.utils.generate_base import GenerateBase
@@ -168,12 +170,12 @@ class CrudGenerate(GenerateBase):
 
 
 # scripts/crud_generate/main.py
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # from apps.xxx.your_app.models import YourModel
 
-    # crud = CrudGenerate(YourModel, "中文名", "en_name")
-    crud = CrudGenerate(Console, "测试控制台", "test_console")
-    # 只打印代码，不执行创建写入
-    crud.generate_codes()
-    # 创建并写入代码
-    crud.main()
+    # # crud = CrudGenerate(YourModel, "中文名", "en_name")
+    # crud = CrudGenerate(AppUpdate, "App更新", "appUpdate")
+    # # 只打印代码，不执行创建写入
+    # crud.generate_codes()
+    # # 创建并写入代码
+    # crud.main()
