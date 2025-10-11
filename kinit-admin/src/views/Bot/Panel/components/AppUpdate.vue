@@ -32,7 +32,7 @@
     <div class="mt-4 flex justify-end">
       <el-pagination
         :current-page="paging.page"
-        :page-size="paging.pageSize"
+        :page-size="paging.limit"
         :total="paging.total"
         layout="prev, pager, next"
         @current-change="onPageChange"
@@ -91,7 +91,7 @@ import {
 } from '@/api/bot/panel/panel'
 
 const list = ref<any[]>([])
-const paging = reactive({ page: 1, pageSize: 10, total: 0 })
+const paging = reactive({ page: 1, limit: 10, total: 0, v_order: 'desc' })
 const filters = reactive({ app_name: '' })
 const showDialog = ref(false)
 const dialogTitle = ref('新增更新')
@@ -101,8 +101,7 @@ const form = reactive({ app_name: '', version: '', update_json: '', desc: '' })
 
 const load = async () => {
   const res: any = await getAppUpdateListApi({
-    page: paging.page,
-    pageSize: paging.pageSize,
+    ...paging,
     ...filters
   })
   if (res?.data) {

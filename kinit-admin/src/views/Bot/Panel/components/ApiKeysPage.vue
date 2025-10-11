@@ -34,7 +34,7 @@
     <div class="mt-4 flex justify-end">
       <el-pagination
         :current-page="paging.page"
-        :page-size="paging.pageSize"
+        :page-size="paging.limit"
         :total="paging.total"
         layout="prev, pager, next, jumper, ->, total"
         @current-change="onPageChange"
@@ -109,7 +109,7 @@ import {
 } from '@/api/bot/panel/panel'
 
 const list = ref<any[]>([])
-const paging = reactive({ page: 1, pageSize: 10, total: 0 })
+const paging = reactive({ page: 1, limit: 10, total: 0, v_order: 'desc' })
 const filters = reactive({ platform: '' })
 
 const showDialog = ref(false)
@@ -138,7 +138,7 @@ const platformList = reactive([
 const formRef = ref()
 
 const load = async () => {
-  const params = { page: paging.page, pageSize: paging.pageSize, ...filters }
+  const params = { ...paging, ...filters }
   const res: any = await getApiKeysListApi(params)
   // 假设返回结构为 { data: { list: [], total: n } }
   if (res && res.data) {

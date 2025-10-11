@@ -5,16 +5,15 @@
 # @File           : views.py
 # @IDE            : PyCharm
 # @desc           : 路由，视图文件
-from utils.response import SuccessResponse
-from sqlalchemy.ext.asyncio import AsyncSession
-from core.dependencies import IdList
-from . import crud, models, schemas, params
-from apps.vadmin.auth.utils.current import AllUserAuth
 from fastapi import APIRouter, Depends
-from core.database import db_getter
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from apps.vadmin.auth.utils.current import AllUserAuth
 from apps.vadmin.auth.utils.validation.auth import Auth
-
-
+from core.database import db_getter
+from core.dependencies import IdList
+from utils.response import SuccessResponse
+from . import crud, schemas, params
 
 app = APIRouter()
 
@@ -50,8 +49,6 @@ async def get_apiKeys(data_id: int, db: AsyncSession = Depends(db_getter)):
     return SuccessResponse(await crud.ApikeysDal(db).get_data(data_id, v_schema=schema))
 
 
-
-
 ###########################################################
 #    App问题反馈
 ###########################################################
@@ -62,8 +59,8 @@ async def get_appFeedback_list(p: params.AppfeedbackParams = Depends(), auth: Au
 
 
 @app.post("/appFeedback", summary="创建App问题反馈", tags=["App问题反馈"])
-async def create_appFeedback(data: schemas.Appfeedback, auth: Auth = Depends(AllUserAuth())):
-    return SuccessResponse(await crud.AppfeedbackDal(auth.db).create_data(data=data))
+async def create_appFeedback(data: schemas.Appfeedback, db: AsyncSession = Depends(db_getter)):
+    return SuccessResponse(await crud.AppfeedbackDal(db).create_data(data=data))
 
 
 @app.delete("/appFeedback", summary="删除App问题反馈", description="硬删除", tags=["App问题反馈"])
@@ -83,17 +80,12 @@ async def get_appFeedback(data_id: int, db: AsyncSession = Depends(db_getter)):
     return SuccessResponse(await crud.AppfeedbackDal(db).get_data(data_id, v_schema=schema))
 
 
-
-
-
-
-
 ###########################################################
 #    App更新
 ###########################################################
 @app.get("/appUpdate", summary="获取App更新列表", tags=["App更新"])
-async def get_appUpdate_list(p: params.AppupdateParams = Depends(), auth: Auth = Depends(AllUserAuth())):
-    datas, count = await crud.AppupdateDal(auth.db).get_datas(**p.dict(), v_return_count=True)
+async def get_appUpdate_list(p: params.AppupdateParams = Depends(), db: AsyncSession = Depends(db_getter)):
+    datas, count = await crud.AppupdateDal(db).get_datas(**p.dict(), v_return_count=True)
     return SuccessResponse(datas, count=count)
 
 
@@ -117,5 +109,3 @@ async def put_appUpdate(data_id: int, data: schemas.Appupdate, auth: Auth = Depe
 async def get_appUpdate(data_id: int, db: AsyncSession = Depends(db_getter)):
     schema = schemas.AppupdateSimpleOut
     return SuccessResponse(await crud.AppupdateDal(db).get_data(data_id, v_schema=schema))
-
-
