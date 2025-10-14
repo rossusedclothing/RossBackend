@@ -15,6 +15,7 @@ from apps.vadmin.help.views import app as vadmin_help_app
 from apps.vadmin.resource.views import app as vadmin_resource_app
 from apps.rebot.qa.views import app as rebot_qa_app
 from apps.rebot.activationcode.views import app as rebot_activationcode_app
+from apps.businessform.bform.views import app as businessform_beform_app #by：Glien-Kim
 from apps.rebot.panel.views import app as rebot_panel_app
 
 
@@ -23,6 +24,7 @@ urlpatterns = [
     {"ApiRouter": rebot_panel_app, "prefix": "/bot/panel", "tags": ["运行配置"]},
     {"ApiRouter": rebot_activationcode_app, "prefix": "/bot/activation", "tags": ["注册码|激活码"]},
     {"ApiRouter": rebot_qa_app, "prefix": "/bot/qa", "tags": ["问答配置"]},
+    {"ApiRouter": businessform_beform_app, "prefix": "/businessform/bform", "tags": ["客户表单"]},
     {"ApiRouter": auth_app, "prefix": "/auth", "tags": ["系统认证"]},
     {"ApiRouter": vadmin_auth_app, "prefix": "/vadmin/auth", "tags": ["权限管理"]},
     {"ApiRouter": vadmin_system_app, "prefix": "/vadmin/system", "tags": ["系统管理"]},
