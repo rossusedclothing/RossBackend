@@ -94,7 +94,6 @@ def run_migrations_online():
             compare_server_default=True,  # 是否比较在数据库中的默认值
             include_object=include_object  # 添加过滤函数
         )
-
         with context.begin_transaction():
             context.run_migrations()
 

@@ -126,5 +126,5 @@ def init_app(path: str):
 
 
 if __name__ == '__main__':
-    shell_app()
-    # run("127.0.0.1", 9000)
+    # shell_app()
+    run("127.0.0.1", 9000)
