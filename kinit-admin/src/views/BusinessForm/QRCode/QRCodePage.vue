@@ -4,22 +4,17 @@
       <template #header>
         <h2>表单分享二维码</h2>
       </template>
-      
+
       <div class="qrcode-content">
         <div class="qrcode-image">
           <!-- 可以使用 qrcode.vue 或其他二维码库 -->
           <div ref="qrcodeRef" class="qrcode"></div>
         </div>
-        
+
         <div class="qrcode-info">
           <h3>客户信息登记表</h3>
           <p>扫描二维码填写客户信息</p>
-          <el-input
-            v-model="formUrl"
-            readonly
-            size="large"
-            class="url-input"
-          >
+          <el-input v-model="formUrl" readonly size="large" class="url-input">
             <template #append>
               <el-button @click="copyUrl">复制链接</el-button>
             </template>
@@ -44,14 +39,19 @@ const formUrl = ref('')
 // 生成二维码
 onMounted(() => {
   formUrl.value = `${window.location.origin}/public/business-form`
-  
+
   if (qrcodeRef.value) {
-    QRCode.toCanvas(qrcodeRef.value, formUrl.value, {
-      width: 200,
-      margin: 2
-    }, (error) => {
-      if (error) console.error('生成二维码失败:', error)
-    })
+    QRCode.toCanvas(
+      qrcodeRef.value,
+      formUrl.value,
+      {
+        width: 200,
+        margin: 2
+      },
+      (error) => {
+        if (error) console.error('生成二维码失败:', error)
+      }
+    )
   }
 })
 

@@ -101,7 +101,6 @@ async def db_getter() -> AsyncGenerator[AsyncSession, None]:
         async with session.begin():
             yield session
 
-
 def redis_getter(request: Request) -> Redis:
     """
     获取 redis 数据库对象

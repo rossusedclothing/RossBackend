@@ -5,10 +5,10 @@
 # @File           : crud.py
 # @IDE            : PyCharm
 # @desc           : 数据访问层
-from .models.panel import AppUpdate, Feedback, ApiKeys
+from apps.rebot.panel.models.panel import AppUpdate, Feedback, ApiKeys
 from core.crud import DalBase
 from sqlalchemy.ext.asyncio import AsyncSession
-from . import models, schemas
+from . import schemas
 
 
 
@@ -37,5 +37,5 @@ class AppupdateDal(DalBase):
     def __init__(self, db: AsyncSession):
         super(AppupdateDal, self).__init__()
         self.db = db
-        self.model = models.AppUpdate
+        self.model = AppUpdate
         self.schema = schemas.AppupdateSimpleOut

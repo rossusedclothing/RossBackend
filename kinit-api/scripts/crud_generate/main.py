@@ -13,6 +13,8 @@ from pathlib import Path
 from typing import Type
 
 from application.settings import BASE_DIR
+from apps.rebot.activationcode.models.activation_codes import RossApplyCode
+from apps.rebot.customer.models import ReBotCustomer, ReBotCustomerMessage, SalesAgentConfig, SalesAgentWorkflow
 from apps.rebot.panel.models.panel import ApiKeys, Feedback, AppUpdate
 from apps.test.console.models.console import Console
 from apps.vadmin.resource.models import RossFiles
@@ -172,10 +174,9 @@ class CrudGenerate(GenerateBase):
 # scripts/crud_generate/main.py
 # if __name__ == '__main__':
     # from apps.xxx.your_app.models import YourModel
-
-    # # crud = CrudGenerate(YourModel, "中文名", "en_name")
-    # crud = CrudGenerate(AppUpdate, "App更新", "appUpdate")
-    # # 只打印代码，不执行创建写入
+    # crud = CrudGenerate(YourModel, "中文名", "en_name")
+    # crud = CrudGenerate(SalesAgentWorkflow, "业务员工作流程", "sales_agent_workflow")
+    # 只打印代码，不执行创建写入
     # crud.generate_codes()
-    # # 创建并写入代码
+    # 创建并写入代码
     # crud.main()

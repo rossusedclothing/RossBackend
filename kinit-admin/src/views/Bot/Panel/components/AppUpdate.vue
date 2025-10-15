@@ -56,7 +56,13 @@
           />
         </el-form-item>
         <el-form-item label="描述">
-          <el-input v-model="form.desc" />
+          <el-input
+            autosize
+            :rows="5"
+            type="textarea"
+            placeholder="Please input"
+            v-model="form.desc"
+          />
         </el-form-item>
       </el-form>
 

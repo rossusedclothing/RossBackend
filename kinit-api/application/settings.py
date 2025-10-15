@@ -14,12 +14,12 @@ from fastapi.security import OAuth2PasswordBearer
 VERSION = "3.10.1"
 
 """安全警告: 不要在生产中打开调试运行!"""
-DEBUG = False
+DEBUG = True
 # 是否开发环境
 if DEBUG:
-    print("当前环境为：开发环境")
+    print("\n当前环境为：开发环境")
 else:
-    print("当前环境为：生产环境")
+    print("\n当前环境为：生产环境")
 
 """是否开启演示功能：取消所有POST,DELETE,PUT操作权限"""
 DEMO = False

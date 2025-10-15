@@ -44,5 +44,12 @@ class RossActivationRecords(Base):
     last_verified_datetime = mapped_column(DateTime, comment='最后验证时间')
     status = mapped_column(String(20), nullable=False, default='active',
                            comment='状态：active-有效, expired-过期, revoked-撤销')
-
     is_delete = mapped_column(Integer, nullable=False, default=0, comment='是否删除：0-否, 1-是')
+
+class RossApplyCode(BaseModel):
+    """申请激活码"""
+    __tablename__ = "ross_apply_code"
+    id = mapped_column(Integer, primary_key=True, autoincrement=True, comment='主键')
+    user_name = mapped_column(String(100), nullable=True, comment='用户名')
+    contact = mapped_column(String(100), nullable=True, comment='联系方式')
+    code_id = mapped_column(Integer, nullable=True, comment='激活码ID')

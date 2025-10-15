@@ -22,7 +22,7 @@
           <el-divider content-position="left">
             <span class="section-title">基本信息</span>
           </el-divider>
-          
+
           <el-row :gutter="20">
             <el-col :xs="24" :sm="12">
               <el-form-item label="姓名" prop="name">
@@ -181,12 +181,7 @@
           >
             {{ loading ? '提交中...' : '立即提交' }}
           </el-button>
-          <el-button
-            @click="resetForm"
-            :disabled="loading"
-            size="large"
-            class="reset-btn"
-          >
+          <el-button @click="resetForm" :disabled="loading" size="large" class="reset-btn">
             重新填写
           </el-button>
         </div>
@@ -194,55 +189,43 @@
     </div>
 
     <!-- 页脚 -->
-	<!--#o：不带二维码版本
+    <!--#o：不带二维码版本
     <div class="form-footer">
       <p>如有问题，请联系我们：400-xxx-xxxx</p>
     </div>
 	-->
-	  <!-- 修改页脚部分 -->
+    <!-- 修改页脚部分 -->
     <div class="form-footer">
       <div class="footer-content">
         <p>如有问题，请联系我们：400-xxx-xxxx</p>
         <div class="footer-links">
-          <el-button 
-            link 
-            type="primary" 
-            @click="goToQRCodePage"
-            class="qrcode-link"
-          >
+          <el-button link type="primary" @click="goToQRCodePage" class="qrcode-link">
             <el-icon><Share /></el-icon>
             生成分享二维码
           </el-button>
           <el-divider direction="vertical" />
-          <el-button 
-            link 
-            type="info" 
-            @click="copyFormLink"
-          >
+          <el-button link type="info" @click="copyFormLink">
             <el-icon><Link /></el-icon>
             复制表单链接
           </el-button>
         </div>
       </div>
     </div>
-	
 
-	<!-- 浮动分享按钮 -->
-	<div class="floating-share-btn" @click="showShareMenu = !showShareMenu">
-	  <el-icon size="20"><Share /></el-icon>
-	  <div v-if="showShareMenu" class="share-menu">
-		<div class="share-item" @click.stop="goToQRCodePage">
-		  <el-icon><Picture /></el-icon>
-		  生成二维码
-		</div>
-		<div class="share-item" @click.stop="copyFormLink">
-		  <el-icon><Link /></el-icon>
-		  复制链接
-		</div>
-	  </div>
-	</div>	
-
-	
+    <!-- 浮动分享按钮 -->
+    <div class="floating-share-btn" @click="showShareMenu = !showShareMenu">
+      <el-icon size="20"><Share /></el-icon>
+      <div v-if="showShareMenu" class="share-menu">
+        <div class="share-item" @click.stop="goToQRCodePage">
+          <el-icon><Picture /></el-icon>
+          生成二维码
+        </div>
+        <div class="share-item" @click.stop="copyFormLink">
+          <el-icon><Link /></el-icon>
+          复制链接
+        </div>
+      </div>
+    </div>
 
     <!-- 成功弹窗 -->
     <el-dialog
@@ -269,19 +252,16 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, onMounted } from 'vue'
+import { onMounted, reactive, ref } from 'vue'
 import { ElMessage, ElMessageBox, type FormInstance, type FormRules } from 'element-plus'
-import { CircleCheck,  Share, Picture, Link } from '@element-plus/icons-vue'
+import { CircleCheck, Link, Picture, Share } from '@element-plus/icons-vue'
 import { createBusinessForm } from '@/api/businessform/list/list'
 
 import { useRouter } from 'vue-router'
 
-
-
 const router = useRouter()
 
 const showShareMenu = ref(false) //?
-
 
 // 表单引用
 const formRef = ref<FormInstance>()
@@ -331,12 +311,8 @@ const formRules: FormRules = {
     { required: true, message: '请输入出口市场', trigger: 'blur' },
     { max: 200, message: '出口市场描述长度不能超过 200 个字符', trigger: 'blur' }
   ],
-  student_identity: [
-    { required: true, message: '请选择学员身份', trigger: 'change' }
-  ],
-  company_size: [
-    { required: true, message: '请选择公司规模', trigger: 'change' }
-  ]
+  student_identity: [{ required: true, message: '请选择学员身份', trigger: 'change' }],
+  company_size: [{ required: true, message: '请选择公司规模', trigger: 'change' }]
 }
 
 // 页面加载时设置标题
@@ -355,7 +331,7 @@ const submitForm = async () => {
     loading.value = true
 
     const response = await createBusinessForm(formData)
-    
+
     if (response.code === 200) {
       successDialogVisible.value = true
     } else {
@@ -394,7 +370,6 @@ const handleSuccessConfirm = () => {
   // 滚动到顶部
   window.scrollTo({ top: 0, behavior: 'smooth' })
 }
-
 
 // 跳转到二维码页面
 const goToQRCodePage = () => {
@@ -511,7 +486,6 @@ const copyFormLink = async () => {
   line-height: 1.6;
 }
 
-
 /* 原有的样式不变，添加以下样式 */
 
 .footer-content {
@@ -530,9 +504,6 @@ const copyFormLink = async () => {
 .qrcode-link {
   font-weight: 500;
 }
-
-
-
 
 .floating-share-btn {
   position: fixed;
@@ -585,46 +556,41 @@ const copyFormLink = async () => {
   color: #409eff;
 }
 
-
-
-
-
-
 /* 响应式设计 */
 @media (max-width: 768px) {
   .public-form-container {
     padding: 10px;
   }
-  
+
   .form-title {
     font-size: 2rem;
   }
-  
+
   .form-description {
     font-size: 1rem;
   }
-  
+
   :deep(.el-card__body) {
     padding: 20px;
   }
-  
+
   :deep(.el-form-item__label) {
     padding-bottom: 8px;
   }
-  
+
   .submit-btn,
   .reset-btn {
     width: 100%;
     margin: 5px 0;
   }
-  
-  
+
   .footer-links {
     flex-direction: column;
     gap: 16px;
   }
-  
-  .el-divider--vertical { /*暂时未用到吧~~？*/
+
+  .el-divider--vertical {
+    /*暂时未用到吧~~？*/
     display: none;
   }
 }

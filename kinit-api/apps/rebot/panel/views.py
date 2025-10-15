@@ -59,7 +59,8 @@ async def get_appFeedback_list(p: params.AppfeedbackParams = Depends(), auth: Au
 
 
 @app.post("/appFeedback", summary="创建App问题反馈", tags=["App问题反馈"])
-async def create_appFeedback(data: schemas.Appfeedback, db: AsyncSession = Depends(db_getter)):
+async def create_appFeedback(data: schemas.Appfeedback,
+                             db: AsyncSession = Depends(db_getter)):
     return SuccessResponse(await crud.AppfeedbackDal(db).create_data(data=data))
 
 

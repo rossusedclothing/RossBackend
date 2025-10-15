@@ -5,14 +5,15 @@
 # @File           : crud.py
 # @IDE            : PyCharm
 # @desc           : 数据访问层
+from utils.response import ErrorResponse, SuccessResponse
+from . import models, schemas
+from sqlalchemy.ext.asyncio import AsyncSession
+from apps.rebot.activationcode.models.activation_codes import RossActivationRecords, RossActivationCodes
+from core.crud import DalBase
+from apps.rebot.activationcode import schemas
 import datetime
 
-from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.rebot.activationcode import schemas
-from apps.rebot.activationcode.models.activation_codes import RossActivationCodes, RossActivationRecords
-from core.crud import DalBase
-from utils.response import ErrorResponse, SuccessResponse
 
 
 class CodesDal(DalBase):
@@ -49,3 +50,12 @@ class RecordsDal(DalBase):
         self.db = db
         self.model = RossActivationRecords
         self.schema = schemas.RecordsSimpleOut
+
+
+class ApplyDal(DalBase):
+
+    def __init__(self, db: AsyncSession):
+        super(ApplyDal, self).__init__()
+        self.db = db
+        self.model = models.RossApplyCode
+        self.schema = schemas.ApplySimpleOut
