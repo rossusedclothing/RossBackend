@@ -197,7 +197,13 @@
     <!-- 修改页脚部分 -->
     <div class="form-footer">
       <div class="footer-content">
-        <p>如有问题，请联系我们：400-xxx-xxxx</p>
+        <p>
+          如有问题，请点击联系我们：<a
+            href="mailto:2457676371@qq.com?subject=问题反馈&body=您好，我遇到的问题是："
+            style="color: #1890ff; text-decoration: underline; cursor: pointer"
+            >发邮件</a
+          >
+        </p>
         <div class="footer-links">
           <el-button link type="primary" @click="goToQRCodePage" class="qrcode-link">
             <el-icon><Share /></el-icon>
@@ -216,11 +222,11 @@
     <div class="floating-share-btn" @click="showShareMenu = !showShareMenu">
       <el-icon size="20"><Share /></el-icon>
       <div v-if="showShareMenu" class="share-menu">
-        <div class="share-item" @click.stop="goToQRCodePage">
+        <div class="share-item" @click.stop="goToQRCodePage"  style="color:black;">
           <el-icon><Picture /></el-icon>
           生成二维码
         </div>
-        <div class="share-item" @click.stop="copyFormLink">
+        <div class="share-item" @click.stop="copyFormLink"  style="color:black;">
           <el-icon><Link /></el-icon>
           复制链接
         </div>
@@ -292,7 +298,7 @@ const formRules: FormRules = {
     { min: 2, max: 50, message: '姓名长度在 2 到 50 个字符', trigger: 'blur' },
   ],
   position: [
-    { required: true, message: '请输入职位', trigger: 'blur' },
+    { required: false, message: '请输入职位', trigger: 'blur' },
     { max: 50, message: '职位长度不能超过 50 个字符', trigger: 'blur' },
   ],
   region: [
@@ -300,19 +306,23 @@ const formRules: FormRules = {
     { max: 100, message: '地区长度不能超过 100 个字符', trigger: 'blur' },
   ],
   factory_spec: [
-    { required: true, message: '请输入工厂规格', trigger: 'blur' },
+    { required: false, message: '请输入工厂规格', trigger: 'blur' },
     { max: 200, message: '工厂规格长度不能超过 200 个字符', trigger: 'blur' },
   ],
   product: [
     { required: true, message: '请输入主营产品', trigger: 'blur' },
     { max: 100, message: '产品名称长度不能超过 100 个字符', trigger: 'blur' },
   ],
+  website: [
+    { required: false, message: '请输入网站链接', trigger: 'blur' },
+    { max: 200, message: '网站链接长度不能超过 200 个字符', trigger: 'blur' },
+  ],
   export_market: [
-    { required: true, message: '请输入出口市场', trigger: 'blur' },
+    { required: false, message: '请输入出口市场', trigger: 'blur' },
     { max: 200, message: '出口市场描述长度不能超过 200 个字符', trigger: 'blur' },
   ],
-  student_identity: [{ required: true, message: '请选择学员身份', trigger: 'change' }],
-  company_size: [{ required: true, message: '请选择公司规模', trigger: 'change' }],
+  student_identity: [{ required: false, message: '请选择学员身份', trigger: 'change' }],
+  company_size: [{ required: false, message: '请选择公司规模', trigger: 'change' }],
 }
 
 // 页面加载时设置标题
@@ -378,7 +388,8 @@ const goToQRCodePage = () => {
 
 // 复制表单链接
 const copyFormLink = async () => {
-  const formUrl = `${window.location.origin}/public/business-form`
+  //o-2-b：const formUrl = `${window.location.origin}/public/business-form`
+  const formUrl = `${window.location.origin}/businessform/publicform`
   try {
     await navigator.clipboard.writeText(formUrl)
     ElMessage.success('表单链接已复制到剪贴板')

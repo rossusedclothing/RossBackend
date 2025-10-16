@@ -34,7 +34,45 @@
           >
         </template>
       </el-table-column>
+      <el-table-column prop="position" label="职位" width="100" />
+      <el-table-column prop="region" label="地区" width="100" />
       <el-table-column prop="factory_spec" label="公司规模" width="100" />
+      <el-table-column prop="product" label="产品" width="100" />
+      <el-table-column prop="website" label="网站链接" width="100" />
+      <el-table-column prop="has_export_experience" label="有没有做过外贸" width="100">
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.has_export_experience == 1 ? '做过' : '未做过' }}</label
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="export_market" label="产品出口市场" width="100" />
+      <el-table-column prop="student_identity" label="学员身份" width="100" />
+      <el-table-column prop="num_members_tradeteam" label="外贸团队人数" width="100" />
+      <el-table-column prop="company_size" label="公司人数规模" width="100" />
+      <el-table-column prop="create_datetime" label="表单创建时间" width="100" />
+      <el-table-column prop="update_datetime" label="表单修改时间" width="100" />
+      <el-table-column prop="is_delete" label="删除状态" width="100">
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.is_delete == 1 ? '已删除' : '未删除' }}</label
+          >
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="160">
         <template #default="scope">
           <el-button size="small" type="primary" @click="editRow(scope.row)">编辑</el-button>

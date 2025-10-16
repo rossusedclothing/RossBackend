@@ -6,7 +6,9 @@
 # @IDE            : PyCharm
 # @desc           : 路由，视图文件
 
-from fastapi import Depends, APIRouter
+#r-2-b：from core.db import get_db  # 导入获取数据库会话的函数
+from core.database import db_getter
+from fastapi import Depends, APIRouter,  HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from apps.vadmin.auth.utils.current import AllUserAuth
@@ -15,6 +17,10 @@ from core.database import db_getter
 from core.dependencies import IdList
 from utils.response import SuccessResponse
 from . import crud, params, schemas
+
+from sqlalchemy.ext.asyncio import AsyncSession  # 若已有此导入，可直接在后面加
+from sqlalchemy.exc import SQLAlchemyError  # 新增这行，导入SQLAlchemy异常基类
+##from core.db import get_db  # 假设你有数据库会话的依赖
 
 app = APIRouter()
 
@@ -25,7 +31,7 @@ app = APIRouter()
 
 @app.get("/list", summary="获取客户表单列表", tags=["客户表单"])
 async def get_business_form_list(
-    p: params.BusinessFormParams = Depends(), 
+    p: params.BusinessFormParams = Depends(),
     auth: Auth = Depends(AllUserAuth())
 ):
     """获取客户表单列表"""
@@ -41,16 +47,28 @@ async def create_business_form(data: BusinessFormCreate):
 '''
 @app.post("/list", summary="创建客户表单", tags=["客户表单"])
 async def create_business_form(
-    data: schemas.BusinessFormCreate, 
-    ###### auth: Auth = Depends(AllUserAuth())
+    data: schemas.BusinessFormCreate,
+    # 1. 通过 Depends(get_db) 获取数据库会话（关键：确保 db 被定义）
+    #r-2-b：db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(db_getter)
 ):
-    """创建客户表单"""
-    return SuccessResponse(await crud.BusinessFormDal(db).create_data(data=data)) 
+    try:
+        # 2. 调用 BusinessFormDal 时传入 db 参数（关键：传递 db）
+        dal = crud.BusinessFormDal(db)
+        result = await dal.create_data(data=data)
+        #o-2-b：return SuccessResponse(result)
+        # 直接返回字典（FastAPI 能自动序列化为 JSON）
+        return SuccessResponse(data=result)  # 若 SuccessResponse 需模型实例，可改为直接返回 dict
+    except SQLAlchemyError as e:
+        ###await db.rollback()
+        raise HTTPException(status_code=500, detail=f"数据库错误：{str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"接口错误：{str(e)}")
 
 
 @app.delete("/list", summary="删除客户表单", description="删除", tags=["客户表单"])
 async def delete_business_form_list(
-    ids: IdList = Depends(), 
+    ids: IdList = Depends(),
     auth: Auth = Depends(AllUserAuth())
 ):
     """批量删除客户表单"""
@@ -60,8 +78,8 @@ async def delete_business_form_list(
 
 @app.put("/list/{data_id}", summary="更新客户表单", tags=["客户表单"])
 async def put_business_form(
-    data_id: int, 
-    data: schemas.BusinessFormUpdate, 
+    data_id: int,
+    data: schemas.BusinessFormUpdate,
     auth: Auth = Depends(AllUserAuth())
 ):
     """更新客户表单"""
@@ -70,7 +88,7 @@ async def put_business_form(
 
 @app.get("/list/{data_id}", summary="获取客户表单信息", tags=["客户表单"])
 async def get_business_form(
-    data_id: int, 
+    data_id: int,
     db: AsyncSession = Depends(db_getter)
 ):
     """根据ID获取客户表单详情"""
