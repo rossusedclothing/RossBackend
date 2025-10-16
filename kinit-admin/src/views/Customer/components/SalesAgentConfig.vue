@@ -104,7 +104,7 @@ import {
   ElFormItem,
   ElInput,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 
 // API
@@ -113,7 +113,7 @@ import {
   createSalesAgentConfigApi,
   updateSalesAgentConfigApi,
   deleteSalesAgentConfigApi,
-  getSalesAgentConfigInfoApi
+  getSalesAgentConfigInfoApi,
 } from '@/api/bot/customer/customer'
 
 interface AgentConfig {
@@ -135,7 +135,7 @@ const fetchList = async () => {
     page: paging.page,
     limit: paging.limit,
     keyword: filters.keyword,
-    v_order: paging.v_order
+    v_order: paging.v_order,
   }
   try {
     const res: any = await getSalesAgentConfigListApi(params)
@@ -175,11 +175,11 @@ const form = reactive({
   name: '',
   phone: '',
   description: '',
-  config: ''
+  config: '',
 })
 const rules = reactive({
   name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
-  phone: [{ required: true, message: '请输入手机号', trigger: 'blur' }]
+  phone: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
 })
 
 const onView = (row: AgentConfig) => {

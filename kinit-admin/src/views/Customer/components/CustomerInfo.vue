@@ -13,7 +13,7 @@
         <el-button type="primary" @click="onOpenCreate">创建客户</el-button>
       </div>
 
-      <div class="text-sm text-gray-500"> 总数：{{ paging.total }} </div>
+      <div class="text-sm text-gray-500">总数：{{ paging.total }}</div>
     </div>
 
     <el-table :data="list" stripe style="width: 100%" :empty-text="'暂无数据'">
@@ -111,7 +111,7 @@ import {
   ElFormItem,
   ElInput,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 
 // API
@@ -120,7 +120,7 @@ import {
   createCustomerApi,
   updateCustomerApi,
   deleteCustomerApi,
-  getCustomerInfoApi
+  getCustomerInfoApi,
 } from '@/api/bot/customer/customer'
 
 // types (可根据项目补充)
@@ -146,7 +146,7 @@ const fetchList = async () => {
     page: paging.page,
     limit: paging.limit,
     keyword: filters.keyword,
-    v_order: paging.v_order
+    v_order: paging.v_order,
   }
   try {
     const res: any = await getCustomerListApi(params)
@@ -189,11 +189,11 @@ const form = reactive({
   customer_name: '',
   customer_phone: '',
   platform: 'whatsapp',
-  meta_data: ''
+  meta_data: '',
 })
 const rules = reactive({
   customer_name: [{ required: true, message: '请输入客户名称', trigger: 'blur' }],
-  customer_phone: [{ required: true, message: '请输入手机号', trigger: 'blur' }]
+  customer_phone: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
 })
 
 const onView = (row: CustomerItem) => {

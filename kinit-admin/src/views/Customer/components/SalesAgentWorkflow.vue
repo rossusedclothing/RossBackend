@@ -104,7 +104,7 @@ import {
   ElFormItem,
   ElInput,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 
 // API
@@ -113,7 +113,7 @@ import {
   createSalesAgentWorkflowApi,
   updateSalesAgentWorkflowApi,
   deleteSalesAgentWorkflowApi,
-  getSalesAgentWorkflowInfoApi
+  getSalesAgentWorkflowInfoApi,
 } from '@/api/bot/customer/customer'
 
 interface WorkflowItem {
@@ -134,7 +134,7 @@ const fetchList = async () => {
     page: paging.page,
     limit: paging.limit,
     keyword: filters.keyword,
-    v_order: paging.v_order
+    v_order: paging.v_order,
   }
   try {
     const res: any = await getSalesAgentWorkflowListApi(params)
@@ -172,10 +172,10 @@ const form = reactive({
   name: '',
   phone: '',
   description: '',
-  config: ''
+  config: '',
 })
 const rules = reactive({
-  name: [{ required: true, message: '请输入名称', trigger: 'blur' }]
+  name: [{ required: true, message: '请输入名称', trigger: 'blur' }],
 })
 
 const onView = (row: WorkflowItem) => {
