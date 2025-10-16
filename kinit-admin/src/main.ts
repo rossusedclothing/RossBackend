@@ -31,6 +31,9 @@ import { setupRouter } from './router'
 import { setupPermission } from './directives'
 
 import { createApp } from 'vue'
+//apd
+import ElementPlus from 'element-plus' // 必须引入
+import 'element-plus/dist/index.css' // 必须引入样式
 
 import App from './App.vue'
 
@@ -39,6 +42,8 @@ import './permission'
 // 创建实例
 const setupAll = async () => {
   const app = createApp(App)
+
+  app.use(ElementPlus) // 全局注册组件【apd】
 
   await setupI18n(app)
 

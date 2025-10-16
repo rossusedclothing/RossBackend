@@ -172,11 +172,12 @@ class CrudGenerate(GenerateBase):
 
 
 # scripts/crud_generate/main.py
-# if __name__ == '__main__':
-    # from apps.xxx.your_app.models import YourModel
-    # crud = CrudGenerate(YourModel, "中文名", "en_name")
-    # crud = CrudGenerate(SalesAgentWorkflow, "业务员工作流程", "sales_agent_workflow")
-    # 只打印代码，不执行创建写入
-    # crud.generate_codes()
+if __name__ == '__main__':
+     #from apps.xxx.your_app.models import YourModel
+     from apps.businessform.bform.models.business_form
+
+     crud = CrudGenerate(BusinessForm, "业务表单", "business_form")
+     #只打印代码，不执行创建写入
+     crud.generate_codes()
     # 创建并写入代码
-    # crud.main()
+     crud.main()
