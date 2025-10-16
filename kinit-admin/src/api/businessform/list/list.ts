@@ -6,11 +6,9 @@ export const getBusinessFormLists = (params?: any) => {
 }
 
 export const deleteRecord = (ids: number[]) => {
-  return request.delete({ url: '/businessform/bform/delete', data: ids })
+  return request.delete({ url: '/businessform/bform/list', data: ids })
 }
 
-/*
 export const createBusinessForm = (data: any) => {
-  return request.post({ url: '/businessform/bform/create', data })
+  return request.post({ url: '/businessform/bform/list', data })
 }
-*/

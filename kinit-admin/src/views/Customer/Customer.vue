@@ -25,26 +25,26 @@ const tabs = [
     name: 'CustomerInfo',
     label: '客户信息',
     component: CustomerInfo,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'CustomerMessage',
     label: '客户消息记录',
     component: CustomerMessage,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'SalesAgentConfig',
     label: '业务员配置',
     component: SalesAgentConfig,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'SalesAgentWorkflow',
     label: '工作流配置',
     component: SalesAgentWorkflow,
-    hidden: false
-  }
+    hidden: false,
+  },
 ]
 
 // 计算属性：可见的标签页

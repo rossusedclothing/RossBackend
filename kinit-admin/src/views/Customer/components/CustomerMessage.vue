@@ -126,7 +126,7 @@ import {
   ElFormItem,
   ElInput,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 
 // API
@@ -134,7 +134,7 @@ import {
   getCustomerMessageListApi,
   createCustomerMessageApi,
   updateCustomerMessageApi,
-  deleteCustomerMessageApi
+  deleteCustomerMessageApi,
 } from '@/api/bot/customer/customer'
 
 // 类型
@@ -159,7 +159,7 @@ const fetchList = async () => {
     page: paging.page,
     limit: paging.limit,
     keyword: filters.keyword,
-    v_order: paging.v_order
+    v_order: paging.v_order,
   }
   try {
     const res: any = await getCustomerMessageListApi(params)
@@ -203,12 +203,12 @@ const form = reactive({
   customer_name: '',
   customer_phone: '',
   customer_message: '',
-  receiver_message: ''
+  receiver_message: '',
 })
 const rules = reactive({
   customer_name: [{ required: true, message: '请输入客户名称', trigger: 'blur' }],
   customer_phone: [{ required: true, message: '请输入手机号', trigger: 'blur' }],
-  customer_message: [{ required: true, message: '请输入客户消息', trigger: 'blur' }]
+  customer_message: [{ required: true, message: '请输入客户消息', trigger: 'blur' }],
 })
 
 // 查看详情
@@ -233,7 +233,7 @@ const onOpenCreate = () => {
     customer_name: '',
     customer_phone: '',
     customer_message: '',
-    receiver_message: ''
+    receiver_message: '',
   })
   editDialog.visible = true
 }
