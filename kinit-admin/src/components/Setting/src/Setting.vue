@@ -129,7 +129,7 @@ const copyConfig = async () => {
         topToolBorderColor: '${appStore.getTheme.topToolBorderColor}'
       }
     `,
-    legacy: true
+    legacy: true,
   })
   if (!isSupported) {
     ElMessage.error(t('setting.copyFailed'))
@@ -189,7 +189,7 @@ const themeChange = () => {
           '#ee4f12',
           '#0096c7',
           '#9c27b0',
-          '#ff9800'
+          '#ff9800',
         ]"
         @change="setSystemTheme"
       />
@@ -206,7 +206,7 @@ const themeChange = () => {
           '#24292e',
           '#394664',
           '#009688',
-          '#383f45'
+          '#383f45',
         ]"
         @change="setHeaderTheme"
       />
@@ -223,7 +223,7 @@ const themeChange = () => {
           '#191b24',
           '#383f45',
           '#001628',
-          '#344058'
+          '#344058',
         ]"
         @change="setMenuTheme"
       />

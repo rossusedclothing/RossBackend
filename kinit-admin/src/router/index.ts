@@ -13,7 +13,7 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     redirect: '/dashboard/analysis',
     name: 'Root',
     meta: {
-      hidden: true
+      hidden: true,
     },
     children: [
       {
@@ -28,10 +28,10 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
           hidden: true,
           noCache: true,
           noTagsView: false,
-          title: '个人主页'
-        }
-      }
-    ]
+          title: '个人主页',
+        },
+      },
+    ],
   },
   {
     path: '/redirect',
@@ -42,13 +42,13 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
         path: '/redirect/:path(.*)',
         name: 'Redirect',
         component: () => import('@/views/Redirect/Redirect.vue'),
-        meta: {}
-      }
+        meta: {},
+      },
     ],
     meta: {
       hidden: true,
-      noTagsView: true
-    }
+      noTagsView: true,
+    },
   },
   {
     path: '/login',
@@ -57,8 +57,8 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     meta: {
       hidden: true,
       title: t('router.login'),
-      noTagsView: true
-    }
+      noTagsView: true,
+    },
   },
   {
     path: '/reset/password',
@@ -67,8 +67,8 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     meta: {
       hidden: true,
       title: '重置密码',
-      noTagsView: true
-    }
+      noTagsView: true,
+    },
   },
   {
     path: '/docs',
@@ -76,7 +76,7 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     meta: {
       hidden: true,
       title: '在线文档',
-      noTagsView: true
+      noTagsView: true,
     },
     children: [
       {
@@ -86,8 +86,8 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
         meta: {
           hidden: true,
           title: '隐私政策',
-          noTagsView: true
-        }
+          noTagsView: true,
+        },
       },
       {
         path: 'agreement',
@@ -96,10 +96,10 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
         meta: {
           hidden: true,
           title: '用户协议',
-          noTagsView: true
-        }
-      }
-    ]
+          noTagsView: true,
+        },
+      },
+    ],
   },
   {
     path: '/404',
@@ -108,9 +108,9 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
     meta: {
       hidden: true,
       title: '404',
-      noTagsView: true
-    }
-  }
+      noTagsView: true,
+    },
+  },
 ]
 
 export const asyncRouterMap: AppRouteRecordRaw[] = [
@@ -122,7 +122,7 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
     meta: {
       title: t('router.dashboard'),
       icon: 'ant-design:dashboard-filled',
-      alwaysShow: true
+      alwaysShow: true,
     },
     children: [
       {
@@ -131,18 +131,28 @@ export const asyncRouterMap: AppRouteRecordRaw[] = [
         name: 'Workplace',
         meta: {
           title: t('router.workplace'),
-          noCache: true
-        }
-      }
-    ]
-  }
+          noCache: true,
+        },
+      },
+    ],
+  },
+  // 在这里添加你的新路由
+  {
+    path: '/list',
+    component: () => import('@/views/BusinessForm/List/List.vue'),
+    name: 'BusinessFormList',
+    meta: {
+      title: '表单列表',
+      icon: 'ep-list',
+    },
+  },
 ]
 
 const router = createRouter({
   history: createWebHistory(),
   strict: true,
   routes: constantRouterMap as RouteRecordRaw[],
-  scrollBehavior: () => ({ left: 0, top: 0 })
+  scrollBehavior: () => ({ left: 0, top: 0 }),
 })
 
 export const resetRouter = (): void => {
@@ -155,7 +165,7 @@ export const resetRouter = (): void => {
     'Home',
     'Docs',
     'Privacy',
-    'Agreement'
+    'Agreement',
   ]
   router.getRoutes().forEach((route) => {
     const { name } = route

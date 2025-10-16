@@ -11,7 +11,7 @@ import { BaseButton } from '@/components/Button'
 const { required } = useValidator()
 
 const props = defineProps({
-  tabId: propTypes.number
+  tabId: propTypes.number,
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -19,59 +19,59 @@ const formSchema = reactive<FormSchema[]>([
     field: 'email_access',
     label: '邮箱账号',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'email_password',
     label: '邮箱密码',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'email_server',
     label: '邮箱服务器',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'email_port',
     label: '服务器端口',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'active',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -83,17 +83,17 @@ const formSchema = reactive<FormSchema[]>([
               </BaseButton>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules = reactive({
   email_access: [required()],
   email_password: [required()],
   email_port: [required()],
-  email_server: [required()]
+  email_server: [required()],
 })
 
 const { formRegister, formMethods } = useForm()

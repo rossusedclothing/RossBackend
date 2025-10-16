@@ -11,7 +11,7 @@ const { result_code, unauthorized_code, request_timeout } = config
 const service: AxiosInstance = axios.create({
   baseURL: '/api', // api 的 base_url
   timeout: request_timeout, // 请求超时时间
-  headers: {} // 请求头信息
+  headers: {}, // 请求头信息
 })
 
 // request拦截器

@@ -17,36 +17,36 @@ export const newCustomerlineOptions: EChartsOption = {
       t('analysis.september'),
       t('analysis.october'),
       t('analysis.november'),
-      t('analysis.december')
+      t('analysis.december'),
     ],
     boundaryGap: true,
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   grid: {
     left: 20,
     right: 20,
     bottom: 35,
     top: 30,
-    containLabel: true
+    containLabel: true,
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'cross'
+      type: 'cross',
     },
-    padding: [5, 10]
+    padding: [5, 10],
   },
   yAxis: {
     type: 'value',
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   legend: {
     data: ['新增客户'],
-    bottom: -5
+    bottom: -5,
   },
   series: [
     {
@@ -59,20 +59,20 @@ export const newCustomerlineOptions: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(79,168,249)' // 整体颜色
+        color: 'rgba(79,168,249)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
-      }
-    }
-  ]
+        opacity: 1,
+      },
+    },
+  ],
 }
 
 export const memberPieOptions: EChartsOption = {
   tooltip: {
     trigger: 'item',
-    formatter: '{a} <br/>{b} : {c} ({d}%)'
+    formatter: '{a} <br/>{b} : {c} ({d}%)',
   },
   series: [
     {
@@ -84,10 +84,10 @@ export const memberPieOptions: EChartsOption = {
         { value: 335, name: '青铜卡' },
         { value: 310, name: '白银卡' },
         { value: 234, name: '黄金卡' },
-        { value: 135, name: '钻石卡' }
-      ]
-    }
-  ]
+        { value: 135, name: '钻石卡' },
+      ],
+    },
+  ],
 }
 
 export const customerConversionLineOptions: EChartsOption = {
@@ -104,36 +104,36 @@ export const customerConversionLineOptions: EChartsOption = {
       t('analysis.september'),
       t('analysis.october'),
       t('analysis.november'),
-      t('analysis.december')
+      t('analysis.december'),
     ],
     boundaryGap: true,
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   grid: {
     left: 20,
     right: 20,
     bottom: 35,
     top: 30,
-    containLabel: true
+    containLabel: true,
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'cross'
+      type: 'cross',
     },
-    padding: [5, 10]
+    padding: [5, 10],
   },
   yAxis: {
     type: 'value',
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   legend: {
     data: ['转换次数', '转换率'],
-    bottom: -5
+    bottom: -5,
   },
   series: [
     {
@@ -146,12 +146,12 @@ export const customerConversionLineOptions: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(110,199,30)' // 整体颜色
+        color: 'rgba(110,199,30)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
-      }
+        opacity: 1,
+      },
     },
     {
       name: '转换率',
@@ -163,14 +163,14 @@ export const customerConversionLineOptions: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(79,168,249)' // 整体颜色
+        color: 'rgba(79,168,249)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
-      }
-    }
-  ]
+        opacity: 1,
+      },
+    },
+  ],
 }
 
 export const paySuccesslineOptions: EChartsOption = {
@@ -187,36 +187,36 @@ export const paySuccesslineOptions: EChartsOption = {
       t('analysis.september'),
       t('analysis.october'),
       t('analysis.november'),
-      t('analysis.december')
+      t('analysis.december'),
     ],
     boundaryGap: true,
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   grid: {
     left: 20,
     right: 20,
     bottom: 35,
     top: 30,
-    containLabel: true
+    containLabel: true,
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'cross'
+      type: 'cross',
     },
-    padding: [5, 10]
+    padding: [5, 10],
   },
   yAxis: {
     type: 'value',
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   legend: {
     data: ['支付成功客户数'],
-    bottom: -5
+    bottom: -5,
   },
   series: [
     {
@@ -229,12 +229,12 @@ export const paySuccesslineOptions: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(79,168,249)' // 整体颜色
+        color: 'rgba(79,168,249)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
-      }
-    }
-  ]
+        opacity: 1,
+      },
+    },
+  ],
 }

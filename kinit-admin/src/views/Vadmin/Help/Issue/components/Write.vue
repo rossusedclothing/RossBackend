@@ -11,12 +11,12 @@ import {
   addIssueApi,
   getIssueApi,
   putIssueApi,
-  getIssueCategoryOptionsApi
+  getIssueCategoryOptionsApi,
 } from '@/api/vadmin/help/issue'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'HelpIssueForm'
+  name: 'HelpIssueForm',
 })
 
 const { required } = useValidator()
@@ -46,7 +46,7 @@ const editorConfig = {
   scroll: true,
   readOnly: false,
   uploadImgShowBase64: true,
-  placeholder: '请输入内容...'
+  placeholder: '请输入内容...',
 }
 
 const formSchema = reactive<FormSchema[]>([
@@ -55,60 +55,60 @@ const formSchema = reactive<FormSchema[]>([
     label: '标题名称',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'content',
     label: '内容',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Editor',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       editorConfig: editorConfig,
-      editorId: 'issueContent'
+      editorId: 'issueContent',
     },
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'category_id',
     label: '问题类别',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Select',
     componentProps: {
       style: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     formItemProps: {
-      rules: [required()]
+      rules: [required()],
     },
     optionApi: async () => {
       const res = await getIssueCategoryOptionsApi()
       return res.data
-    }
+    },
   },
   {
     field: '',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -120,10 +120,10 @@ const formSchema = reactive<FormSchema[]>([
               </BaseButton>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -190,7 +190,7 @@ const submit = async () => {
 }
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

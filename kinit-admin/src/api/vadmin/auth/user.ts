@@ -44,7 +44,7 @@ export const postImportUserApi = (data: any): Promise<IResponse> => {
   return request.post({
     url: `/vadmin/auth/import/users`,
     headersType: 'multipart/form-data',
-    data
+    data,
   })
 }
 

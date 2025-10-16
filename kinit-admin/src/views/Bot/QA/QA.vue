@@ -24,6 +24,6 @@ const tabs = ref([])
 tabs.value = [
   { id: 1, tab_name: '服装', tab_label: '服装', hidden: false },
   { id: 2, tab_name: '电动车', tab_label: '电动车', hidden: false },
-  { id: 3, tab_name: '家居用品', tab_label: '家居用品', hidden: true }
+  { id: 3, tab_name: '家居用品', tab_label: '家居用品', hidden: true },
 ]
 </script>

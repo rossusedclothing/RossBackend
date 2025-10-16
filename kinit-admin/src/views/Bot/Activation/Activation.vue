@@ -23,14 +23,14 @@ const tabs = [
     name: 'ActivationCode',
     label: '注册|激活管理',
     component: ActivationCode,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'ActivationRecords',
     label: '使用记录',
     component: ActivationRecords,
-    hidden: false
-  }
+    hidden: false,
+  },
 ]
 
 // 计算属性：可见的标签页

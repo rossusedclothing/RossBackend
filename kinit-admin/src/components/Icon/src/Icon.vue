@@ -16,7 +16,7 @@ const props = defineProps({
   color: propTypes.string,
   // icon size
   size: propTypes.number.def(16),
-  hoverColor: propTypes.string
+  hoverColor: propTypes.string,
 })
 
 const isLocal = computed(() => props.icon.startsWith('svg-icon:'))
@@ -34,7 +34,7 @@ const getIconifyStyle = computed(() => {
   const { color, size } = props
   return {
     fontSize: `${size}px`,
-    color
+    color,
   }
 })
 </script>

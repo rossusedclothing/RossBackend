@@ -45,7 +45,7 @@ export const useAuthStore = defineStore('auth', {
       isUser: false,
       tokenKey: 'Authorization',
       token: '',
-      refreshToken: ''
+      refreshToken: '',
     }
   },
   getters: {
@@ -69,7 +69,7 @@ export const useAuthStore = defineStore('auth', {
     },
     getIsUser(): boolean {
       return this.isUser
-    }
+    },
   },
   actions: {
     setToken(token: string) {
@@ -128,9 +128,9 @@ export const useAuthStore = defineStore('auth', {
         }
       })
       this.permissions = res.data.permissions
-    }
+    },
   },
-  persist: true
+  persist: true,
 })
 
 export const useAuthStoreWithOut = () => {

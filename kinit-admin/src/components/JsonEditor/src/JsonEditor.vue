@@ -9,13 +9,13 @@ const emits = defineEmits([
   'node-click',
   'brackets-click',
   'icon-click',
-  'selected-value'
+  'selected-value',
 ])
 
 const props = defineProps({
   modelValue: {
     type: Object,
-    default: () => ({})
+    default: () => ({}),
   },
   deep: propTypes.number.def(5),
   showLength: propTypes.bool.def(true),
@@ -36,7 +36,7 @@ const props = defineProps({
   renderNodeKey: propTypes.func.def(),
   renderNodeValue: propTypes.func.def(),
   editable: propTypes.bool.def(true),
-  editableTrigger: propTypes.oneOf<'click' | 'dblclick'>(['click', 'dblclick']).def('click')
+  editableTrigger: propTypes.oneOf<'click' | 'dblclick'>(['click', 'dblclick']).def('click'),
 })
 
 const data = computed(() => props.modelValue)
@@ -46,7 +46,7 @@ const localModelValue = computed({
   set: (val) => {
     console.log(val)
     emits('update:modelValue', val)
-  }
+  },
 })
 
 const nodeClick = (node: any) => {

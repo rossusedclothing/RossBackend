@@ -5,8 +5,8 @@ import { ref, PropType } from 'vue'
 
 const props = defineProps({
   selections: {
-    type: Object as PropType<Recordable[]>
-  }
+    type: Object as PropType<Recordable[]>,
+  },
 })
 
 const tableData = ref(JSON.parse(JSON.stringify(props.selections)))

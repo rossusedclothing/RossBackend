@@ -114,7 +114,7 @@ import {
   createGenerateCode,
   deleteActivationCodes,
   getActivationCodes,
-  updateActivationCode
+  updateActivationCode,
 } from '@/api/bot/activationcode/activationcode'
 import {
   ElButton,
@@ -128,7 +128,7 @@ import {
   ElPagination,
   ElSelect,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
 } from 'element-plus'
 
 const tableData = ref<any[]>([])
@@ -142,20 +142,20 @@ const types = [
   { label: 'trial-试用', value: 'trial' },
   { label: 'personal-个人', value: 'personal' },
   { label: 'team-团队', value: 'team' },
-  { label: 'enterprise-企业', value: 'enterprise' }
+  { label: 'enterprise-企业', value: 'enterprise' },
 ]
 const status = [
   { label: 'active-未使用', value: 'active' },
   { label: 'used-已使用', value: 'used' },
   { label: 'expired-已过期', value: 'expired' },
-  { label: 'revoked-已撤销', value: 'revoked' }
+  { label: 'revoked-已撤销', value: 'revoked' },
 ]
 
 const searchForm = reactive({
   page: 1,
   limit: 10,
   v_order: 'desc',
-  v_order_field: undefined
+  v_order_field: undefined,
 })
 
 const form = reactive({
@@ -164,7 +164,7 @@ const form = reactive({
   type: 'trial',
   status: 'active',
   user_limit: 1,
-  duration_days: 30
+  duration_days: 30,
 })
 
 const loadData = async () => {
@@ -187,7 +187,7 @@ const openCreateDialog = () => {
     type: 'trial',
     status: 'active',
     user_limit: 1,
-    duration_days: 30
+    duration_days: 30,
   })
   dialogVisible.value = true
 }
@@ -199,7 +199,7 @@ const activeTest = async (row: any) => {
     code: form.code,
     type: form.type,
     user_id: '1',
-    status: form.status
+    status: form.status,
   }
   const resp = await createActivationRecord(data)
   console.log(resp)

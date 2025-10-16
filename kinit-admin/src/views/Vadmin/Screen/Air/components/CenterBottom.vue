@@ -5,8 +5,8 @@ import { ScrollBoard } from '@kjgl77/datav-vue3'
 const props = defineProps({
   centerBottomData: {
     type: Array as PropType<string[][]>,
-    required: true
-  }
+    required: true,
+  },
 })
 
 const scrollBoardRef = ref<any>(null)
@@ -21,7 +21,7 @@ const config = reactive({
   align: ['center'],
   rowNum: 6,
   waitTime: 2000,
-  headerHeight: 40
+  headerHeight: 40,
 })
 
 watch(
@@ -30,7 +30,7 @@ watch(
     scrollBoardRef.value.updateRows(val)
   },
   {
-    deep: true
+    deep: true,
   }
 )
 </script>

@@ -89,7 +89,7 @@ export function formatTime(time: Date | number | string, fmt: string) {
       'm+': date.getMinutes(),
       's+': date.getSeconds(),
       'q+': Math.floor((date.getMonth() + 3) / 3),
-      S: date.getMilliseconds()
+      S: date.getMilliseconds(),
     }
     if (/(y+)/.test(fmt)) {
       fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length))
@@ -161,7 +161,7 @@ export const getDayOfWeek = (): string => {
     '星期三',
     '星期四',
     '星期五',
-    '星期六'
+    '星期六',
   ]
   const date: Date = new Date()
   const dayOfWeekIndex: number = date.getDay()
@@ -176,7 +176,7 @@ export const formatMoney = (amount, currency = true): string => {
   const formatter = new Intl.NumberFormat('zh-CN', {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
-    useGrouping: true
+    useGrouping: true,
   })
 
   const formattedAmount = formatter.format(amount)

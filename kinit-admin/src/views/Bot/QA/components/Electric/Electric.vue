@@ -3,8 +3,8 @@
     <div class="max-w-6xl mx-auto">
       <div class="bg-white rounded-lg shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
-          <h1 class="text-3xl font-bold text-gray-800"
-            >问答配置
+          <h1 class="text-3xl font-bold text-gray-800">
+            问答配置
             <button class="btn" @click="fetchQuestionList">⭕️</button>
           </h1>
           <button
@@ -238,7 +238,7 @@ import {
   delQuestionApi,
   addQuestionListApi,
   putQuestionListApi,
-  getAnswerListApi
+  getAnswerListApi,
 } from '@/api/bot/qa/questiong'
 import { ElTabs, ElTabPane } from 'element-plus'
 
@@ -248,7 +248,7 @@ const activeName = ref('服装')
 const questions = ref([
   { id: 1, question: '您对我们的产品满意吗？' },
   { id: 2, question: '您希望我们改进哪些方面？' },
-  { id: 3, question: '您会推荐给朋友吗？' }
+  { id: 3, question: '您会推荐给朋友吗？' },
 ])
 
 const answers = ref([
@@ -258,7 +258,7 @@ const answers = ref([
   { id: 4, question_id: 2, answer: '价格方面', next_question: null },
   { id: 5, question_id: 2, answer: '功能方面', next_question: null },
   { id: 6, question_id: 3, answer: '会推荐', next_question: null },
-  { id: 7, question_id: 3, answer: '不会推荐', next_question: null }
+  { id: 7, question_id: 3, answer: '不会推荐', next_question: null },
 ])
 
 // UI状态
@@ -270,13 +270,13 @@ const editingAnswer = ref(null)
 
 // 表单数据
 const questionForm = reactive({
-  question: ''
+  question: '',
 })
 
 const answerForm = reactive({
   question_id: null,
   answer: '',
-  next_question: ''
+  next_question: '',
 })
 
 onMounted(() => {
@@ -345,18 +345,18 @@ function saveQuestion() {
     if (index !== -1) {
       questions.value[index] = {
         ...questions.value[index],
-        question: questionForm.question
+        question: questionForm.question,
       }
     }
   } else {
     // 新增问题
     addQuestionListApi({
-      question: questionForm.question
+      question: questionForm.question,
     }).then((res) => {
       if (res.value) {
         questions.value.push({
           id: nextQuestionId.value,
-          question: questionForm.question
+          question: questionForm.question,
         })
       }
     })
@@ -407,7 +407,7 @@ function saveAnswer() {
       answers.value[index] = {
         ...answers.value[index],
         answer: answerForm.answer,
-        next_question: answerForm.next_question || null
+        next_question: answerForm.next_question || null,
       }
     }
   } else {
@@ -416,7 +416,7 @@ function saveAnswer() {
       id: nextAnswerId.value,
       question_id: answerForm.question_id,
       answer: answerForm.answer,
-      next_question: answerForm.next_question || null
+      next_question: answerForm.next_question || null,
     })
   }
   closeAnswerForm()

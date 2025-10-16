@@ -13,8 +13,8 @@ const request = (option: any) => {
     data,
     responseType: responseType,
     headers: {
-      'Content-Type': headersType || default_headers
-    }
+      'Content-Type': headersType || default_headers,
+    },
   })
 }
 export default {
@@ -29,5 +29,5 @@ export default {
   },
   put: <T = any>(option: any) => {
     return request({ method: 'put', ...option }) as unknown as T
-  }
+  },
 }

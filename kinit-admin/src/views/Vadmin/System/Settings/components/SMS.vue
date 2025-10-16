@@ -11,7 +11,7 @@ import { BaseButton } from '@/components/Button'
 const { required } = useValidator()
 
 const props = defineProps({
-  tabId: propTypes.number
+  tabId: propTypes.number,
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -19,111 +19,111 @@ const formSchema = reactive<FormSchema[]>([
     field: 'sms_access_key',
     label: 'AccessKey',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_access_key_secret',
     label: 'AccessKeySecret',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_sign_name_1',
     label: '短信验证码签名',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_template_code_1',
     label: '短信验证码模板',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_sign_name_2',
     label: '重置密码签名',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_template_code_2',
     label: '重置密码模板',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_send_interval',
     label: '发送频率',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'sms_valid_time',
     label: '有效时间',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'active',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -135,17 +135,17 @@ const formSchema = reactive<FormSchema[]>([
               </BaseButton>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules = reactive({
   sms_access_key: [required()],
   sms_access_key_secret: [required()],
   sms_send_interval: [required()],
-  sms_valid_time: [required()]
+  sms_valid_time: [required()],
 })
 
 const { formRegister, formMethods } = useForm()

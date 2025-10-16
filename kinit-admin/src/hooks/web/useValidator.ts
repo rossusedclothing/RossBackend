@@ -16,7 +16,7 @@ export const useValidator = () => {
   const required = (message?: string): FormItemRule => {
     return {
       required: true,
-      message: message || t('common.required')
+      message: message || t('common.required'),
     }
   }
 
@@ -26,7 +26,7 @@ export const useValidator = () => {
     return {
       min,
       max,
-      message: message || t('common.lengthRange', { min, max })
+      message: message || t('common.lengthRange', { min, max }),
     }
   }
 
@@ -38,7 +38,7 @@ export const useValidator = () => {
         } else {
           callback()
         }
-      }
+      },
     }
   }
 
@@ -50,7 +50,7 @@ export const useValidator = () => {
         } else {
           callback()
         }
-      }
+      },
     }
   }
 
@@ -97,6 +97,6 @@ export const useValidator = () => {
     notSpecialCharacters,
     isEmail,
     isTelephone,
-    isAmount
+    isAmount,
   }
 }

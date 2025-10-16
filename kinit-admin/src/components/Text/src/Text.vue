@@ -3,7 +3,7 @@ import { propTypes } from '@/utils/propTypes'
 import { ref } from 'vue'
 
 const props = defineProps({
-  modelValue: propTypes.string.def('')
+  modelValue: propTypes.string.def(''),
 })
 
 const value = ref(props.modelValue)

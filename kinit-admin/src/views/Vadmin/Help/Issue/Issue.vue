@@ -13,7 +13,7 @@ import { useRouter } from 'vue-router'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'HelpIssue'
+  name: 'HelpIssue',
 })
 
 const { push } = useRouter()
@@ -24,17 +24,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getIssueListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delIssueListApi(value)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -56,25 +56,25 @@ const tableColumns = reactive<TableColumn[]>([
     label: '编号',
     show: true,
     disabled: true,
-    width: '120px'
+    width: '120px',
   },
   {
     field: 'category.name',
     label: '类别名称',
     width: '200px',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'title',
     label: '标题',
-    show: true
+    show: true,
   },
   {
     field: 'view_number',
     label: '查看次数',
     show: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'is_active',
@@ -89,21 +89,21 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={row.is_active} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'create_datetime',
     label: '创建时间',
     show: true,
     width: '200px',
-    sortable: true
+    sortable: true,
   },
   {
     field: 'create_user.name',
     label: '创建人',
     show: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'action',
@@ -129,9 +129,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -142,9 +142,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: true,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'platform',
@@ -152,10 +152,10 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
-      options: platformOptions.value
-    }
+      options: platformOptions.value,
+    },
   },
   {
     field: 'is_active',
@@ -163,20 +163,20 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
       options: [
         {
           label: '可见',
-          value: true
+          value: true,
         },
         {
           label: '不可见',
-          value: false
-        }
-      ]
-    }
-  }
+          value: false,
+        },
+      ],
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -217,7 +217,7 @@ const addAction = () => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

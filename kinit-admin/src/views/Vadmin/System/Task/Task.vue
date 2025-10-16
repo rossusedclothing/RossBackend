@@ -6,7 +6,7 @@ import {
   delTaskListApi,
   putTaskListApi,
   getTaskApi,
-  runOnceTaskApi
+  runOnceTaskApi,
 } from '@/api/vadmin/system/task'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -22,7 +22,7 @@ import CronExpression from './components/CronExpression.vue'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'SystemTask'
+  name: 'SystemTask',
 })
 
 const { push } = useRouter()
@@ -34,17 +34,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getTaskListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delTaskListApi(value as string)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -57,45 +57,45 @@ const tableColumns = reactive<TableColumn[]>([
     show: true,
     disabled: true,
     width: '230px',
-    span: 24
+    span: 24,
   },
   {
     field: 'name',
     label: '任务名称',
     show: true,
     disabled: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'group',
     label: '任务分组',
     show: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'job_class',
     label: '调用目标',
     show: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'exec_strategy',
     label: '执行策略',
     show: true,
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
-      }
-    }
+        width: '100%',
+      },
+    },
   },
   {
     field: 'expression',
     label: '表达式',
     show: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'is_active',
@@ -110,28 +110,28 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={row.is_active} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'last_run_datetime',
     label: '最近一次执行时间',
     show: true,
     width: '180px',
-    span: 24
+    span: 24,
   },
   {
     field: 'remark',
     label: '任务备注',
     show: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'create_datetime',
     label: '创建时间',
     show: true,
     width: '180px',
-    span: 24
+    span: 24,
   },
   {
     field: 'action',
@@ -158,9 +158,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -171,9 +171,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: true,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: '_id',
@@ -182,9 +182,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: true,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'group',
@@ -192,11 +192,11 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
-      options: []
-    }
-  }
+      options: [],
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -290,7 +290,7 @@ const runOnceTask = async (row: any) => {
   ElMessageBox.confirm('是否确认立即执行一次任务', '提示', {
     confirmButtonText: t('common.delOk'),
     cancelButtonText: t('common.delCancel'),
-    type: 'warning'
+    type: 'warning',
   }).then(async () => {
     const res = await runOnceTaskApi(row._id)
     if (res) {
@@ -317,7 +317,7 @@ const runOnceTask = async (row: any) => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

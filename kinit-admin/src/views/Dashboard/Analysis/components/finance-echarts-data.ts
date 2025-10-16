@@ -17,36 +17,36 @@ export const line2Options: EChartsOption = {
       t('analysis.september'),
       t('analysis.october'),
       t('analysis.november'),
-      t('analysis.december')
+      t('analysis.december'),
     ],
     boundaryGap: false,
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   grid: {
     left: 20,
     right: 20,
     bottom: 35,
     top: 30,
-    containLabel: true
+    containLabel: true,
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'cross'
+      type: 'cross',
     },
-    padding: [5, 10]
+    padding: [5, 10],
   },
   yAxis: {
     type: 'value',
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   legend: {
     data: ['销售额', '充值金额'],
-    bottom: -5
+    bottom: -5,
   },
   series: [
     {
@@ -59,15 +59,15 @@ export const line2Options: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(110,199,30)' // 整体颜色
+        color: 'rgba(110,199,30)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
+        opacity: 1,
       },
       areaStyle: {
-        color: 'rgba(110,199,30, 0.2)' // 区域填充颜色
-      }
+        color: 'rgba(110,199,30, 0.2)', // 区域填充颜色
+      },
     },
     {
       name: '充值金额',
@@ -79,17 +79,17 @@ export const line2Options: EChartsOption = {
       animationDuration: 2800,
       animationEasing: 'quadraticOut',
       itemStyle: {
-        color: 'rgba(79,168,249)' // 整体颜色
+        color: 'rgba(79,168,249)', // 整体颜色
       },
       lineStyle: {
         width: 1, //设置线条粗细
-        opacity: 1
+        opacity: 1,
       },
       areaStyle: {
-        color: 'rgba(79,168,249, 0.2)' // 区域填充颜色
-      }
-    }
-  ]
+        color: 'rgba(79,168,249, 0.2)', // 区域填充颜色
+      },
+    },
+  ],
 }
 
 export const lineOptions: EChartsOption = {
@@ -106,36 +106,36 @@ export const lineOptions: EChartsOption = {
       t('analysis.september'),
       t('analysis.october'),
       t('analysis.november'),
-      t('analysis.december')
+      t('analysis.december'),
     ],
     boundaryGap: false,
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   grid: {
     left: 20,
     right: 20,
     bottom: 35,
     top: 30,
-    containLabel: true
+    containLabel: true,
   },
   tooltip: {
     trigger: 'axis',
     axisPointer: {
-      type: 'cross'
+      type: 'cross',
     },
-    padding: [5, 10]
+    padding: [5, 10],
   },
   yAxis: {
     type: 'value',
     axisTick: {
-      show: false // 不限制坐标刻度
-    }
+      show: false, // 不限制坐标刻度
+    },
   },
   legend: {
     data: ['服饰', '电器', '茶叶', '珠宝', '家纺', '玩具'],
-    bottom: -5
+    bottom: -5,
   },
   series: [
     {
@@ -144,45 +144,45 @@ export const lineOptions: EChartsOption = {
       type: 'line',
       data: [60384, 74218, 57149, 83297, 21675, 96743, 38547, 72436, 93742, 59073, 81394, 66912],
       animationDuration: 2800,
-      animationEasing: 'quadraticOut'
+      animationEasing: 'quadraticOut',
     },
     {
       name: '电器',
       smooth: false, // true 有弧度 ，false 没弧度（直线）
       type: 'line',
-      data: [29541, 64783, 79942, 50472, 91374, 26819, 69247, 78354, 48672, 81124, 92038, 36847]
+      data: [29541, 64783, 79942, 50472, 91374, 26819, 69247, 78354, 48672, 81124, 92038, 36847],
     },
     {
       name: '茶叶',
       smooth: false, // true 有弧度 ，false 没弧度（直线）
       type: 'line',
-      data: [84273, 73842, 21675, 97342, 65938, 82473, 59172, 40672, 92438, 76592, 83947, 50283]
+      data: [84273, 73842, 21675, 97342, 65938, 82473, 59172, 40672, 92438, 76592, 83947, 50283],
     },
     {
       name: '珠宝',
       smooth: false, // true 有弧度 ，false 没弧度（直线）
       type: 'line',
-      data: [21675, 84273, 50283, 76924, 68574, 92438, 39572, 93742, 50472, 78354, 59247, 92038]
+      data: [21675, 84273, 50283, 76924, 68574, 92438, 39572, 93742, 50472, 78354, 59247, 92038],
     },
     {
       name: '家纺',
       smooth: false, // true 有弧度 ，false 没弧度（直线）
       type: 'line',
-      data: [78354, 76924, 82473, 50472, 48672, 65938, 64783, 50283, 73842, 40672, 84273, 76592]
+      data: [78354, 76924, 82473, 50472, 48672, 65938, 64783, 50283, 73842, 40672, 84273, 76592],
     },
     {
       name: '玩具',
       smooth: false, // true 有弧度 ，false 没弧度（直线）
       type: 'line',
-      data: [40672, 50472, 59247, 81394, 36847, 59273, 26819, 66912, 59172, 84273, 50283, 76924]
-    }
-  ]
+      data: [40672, 50472, 59247, 81394, 36847, 59273, 26819, 66912, 59172, 84273, 50283, 76924],
+    },
+  ],
 }
 
 export const pieOptions: EChartsOption = {
   tooltip: {
     trigger: 'item',
-    formatter: '{a} <br/>{b} : {c} ({d}%)'
+    formatter: '{a} <br/>{b} : {c} ({d}%)',
   },
   series: [
     {
@@ -196,8 +196,8 @@ export const pieOptions: EChartsOption = {
         { value: 219879, name: '茶叶' },
         { value: 897999, name: '珠宝' },
         { value: 102999, name: '家纺' },
-        { value: 499090, name: '玩具' }
-      ]
-    }
-  ]
+        { value: 499090, name: '玩具' },
+      ],
+    },
+  ],
 }

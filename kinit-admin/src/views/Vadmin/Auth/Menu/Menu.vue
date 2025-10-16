@@ -4,7 +4,7 @@ import {
   getMenuListApi,
   delMenuListApi,
   addMenuListApi,
-  putMenuListApi
+  putMenuListApi,
 } from '@/api/vadmin/auth/menu'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -19,7 +19,7 @@ import { selectDictLabel, DictDetail } from '@/utils/dict'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'AuthMenu'
+  name: 'AuthMenu',
 })
 
 const { t } = useI18n()
@@ -29,17 +29,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const { pageSize, currentPage } = tableState
     const res = await getMenuListApi({
       page: unref(currentPage),
-      limit: unref(pageSize)
+      limit: unref(pageSize),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delMenuListApi(value)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading } = tableState
@@ -61,7 +61,7 @@ const tableColumns = reactive<TableColumn[]>([
     label: '菜单名称',
     width: '200px',
     disabled: true,
-    show: true
+    show: true,
   },
   {
     field: 'icon',
@@ -72,14 +72,14 @@ const tableColumns = reactive<TableColumn[]>([
       default: (data: any) => {
         const row = data.row
         return <>{row.icon ? <Icon icon={row.icon} /> : ''}</>
-      }
-    }
+      },
+    },
   },
   {
     field: 'order',
     label: '排序',
     width: '120px',
-    show: true
+    show: true,
   },
   {
     field: 'menu_type',
@@ -94,24 +94,24 @@ const tableColumns = reactive<TableColumn[]>([
             <span>{selectDictLabel(menuTypeOptions.value, row.menu_type)}</span>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'perms',
     label: '权限标识',
     width: '150px',
-    show: true
+    show: true,
   },
   {
     field: 'path',
     label: '路由地址',
-    show: true
+    show: true,
   },
   {
     field: 'component',
     label: '组件路径',
-    show: true
+    show: true,
   },
   {
     field: 'noCache',
@@ -126,8 +126,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.noCache} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'hidden',
@@ -142,8 +142,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.hidden} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'disabled',
@@ -158,8 +158,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.disabled} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'action',
@@ -204,9 +204,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const delLoading = ref(false)

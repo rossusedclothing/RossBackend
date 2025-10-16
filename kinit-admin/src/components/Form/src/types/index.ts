@@ -18,7 +18,7 @@ import {
   FormItemProps as ElFormItemProps,
   FormProps as ElFormProps,
   ISelectProps,
-  UploadProps
+  UploadProps,
 } from 'element-plus'
 import { IEditorConfig } from '@wangeditor/editor'
 import { JsonEditorProps } from '@/components/JsonEditor'
@@ -57,7 +57,7 @@ export enum ComponentNameEnum {
   UPLOAD = 'Upload',
   JSON_EDITOR = 'JsonEditor',
   ICON_PICKER = 'IconPicker',
-  Text = 'Text'
+  Text = 'Text',
 }
 
 type CamelCaseComponentName = keyof typeof ComponentNameEnum extends infer K

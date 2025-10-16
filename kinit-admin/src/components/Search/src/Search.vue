@@ -15,7 +15,7 @@ const props = defineProps({
   // 生成Form的布局结构数组
   schema: {
     type: Array as PropType<FormSchema[]>,
-    default: () => []
+    default: () => [],
   },
   // 是否需要栅格布局
   isCol: propTypes.bool.def(false),
@@ -38,10 +38,10 @@ const props = defineProps({
   removeNoValueItem: propTypes.bool.def(true),
   model: {
     type: Object as PropType<Recordable>,
-    default: () => ({})
+    default: () => ({}),
   },
   searchLoading: propTypes.bool.def(false),
-  resetLoading: propTypes.bool.def(false)
+  resetLoading: propTypes.bool.def(false),
 })
 
 const emit = defineEmits(['search', 'reset', 'register', 'validate'])
@@ -91,10 +91,10 @@ const newSchema = computed(() => {
             },
             label: () => {
               return <span>&nbsp;</span>
-            }
-          }
-        }
-      }
+            },
+          },
+        },
+      },
     ])
   }
   return schema
@@ -131,7 +131,7 @@ watch(
   },
   {
     immediate: true,
-    deep: true
+    deep: true,
   }
 )
 
@@ -175,7 +175,7 @@ const reset = async () => {
 
 const bottomButtonStyle = computed(() => {
   return {
-    textAlign: unref(getProps).buttonPosition as unknown as 'left' | 'center' | 'right'
+    textAlign: unref(getProps).buttonPosition as unknown as 'left' | 'center' | 'right',
   }
 })
 
@@ -225,7 +225,7 @@ const defaultExpose = {
   setSchema,
   setValues,
   delSchema,
-  addSchema
+  addSchema,
 }
 
 onMounted(() => {

@@ -6,7 +6,7 @@ import { useRouter } from 'vue-router'
 const { currentRoute } = useRouter()
 
 const props = defineProps({
-  permission: propTypes.string.def()
+  permission: propTypes.string.def(),
 })
 
 const currentPermission = computed(() => {

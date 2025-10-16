@@ -9,14 +9,14 @@ import {
   getProjectApi,
   getDynamicApi,
   getTeamApi,
-  getShortcutsApi
+  getShortcutsApi,
 } from '@/api/dashboard/workplace'
 import type { Project, Dynamic, Team, Shortcuts } from '@/api/dashboard/workplace/types'
 import avatar from '@/assets/imgs/avatar.jpg'
 import { useAuthStore } from '@/store/modules/auth'
 
 defineOptions({
-  name: 'DashboardWorkplace'
+  name: 'DashboardWorkplace',
 })
 
 const authStore = useAuthStore()

@@ -6,9 +6,9 @@ import { BorderBox10, Decoration7 } from '@kjgl77/datav-vue3'
 const props = defineProps({
   menus: {
     type: Array as PropType<string[]>,
-    required: true
+    required: true,
   },
-  activeIndex: propTypes.number
+  activeIndex: propTypes.number,
 })
 </script>
 

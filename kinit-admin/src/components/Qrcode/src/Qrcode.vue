@@ -14,24 +14,24 @@ const props = defineProps({
   // 二维码内容
   text: {
     type: [String, Array] as PropType<string | Recordable[]>,
-    default: null
+    default: null,
   },
   // qrcode.js配置项
   options: {
     type: Object as PropType<QRCodeRenderersOptions>,
-    default: () => ({})
+    default: () => ({}),
   },
   // 宽度
   width: propTypes.number.def(200),
   // logo
   logo: {
     type: [String, Object] as PropType<Partial<QrcodeLogo> | string>,
-    default: ''
+    default: '',
   },
   // 是否过期
   disabled: propTypes.bool.def(false),
   // 过期提示内容
-  disabledText: propTypes.string.def('')
+  disabledText: propTypes.string.def(''),
 })
 
 const emit = defineEmits(['done', 'click', 'disabled-click'])
@@ -51,7 +51,7 @@ const renderText = computed(() => String(props.text))
 const wrapStyle = computed(() => {
   return {
     width: props.width + 'px',
-    height: props.width + 'px'
+    height: props.width + 'px',
   }
 })
 
@@ -81,7 +81,7 @@ const initQrcode = async () => {
     const url = await toDataURL(renderText.value, {
       errorCorrectionLevel: 'H',
       width: props.width,
-      ...options
+      ...options,
     })
     ;(unref(wrapRef) as HTMLImageElement).src = url
     emit('done', url)
@@ -97,7 +97,7 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
@@ -110,7 +110,7 @@ const createLogoCode = (canvasRef: HTMLCanvasElement) => {
       borderSize: 0.05,
       crossOrigin: 'anonymous',
       borderRadius: 8,
-      logoRadius: 0
+      logoRadius: 0,
     },
     isString(props.logo) ? {} : props.logo
   )
@@ -120,7 +120,7 @@ const createLogoCode = (canvasRef: HTMLCanvasElement) => {
     borderSize = 0.05,
     crossOrigin = 'anonymous',
     borderRadius = 8,
-    logoRadius = 0
+    logoRadius = 0,
   } = logoOptions
   const logoSrc = isString(props.logo) ? props.logo : props.logo.src
   const logoWidth = canvasWidth * logoSize

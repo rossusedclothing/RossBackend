@@ -7,7 +7,7 @@ export type {
   TableSlotDefault,
   Pagination,
   TableSetProps,
-  TableProps
+  TableProps,
 } from './src/types'
 
 export interface TableExpose {

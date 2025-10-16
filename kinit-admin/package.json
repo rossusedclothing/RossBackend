@@ -4,6 +4,18 @@
   "description": "一套基于vue3、element-plus、typesScript、vite4的后台集成方案。",
   "author": "Archer <502431556@qq.com>",
   "private": false,
+
+
+  "prettier": {
+    "endOfLine": "auto",
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+
+
   "scripts": {
     "i": "pnpm install",
     "dev": "pnpm vite --mode dev",

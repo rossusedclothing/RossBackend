@@ -12,32 +12,32 @@ const props = defineProps({
   imageUrl: {
     type: String,
     default: '',
-    required: true
+    required: true,
   },
   cropBoxWidth: {
     type: Number,
-    default: 200
+    default: 200,
   },
   cropBoxHeight: {
     type: Number,
-    default: 200
+    default: 200,
   },
   boxWidth: {
     type: [Number, String],
-    default: 425
+    default: 425,
   },
   boxHeight: {
     type: [Number, String],
-    default: 320
+    default: 320,
   },
   showResult: {
     type: Boolean,
-    default: true
+    default: true,
   },
   showActions: {
     type: Boolean,
-    default: true
-  }
+    default: true,
+  },
 })
 const getBase64 = useDebounceFn(() => {
   imgBase64.value = unref(cropperRef)?.getCroppedCanvas()?.toDataURL() ?? ''
@@ -48,20 +48,20 @@ const resetCropBox = () => {
     width: props.cropBoxWidth,
     height: props.cropBoxHeight,
     left: (containerData?.width || 0) / 2 - 100,
-    top: (containerData?.height || 0) / 2 - 100
+    top: (containerData?.height || 0) / 2 - 100,
   })
   imgBase64.value = unref(cropperRef)?.getCroppedCanvas()?.toDataURL() ?? ''
 }
 const getBoxStyle = computed(() => {
   return {
     width: `${props.boxWidth}px`,
-    height: `${props.boxHeight}px`
+    height: `${props.boxHeight}px`,
   }
 })
 const getCropBoxStyle = computed(() => {
   return {
     width: `${props.cropBoxWidth}px`,
-    height: `${props.cropBoxHeight}px`
+    height: `${props.cropBoxHeight}px`,
   }
 })
 
@@ -69,7 +69,7 @@ const getCropBoxStyle = computed(() => {
 const getScaleSize = (scale: number) => {
   return {
     width: props.cropBoxWidth * scale + 'px',
-    height: props.cropBoxHeight * scale + 'px'
+    height: props.cropBoxHeight * scale + 'px',
   }
 }
 
@@ -98,7 +98,7 @@ const intiCropper = () => {
     },
     crop() {
       getBase64()
-    }
+    },
   })
 }
 
@@ -151,7 +151,7 @@ onBeforeUnmount(() => {
   unref(cropperRef)?.destroy()
 })
 defineExpose({
-  cropperExpose: cropperRef
+  cropperExpose: cropperRef,
 })
 </script>
 
@@ -159,7 +159,7 @@ defineExpose({
   <div
     :class="{
       [prefixCls]: true,
-      'flex items-center': showResult
+      'flex items-center': showResult,
     }"
   >
     <div>

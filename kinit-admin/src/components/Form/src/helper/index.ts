@@ -17,18 +17,18 @@ export const setTextPlaceholder = (schema: FormSchema): PlaceholderModel => {
     ComponentNameEnum.INPUT,
     ComponentNameEnum.AUTOCOMPLETE,
     ComponentNameEnum.INPUT_NUMBER,
-    ComponentNameEnum.INPUT_PASSWORD
+    ComponentNameEnum.INPUT_PASSWORD,
   ]
   const selectMap = [
     ComponentNameEnum.SELECT,
     ComponentNameEnum.TIME_PICKER,
     ComponentNameEnum.DATE_PICKER,
     ComponentNameEnum.TIME_SELECT,
-    ComponentNameEnum.SELECT_V2
+    ComponentNameEnum.SELECT_V2,
   ]
   if (textMap.includes(schema?.component as ComponentNameEnum)) {
     return {
-      placeholder: `请输入${schema.label}`
+      placeholder: `请输入${schema.label}`,
     }
   }
   if (selectMap.includes(schema?.component as ComponentNameEnum)) {
@@ -43,11 +43,11 @@ export const setTextPlaceholder = (schema: FormSchema): PlaceholderModel => {
       return {
         startPlaceholder: t('common.startTimeText'),
         endPlaceholder: t('common.endTimeText'),
-        rangeSeparator: '-'
+        rangeSeparator: '-',
       }
     } else {
       return {
-        placeholder: `请选择${schema.label}`
+        placeholder: `请选择${schema.label}`,
       }
     }
   }
@@ -70,9 +70,9 @@ export const setGridProp = (col: ColProps = {}): ColProps => {
           sm: 12,
           md: 12,
           lg: 12,
-          xl: 12
+          xl: 12,
         }),
-    ...col
+    ...col,
   }
   return colProps
 }
@@ -99,7 +99,7 @@ export const setComponentProps = (item: FormSchema): Recordable => {
   const componentProps: Recordable = {
     clearable: true,
     ...item.componentProps,
-    ...newOnEvents
+    ...newOnEvents,
   }
   // 需要删除额外的属性
   if (componentProps.slots) {

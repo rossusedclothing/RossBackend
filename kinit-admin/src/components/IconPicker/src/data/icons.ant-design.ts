@@ -790,6 +790,6 @@ export default {
     'ant-design:zhihu-outlined',
     'ant-design:zhihu-square-filled',
     'ant-design:zoom-in-outlined',
-    'ant-design:zoom-out-outlined'
-  ]
+    'ant-design:zoom-out-outlined',
+  ],
 }

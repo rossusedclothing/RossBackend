@@ -6,7 +6,7 @@ import { ref } from 'vue'
 import { ElMessage } from 'element-plus'
 
 const props = defineProps({
-  tabId: propTypes.number
+  tabId: propTypes.number,
 })
 
 const editorRef = ref<typeof Editor & EditorExpose>()
@@ -59,7 +59,7 @@ const editorConfig = {
   autoFocus: true,
   scroll: true,
   readOnly: false,
-  uploadImgShowBase64: true
+  uploadImgShowBase64: true,
 }
 
 getData()

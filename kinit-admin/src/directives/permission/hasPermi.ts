@@ -38,7 +38,7 @@ const mounted = (el: Element, binding: DirectiveBinding<any>) => {
 }
 
 const permiDirective: Directive = {
-  mounted
+  mounted,
 }
 
 export const setupPermissionDirective = (app: App<Element>) => {

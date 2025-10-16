@@ -42,7 +42,7 @@ export const useRenderLayout = () => {
         <div
           class={[
             'absolute top-0 left-0 h-full layout-border__right',
-            { '!fixed z-3000': mobile.value }
+            { '!fixed z-3000': mobile.value },
           ]}
         >
           {logo.value ? (
@@ -52,8 +52,8 @@ export const useRenderLayout = () => {
                 {
                   '!pl-0': mobile.value && collapse.value,
                   'w-[var(--left-menu-min-width)]': appStore.getCollapse,
-                  'w-[var(--left-menu-max-width)]': !appStore.getCollapse
-                }
+                  'w-[var(--left-menu-max-width)]': !appStore.getCollapse,
+                },
               ]}
               style="transition: all var(--transition-time-02);"
             ></Logo>
@@ -69,8 +69,8 @@ export const useRenderLayout = () => {
                 collapse.value && !mobile.value && !mobile.value,
               'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]':
                 !collapse.value && !mobile.value && !mobile.value,
-              'fixed !w-full !left-0': mobile.value
-            }
+              'fixed !w-full !left-0': mobile.value,
+            },
           ]}
           style="transition: all var(--transition-time-02);"
         >
@@ -80,8 +80,8 @@ export const useRenderLayout = () => {
               `${prefixCls}-content-scrollbar`,
               {
                 '!h-[calc(100%-var(--top-tool-height)-var(--tags-view-height))] mt-[calc(var(--top-tool-height)+var(--tags-view-height))]':
-                  fixedHeader.value
-              }
+                  fixedHeader.value,
+              },
             ]}
           >
             <div
@@ -92,8 +92,8 @@ export const useRenderLayout = () => {
                     collapse.value && fixedHeader.value && !mobile.value,
                   'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)]':
                     !collapse.value && fixedHeader.value && !mobile.value,
-                  '!w-full !left-0': mobile.value
-                }
+                  '!w-full !left-0': mobile.value,
+                },
               ]}
               style="transition: all var(--transition-time-02);"
             >
@@ -101,8 +101,8 @@ export const useRenderLayout = () => {
                 class={[
                   'bg-[var(--top-header-bg-color)]',
                   {
-                    'layout-border__bottom': !tagsView.value
-                  }
+                    'layout-border__bottom': !tagsView.value,
+                  },
                 ]}
               ></ToolHeader>
 
@@ -136,8 +136,8 @@ export const useRenderLayout = () => {
                 'w-[calc(100%-var(--left-menu-min-width))] left-[var(--left-menu-min-width)]':
                   collapse.value,
                 'w-[calc(100%-var(--left-menu-max-width))] left-[var(--left-menu-max-width)]':
-                  !collapse.value
-              }
+                  !collapse.value,
+              },
             ]}
             style="transition: all var(--transition-time-02);"
           >
@@ -147,8 +147,8 @@ export const useRenderLayout = () => {
                 `${prefixCls}-content-scrollbar`,
                 {
                   '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]':
-                    fixedHeader.value && tagsView.value
-                }
+                    fixedHeader.value && tagsView.value,
+                },
               ]}
             >
               {tagsView.value ? (
@@ -160,8 +160,8 @@ export const useRenderLayout = () => {
                       'w-[calc(100%-var(--left-menu-min-width))] !left-[var(--left-menu-min-width)] mt-[calc(var(--logo-height)+1px)]':
                         collapse.value && fixedHeader.value,
                       'w-[calc(100%-var(--left-menu-max-width))] !left-[var(--left-menu-max-width)] mt-[calc(var(--logo-height)+1px)]':
-                        !collapse.value && fixedHeader.value
-                    }
+                        !collapse.value && fixedHeader.value,
+                    },
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"
                 ></TagsView>
@@ -182,8 +182,8 @@ export const useRenderLayout = () => {
           class={[
             'flex items-center justify-between bg-[var(--top-header-bg-color)] relative',
             {
-              'layout-border__bottom': !tagsView.value
-            }
+              'layout-border__bottom': !tagsView.value,
+            },
           ]}
         >
           {logo.value ? <Logo class="custom-hover"></Logo> : undefined}
@@ -196,8 +196,8 @@ export const useRenderLayout = () => {
             'w-full',
             {
               'h-[calc(100%-var(--top-tool-height))]': !fixedHeader.value,
-              'h-[calc(100%-var(--tags-view-height)-var(--top-tool-height))]': fixedHeader.value
-            }
+              'h-[calc(100%-var(--tags-view-height)-var(--top-tool-height))]': fixedHeader.value,
+            },
           ]}
         >
           <ElScrollbar
@@ -207,8 +207,8 @@ export const useRenderLayout = () => {
               {
                 'mt-[var(--tags-view-height)] !pb-[calc(var(--tags-view-height)+var(--app-footer-height))]':
                   fixedHeader.value,
-                'pb-[var(--app-footer-height)]': !fixedHeader.value
-              }
+                'pb-[var(--app-footer-height)]': !fixedHeader.value,
+              },
             ]}
           >
             {tagsView.value ? (
@@ -216,8 +216,9 @@ export const useRenderLayout = () => {
                 class={[
                   'layout-border__bottom layout-border__top relative',
                   {
-                    '!fixed w-full top-[calc(var(--top-tool-height)+1px)] left-0': fixedHeader.value
-                  }
+                    '!fixed w-full top-[calc(var(--top-tool-height)+1px)] left-0':
+                      fixedHeader.value,
+                  },
                 ]}
                 style="transition: width var(--transition-time-02), left var(--transition-time-02);"
               ></TagsView>
@@ -252,8 +253,8 @@ export const useRenderLayout = () => {
                 'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
                   collapse.value && fixedMenu.value,
                 'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] ml-[var(--left-menu-max-width)]':
-                  !collapse.value && fixedMenu.value
-              }
+                  !collapse.value && fixedMenu.value,
+              },
             ]}
             style="transition: all var(--transition-time-02);"
           >
@@ -263,8 +264,8 @@ export const useRenderLayout = () => {
                 `${prefixCls}-content-scrollbar`,
                 {
                   '!h-[calc(100%-var(--tags-view-height))] mt-[calc(var(--tags-view-height))]':
-                    fixedHeader.value && tagsView.value
-                }
+                    fixedHeader.value && tagsView.value,
+                },
               ]}
             >
               {tagsView.value ? (
@@ -282,8 +283,8 @@ export const useRenderLayout = () => {
                       'w-[calc(100%-var(--tab-menu-min-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-min-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
                         collapse.value && fixedHeader.value && fixedMenu.value,
                       'w-[calc(100%-var(--tab-menu-max-width)-var(--left-menu-max-width))] !left-[var(--tab-menu-max-width)+var(--left-menu-max-width)] mt-[var(--logo-height)]':
-                        !collapse.value && fixedHeader.value && fixedMenu.value
-                    }
+                        !collapse.value && fixedHeader.value && fixedMenu.value,
+                    },
                   ]}
                   style="transition: width var(--transition-time-02), left var(--transition-time-02);"
                 ></TagsView>
@@ -301,6 +302,6 @@ export const useRenderLayout = () => {
     renderClassic,
     renderTopLeft,
     renderTop,
-    renderCutMenu
+    renderCutMenu,
   }
 }

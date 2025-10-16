@@ -67,14 +67,14 @@ import {
   ElFormItem,
   ElPagination,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 import {
   getFeedbackListApi,
   addFeedbackApi,
   updateFeedbackApi,
   delFeedbackApi,
-  getFeedbackDetailApi
+  getFeedbackDetailApi,
 } from '@/api/bot/panel/panel'
 
 const list = ref<any[]>([])
@@ -90,7 +90,7 @@ const form = reactive({ app_name: '', text: '' })
 const load = async () => {
   const res: any = await getFeedbackListApi({
     ...paging,
-    ...filters
+    ...filters,
   })
   if (res && res.data) {
     list.value = res.data || []

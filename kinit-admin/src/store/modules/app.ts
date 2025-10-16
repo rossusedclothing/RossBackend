@@ -95,12 +95,12 @@ export const useAppStore = defineStore('app', {
         // 头部悬停颜色
         topHeaderHoverColor: '#f6f6f6',
         // 头部边框颜色
-        topToolBorderColor: '#eee'
+        topToolBorderColor: '#eee',
       },
 
       logoImage: '', // logo图片
       footerContent: '', // 页脚内容
-      icpNumber: '' // 备案号
+      icpNumber: '', // 备案号
     }
   },
   getters: {
@@ -188,7 +188,7 @@ export const useAppStore = defineStore('app', {
     },
     getIcpNumber(): string {
       return this.icpNumber
-    }
+    },
   },
   actions: {
     setBreadcrumb(breadcrumb: boolean) {
@@ -327,7 +327,7 @@ export const useAppStore = defineStore('app', {
         // logo字体颜色
         logoTitleTextColor: isDarkColor ? '#fff' : 'inherit',
         // logo边框颜色
-        logoBorderColor: isDarkColor ? color : '#eee'
+        logoBorderColor: isDarkColor ? color : '#eee',
       }
       this.setTheme(theme)
       this.setCssVarTheme()
@@ -344,7 +344,7 @@ export const useAppStore = defineStore('app', {
         topHeaderBgColor: color,
         topHeaderTextColor: textColor,
         topHeaderHoverColor: textHoverColor,
-        topToolBorderColor
+        topToolBorderColor,
       })
       if (this.getLayout === 'top') {
         this.setMenuTheme(color)
@@ -353,12 +353,12 @@ export const useAppStore = defineStore('app', {
     initTheme() {
       const isDark = useDark({
         valueDark: 'dark',
-        valueLight: 'light'
+        valueLight: 'light',
       })
       isDark.value = this.getIsDark
-    }
+    },
   },
-  persist: true
+  persist: true,
 })
 
 export const useAppStoreWithOut = () => {

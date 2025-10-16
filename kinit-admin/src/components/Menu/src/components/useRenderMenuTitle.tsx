@@ -22,6 +22,6 @@ export const useRenderMenuTitle = () => {
   }
 
   return {
-    renderMenuTitle
+    renderMenuTitle,
   }
 }

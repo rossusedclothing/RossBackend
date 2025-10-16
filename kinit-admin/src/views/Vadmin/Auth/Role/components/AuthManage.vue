@@ -9,7 +9,7 @@ import {
   ElHeader,
   ElAside,
   ElMain,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 import { ref, nextTick, unref, PropType, watch } from 'vue'
 import { Icon } from '@/components/Icon'
@@ -23,8 +23,8 @@ import { putRoleListApi } from '@/api/vadmin/auth/role'
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 const emit = defineEmits(['getList'])
@@ -39,7 +39,7 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
@@ -54,7 +54,7 @@ const getOptions = async () => {
 
 const defaultProps = {
   children: 'children',
-  label: 'label'
+  label: 'label',
 }
 
 // 获取部门树
@@ -116,7 +116,7 @@ const submit = async () => {
   loading.value = true
   const menu_ids = [
     ...(unref(menuTreeRef)?.getCheckedKeys() || []),
-    ...(unref(menuTreeRef)?.getHalfCheckedKeys() || [])
+    ...(unref(menuTreeRef)?.getHalfCheckedKeys() || []),
   ]
   data.value.menu_ids = menu_ids
   data.value.dept_ids = unref(deptTreeRef)?.getCheckedKeys()
@@ -149,7 +149,7 @@ const closeDrawer = () => {
 getOptions()
 
 defineExpose({
-  openDrawer
+  openDrawer,
 })
 </script>
 

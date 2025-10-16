@@ -10,8 +10,8 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -20,28 +20,28 @@ const formSchema = reactive<FormSchema[]>([
     label: '类别名称',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'platform',
     label: '展示平台',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Select',
     componentProps: {
       style: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     optionApi: async () => {
       const dictStore = useDictStore()
@@ -49,36 +49,36 @@ const formSchema = reactive<FormSchema[]>([
       return dictOptions.sys_vadmin_platform
     },
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'is_active',
     label: '是否可见',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '可见',
-          value: true
+          value: true,
         },
         {
           label: '不可见',
-          value: false
-        }
-      ]
+          value: false,
+        },
+      ],
     },
     value: true,
     formItemProps: {
-      rules: [required()]
-    }
-  }
+      rules: [required()],
+    },
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -101,12 +101,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

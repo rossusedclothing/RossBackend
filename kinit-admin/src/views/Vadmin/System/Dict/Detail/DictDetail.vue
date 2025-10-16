@@ -5,7 +5,7 @@ import {
   addDictDetailsListApi,
   delDictDetailsListApi,
   putDictDetailsListApi,
-  getDictDetailsApi
+  getDictDetailsApi,
 } from '@/api/vadmin/system/dict'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -20,7 +20,7 @@ import { propTypes } from '@/utils/propTypes'
 import { BaseButton } from '@/components/Button'
 
 const props = defineProps({
-  dictTypeId: propTypes.number.def(undefined)
+  dictTypeId: propTypes.number.def(undefined),
 })
 
 const { t } = useI18n()
@@ -32,17 +32,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
       page: unref(currentPage),
       limit: unref(pageSize),
       dict_type_id: props.dictTypeId,
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delDictDetailsListApi(value)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -53,23 +53,23 @@ const tableColumns = reactive<TableColumn[]>([
     field: 'id',
     label: '字典编号',
     show: false,
-    disabled: false
+    disabled: false,
   },
   {
     field: 'label',
     label: '字典标签',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'value',
     label: '字典键值',
-    show: true
+    show: true,
   },
   {
     field: 'order',
     label: '字典排序',
-    show: true
+    show: true,
   },
   {
     field: 'disabled',
@@ -83,18 +83,18 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.disabled} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'remark',
     label: '备注',
-    show: false
+    show: false,
   },
   {
     field: 'create_datetime',
     label: '创建时间',
-    show: false
+    show: false,
   },
   {
     field: 'action',
@@ -120,9 +120,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -131,9 +131,9 @@ const searchSchema = reactive<FormSchema[]>([
     label: '字典标签',
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
-  }
+      clearable: false,
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -211,7 +211,7 @@ watch(
     getList()
   },
   {
-    deep: true
+    deep: true,
   }
 )
 </script>
@@ -230,7 +230,7 @@ watch(
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

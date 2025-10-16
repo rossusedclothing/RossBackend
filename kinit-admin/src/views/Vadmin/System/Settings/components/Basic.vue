@@ -18,7 +18,7 @@ const authStore = useAuthStore()
 const appStore = useAppStore()
 
 const props = defineProps({
-  tabId: propTypes.number
+  tabId: propTypes.number,
 })
 
 const token = computed(() => authStore.getToken)
@@ -28,20 +28,20 @@ const formSchema = reactive<FormSchema[]>([
     field: 'web_title',
     label: '系统标题',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'web_logo',
     label: '系统 LOGO',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -89,30 +89,30 @@ const formSchema = reactive<FormSchema[]>([
               )}
             </ElUpload>
           )
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'web_desc',
     label: '系统描述',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       rows: 4,
       type: 'textarea',
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'web_ico',
     label: 'ICO 图标',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -162,50 +162,50 @@ const formSchema = reactive<FormSchema[]>([
               )}
             </ElUpload>
           )
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'web_ico_local_path',
     label: 'ICO 图标服务器文件地址',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
-    hidden: true
+    hidden: true,
   },
   {
     field: 'web_icp_number',
     label: '备案号',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'web_copyright',
     label: '版权信息',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'active',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -217,16 +217,16 @@ const formSchema = reactive<FormSchema[]>([
               </BaseButton>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules = reactive({
   web_title: [required()],
   web_logo: [required()],
-  web_ico: [required()]
+  web_ico: [required()],
 })
 
 const { formRegister, formMethods } = useForm()

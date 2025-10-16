@@ -20,7 +20,7 @@ const prefixCls = getPrefixCls('tab-menu')
 export default defineComponent({
   name: 'TabMenu',
   directives: {
-    ClickOutside
+    ClickOutside,
   },
   setup() {
     const { push, currentRoute } = useRouter()
@@ -72,7 +72,7 @@ export default defineComponent({
       },
       {
         immediate: true,
-        deep: true
+        deep: true,
       }
     )
 
@@ -90,7 +90,7 @@ export default defineComponent({
         }
       },
       {
-        immediate: true
+        immediate: true,
       }
     )
 
@@ -153,8 +153,8 @@ export default defineComponent({
           'relative bg-[var(--left-menu-bg-color)] top-1px layout-border__right',
           {
             'w-[var(--tab-menu-max-width)]': !unref(collapse),
-            'w-[var(--tab-menu-min-width)]': unref(collapse)
-          }
+            'w-[var(--tab-menu-min-width)]': unref(collapse),
+          },
         ]}
       >
         <ElScrollbar class="!h-[calc(100%-var(--tab-menu-collapse-height)-1px)]">
@@ -166,7 +166,7 @@ export default defineComponent({
                     ? v
                     : {
                         ...(v?.children && v?.children[0]),
-                        path: pathResolve(v.path, (v?.children && v?.children[0])?.path as string)
+                        path: pathResolve(v.path, (v?.children && v?.children[0])?.path as string),
                       }
                 ) as AppRouteRecordRaw
                 return (
@@ -175,8 +175,8 @@ export default defineComponent({
                       `${prefixCls}__item`,
                       'text-center text-12px relative py-12px cursor-pointer',
                       {
-                        'is-active': isActive(v.path)
-                      }
+                        'is-active': isActive(v.path),
+                      },
                     ]}
                     onClick={() => {
                       tabClick(item)
@@ -197,7 +197,7 @@ export default defineComponent({
         <div
           class={[
             `${prefixCls}--collapse`,
-            'text-center h-[var(--tab-menu-collapse-height)] leading-[var(--tab-menu-collapse-height)] cursor-pointer'
+            'text-center h-[var(--tab-menu-collapse-height)] leading-[var(--tab-menu-collapse-height)] cursor-pointer',
           ]}
           onClick={setCollapse}
         >
@@ -211,14 +211,14 @@ export default defineComponent({
               '!left-[var(--tab-menu-max-width)]': !unref(collapse),
               '!w-[var(--left-menu-max-width)] border-r-1 border-r-solid border-[var(--el-border-color)]':
                 unref(showMenu) || unref(fixedMenu),
-              '!w-0': !unref(showMenu) && !unref(fixedMenu)
-            }
+              '!w-0': !unref(showMenu) && !unref(fixedMenu),
+            },
           ]}
           style="transition: width var(--transition-time-02), left var(--transition-time-02);"
         ></Menu>
       </div>
     )
-  }
+  },
 })
 </script>
 

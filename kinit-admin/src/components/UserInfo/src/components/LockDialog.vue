@@ -21,8 +21,8 @@ const lockStore = useLockStore()
 
 const props = defineProps({
   modelValue: {
-    type: Boolean
-  }
+    type: Boolean,
+  },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -32,13 +32,13 @@ const dialogVisible = computed({
   set: (val) => {
     console.log('set: ', val)
     emit('update:modelValue', val)
-  }
+  },
 })
 
 const dialogTitle = ref(t('lock.lockScreen'))
 
 const rules = reactive({
-  password: [required()]
+  password: [required()],
 })
 
 const schema: FormSchema[] = reactive([
@@ -48,9 +48,9 @@ const schema: FormSchema[] = reactive([
     component: 'Input',
     componentProps: {
       type: 'password',
-      showPassword: true
-    }
-  }
+      showPassword: true,
+    },
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -65,7 +65,7 @@ const handleLock = async () => {
       const formData = await getFormData()
       lockStore.setLockInfo({
         isLock: true,
-        ...formData
+        ...formData,
       })
     }
   })

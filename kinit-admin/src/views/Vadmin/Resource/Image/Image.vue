@@ -14,7 +14,7 @@ import { useClipboard } from '@vueuse/core'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'ResourceImage'
+  name: 'ResourceImage',
 })
 
 const { t } = useI18n()
@@ -25,17 +25,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getImagesListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delImagesListApi(value as number[])
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -46,7 +46,7 @@ const tableColumns = reactive<TableColumn[]>([
     field: 'selection',
     type: 'selection',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'id',
@@ -55,7 +55,7 @@ const tableColumns = reactive<TableColumn[]>([
     disabled: false,
     align: 'center',
     headerAlign: 'center',
-    width: '80px'
+    width: '80px',
   },
   {
     field: 'image_url',
@@ -86,31 +86,31 @@ const tableColumns = reactive<TableColumn[]>([
             </div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'remark',
     label: '备注',
     show: false,
-    disabled: false
+    disabled: false,
   },
   {
     field: 'update_datetime',
     label: '更新时间',
     show: false,
-    width: '180px'
+    width: '180px',
   },
   {
     field: 'create_datetime',
     label: '创建时间',
     width: '180px',
-    show: true
+    show: true,
   },
   {
     field: 'create_user.name',
     label: '创建人',
-    show: false
+    show: false,
   },
   {
     field: 'action',
@@ -141,9 +141,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -154,10 +154,10 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
-  }
+        width: '214px',
+      },
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -252,7 +252,7 @@ const save = async () => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

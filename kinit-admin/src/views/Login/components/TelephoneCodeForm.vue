@@ -26,15 +26,15 @@ const schema = reactive<FormSchema[]>([
   {
     field: 'title',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
         default: () => {
           return <h2 class="text-2xl font-bold text-center w-[100%]">{t('login.login')}</h2>
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'telephone',
@@ -42,21 +42,21 @@ const schema = reactive<FormSchema[]>([
     value: '',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       placeholder: t('login.telephonePlaceholder'),
-      maxlength: 11
-    }
+      maxlength: 11,
+    },
   },
   {
     field: 'password',
     label: t('login.SMSCode'),
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -80,26 +80,26 @@ const schema = reactive<FormSchema[]>([
                         </BaseButton>
                       )}
                     </>
-                  )
+                  ),
                 }}
               ></ElInput>
             </div>
           )
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'method',
     label: '登录类型',
     value: '1',
     component: 'Input',
-    hidden: true
+    hidden: true,
   },
   {
     field: 'login',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -123,16 +123,16 @@ const schema = reactive<FormSchema[]>([
               </div>
             </div>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules: FormRules = {
   telephone: [required()],
   method: [required()],
-  password: [required()]
+  password: [required()],
 }
 
 const toPasswordLogin = () => {
@@ -149,7 +149,7 @@ watch(
     redirect.value = route?.query?.redirect as string
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 

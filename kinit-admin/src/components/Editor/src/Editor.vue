@@ -22,9 +22,9 @@ const props = defineProps({
   height: propTypes.oneOfType([Number, String]).def('500px'),
   editorConfig: {
     type: Object as PropType<IEditorConfig>,
-    default: () => undefined
+    default: () => undefined,
   },
-  modelValue: propTypes.string.def('')
+  modelValue: propTypes.string.def(''),
 })
 
 const emit = defineEmits(['change', 'update:modelValue'])
@@ -41,7 +41,7 @@ watch(
     valueHtml.value = val
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 
@@ -103,7 +103,7 @@ const editorConfig = computed((): IEditorConfig => {
             formData.append('path', 'editor/image')
             const res = await uploadImageToOSSApi(formData)
             insertFn(res.data, '', res.data)
-          }
+          },
         },
         uploadVideo: {
           // 自定义上传视频
@@ -122,9 +122,9 @@ const editorConfig = computed((): IEditorConfig => {
             formData.append('path', 'editor/video')
             const res = await uploadVideoToOSSApi(formData)
             insertFn(res.data, '')
-          }
-        }
-      }
+          },
+        },
+      },
     },
     props.editorConfig || {}
   )
@@ -132,7 +132,7 @@ const editorConfig = computed((): IEditorConfig => {
 
 const editorStyle = computed(() => {
   return {
-    height: isNumber(props.height) ? `${props.height}px` : props.height
+    height: isNumber(props.height) ? `${props.height}px` : props.height,
   }
 })
 
@@ -155,7 +155,7 @@ const getEditorRef = async (): Promise<IDomEditor> => {
 }
 
 defineExpose({
-  getEditorRef
+  getEditorRef,
 })
 </script>
 

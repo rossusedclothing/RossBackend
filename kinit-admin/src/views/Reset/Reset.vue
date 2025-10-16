@@ -27,40 +27,40 @@ const formSchema = reactive<FormSchema[]>([
     label: '新密码',
     component: 'InputPassword',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
-      placeholder: '请输入新密码'
-    }
+      placeholder: '请输入新密码',
+    },
   },
   {
     field: 'password_two',
     label: '再次输入新密码',
     component: 'InputPassword',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
-      placeholder: '请再次输入新密码'
-    }
-  }
+      placeholder: '请再次输入新密码',
+    },
+  },
 ])
 
 const rules = {
   password: [
     required(),
-    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' }
+    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' },
   ],
   password_two: [
     required(),
-    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' }
-  ]
+    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' },
+  ],
 }
 
 const { formRegister, formMethods } = useForm()
@@ -77,7 +77,7 @@ watch(
     redirect.value = route?.query?.redirect as string
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 

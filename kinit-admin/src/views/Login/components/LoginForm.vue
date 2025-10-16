@@ -32,22 +32,22 @@ const hoverColor = 'var(--el-color-primary)'
 const rules = {
   telephone: [required()],
   method: [required()],
-  password: [required()]
+  password: [required()],
 }
 
 const schema = reactive<FormSchema[]>([
   {
     field: 'title',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
         default: () => {
           return <h2 class="text-2xl font-bold text-center w-[100%]">{t('login.login')}</h2>
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'telephone',
@@ -55,15 +55,15 @@ const schema = reactive<FormSchema[]>([
     value: '15020221010',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       placeholder: t('login.telephonePlaceholder'),
-      maxlength: 11
-    }
+      maxlength: 11,
+    },
   },
   {
     field: 'password',
@@ -71,26 +71,26 @@ const schema = reactive<FormSchema[]>([
     value: 'kinit2022',
     component: 'InputPassword',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
-      placeholder: t('login.passwordPlaceholder')
-    }
+      placeholder: t('login.passwordPlaceholder'),
+    },
   },
   {
     field: 'method',
     label: '登录类型',
     value: '0',
     component: 'Input',
-    hidden: true
+    hidden: true,
   },
   {
     field: 'tool',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -105,14 +105,14 @@ const schema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'login',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -136,22 +136,22 @@ const schema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
-    }
+        },
+      },
+    },
   },
   {
     field: 'other',
     component: 'Divider',
     label: t('login.otherLogin'),
     componentProps: {
-      contentPosition: 'center'
-    }
+      contentPosition: 'center',
+    },
   },
   {
     field: 'otherIcon',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -190,10 +190,10 @@ const schema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const iconSize = 30
@@ -209,7 +209,7 @@ watch(
     redirect.value = route?.query?.redirect as string
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 

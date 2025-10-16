@@ -9,7 +9,7 @@ const { getPrefixCls } = useDesign()
 const prefixCls = getPrefixCls('collapse')
 
 defineProps({
-  color: propTypes.string.def('')
+  color: propTypes.string.def(''),
 })
 
 const appStore = useAppStore()

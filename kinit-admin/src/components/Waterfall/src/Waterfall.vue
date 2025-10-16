@@ -18,7 +18,7 @@ const prop = defineProps({
   gap: propTypes.number.def(20),
   props: propTypes.objectOf(propTypes.string).def({
     src: 'src',
-    height: 'height'
+    height: 'height',
   }),
   cols: propTypes.number.def(undefined),
   loadingText: propTypes.string.def('加载中...'),
@@ -26,7 +26,7 @@ const prop = defineProps({
   end: propTypes.bool.def(false),
   endText: propTypes.string.def('没有更多了'),
   autoCenter: propTypes.bool.def(true),
-  layout: propTypes.oneOf(['javascript', 'flex']).def('flex')
+  layout: propTypes.oneOf(['javascript', 'flex']).def('flex'),
 })
 
 const wrapEl = ref<HTMLDivElement>()
@@ -61,7 +61,7 @@ const filterWaterfall = async () => {
       filterData.value.push({
         ...data[i],
         top: 0,
-        left: i * (width + gap)
+        left: i * (width + gap),
       })
     } else {
       // 其他行，先找出最矮的那一列 和 索引
@@ -81,7 +81,7 @@ const filterWaterfall = async () => {
       filterData.value.push({
         ...data[i],
         top: minHeight + gap,
-        left: index * (width + gap)
+        left: index * (width + gap),
       })
     }
   }
@@ -124,7 +124,7 @@ watch(
     initLayout()
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 
@@ -140,7 +140,7 @@ onMounted(() => {
       }
     },
     {
-      threshold: 0.1
+      threshold: 0.1,
     }
   )
 })
@@ -153,12 +153,12 @@ onMounted(() => {
       'flex',
       'items-center',
       {
-        'justify-center': autoCenter
-      }
+        'justify-center': autoCenter,
+      },
     ]"
     ref="wrapEl"
     :style="{
-      height: `${layout === 'javascript' ? wrapHeight + 40 : 'auto'}px`
+      height: `${layout === 'javascript' ? wrapHeight + 40 : 'auto'}px`,
     }"
   >
     <template v-if="layout === 'javascript'">
@@ -168,15 +168,15 @@ onMounted(() => {
           :class="[
             `${prefixCls}-item__${$index}`,
             {
-              absolute: layout === 'javascript'
-            }
+              absolute: layout === 'javascript',
+            },
           ]"
           :key="`water-${$index}`"
           :style="{
             width: `${width}px`,
             height: `${item[props.height as string]}px`,
             top: `${item.top}px`,
-            left: `${item.left}px`
+            left: `${item.left}px`,
           }"
         >
           <img :src="item[props.src as string]" class="w-full h-full block" alt="" srcset="" />
@@ -185,7 +185,7 @@ onMounted(() => {
           ref="loadMore"
           class="h-40px flex justify-center absolute w-full"
           :style="{
-            top: `${wrapHeight + gap}px`
+            top: `${wrapHeight + gap}px`,
           }"
         >
           {{ end ? endText : loadingText }}
@@ -196,7 +196,7 @@ onMounted(() => {
       <div
         class="relative flex pb-40px"
         :style="{
-          width: cols ? '100%' : 'auto'
+          width: cols ? '100%' : 'auto',
         }"
       >
         <div
@@ -204,7 +204,7 @@ onMounted(() => {
           :key="`waterWrap-${$index}`"
           class="flex-1"
           :style="{
-            marginRight: $index === filterData.length - 1 ? '0' : `${gap}px`
+            marginRight: $index === filterData.length - 1 ? '0' : `${gap}px`,
           }"
         >
           <div
@@ -213,7 +213,7 @@ onMounted(() => {
             :style="{
               marginBottom: `${gap}px`,
               width: cols ? '100%' : `${width}px`,
-              height: cols ? 'auto' : `${child[props.height as string]}px`
+              height: cols ? 'auto' : `${child[props.height as string]}px`,
             }"
           >
             <img :src="child[props.src as string]" class="w-full h-full block" alt="" srcset="" />
@@ -223,7 +223,7 @@ onMounted(() => {
           ref="loadMore"
           class="h-40px flex justify-center absolute w-full items-center"
           :style="{
-            bottom: 0
+            bottom: 0,
           }"
         >
           {{ end ? endText : loadingText }}

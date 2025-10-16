@@ -7,9 +7,9 @@ import { BorderBox11 } from '@kjgl77/datav-vue3'
 const props = defineProps({
   leftData: {
     type: Object as PropType<LeftPropsType>,
-    required: true
+    required: true,
   },
-  activeMenuName: propTypes.string
+  activeMenuName: propTypes.string,
 })
 </script>
 

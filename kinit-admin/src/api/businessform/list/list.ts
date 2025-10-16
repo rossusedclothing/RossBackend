@@ -8,7 +8,3 @@ export const getBusinessFormLists = (params?: any) => {
 export const deleteRecord = (ids: number[]) => {
   return request.delete({ url: '/businessform/list/delete', data: ids })
 }
-
-export const createBusinessForm = (data: any) => {
-  return request.post({ url: '/businessform/list/create', data })
-}

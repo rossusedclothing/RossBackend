@@ -44,7 +44,7 @@ const iconWrapStyle = computed((): CSSProperties => {
     boxShadow: '0 0 0 1px var(--el-input-border-color,var(--el-border-color)) inset',
     position: 'relative',
     left: '-1px',
-    cursor: 'pointer'
+    cursor: 'pointer',
   }
 })
 
@@ -81,7 +81,7 @@ watch(
     val && init(val)
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 
@@ -150,7 +150,7 @@ const inputClear = () => {
                   }`,
                   boxSizing: 'border-box',
                   margin: '2px',
-                  transition: 'all 0.3s'
+                  transition: 'all 0.3s',
                 }"
                 class="hover:border-color-[var(--el-color-primary)]!"
                 @click="iconSelect(icon)"

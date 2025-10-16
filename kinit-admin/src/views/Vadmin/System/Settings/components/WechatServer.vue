@@ -11,7 +11,7 @@ import { BaseButton } from '@/components/Button'
 const { required } = useValidator()
 
 const props = defineProps({
-  tabId: propTypes.number
+  tabId: propTypes.number,
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -19,72 +19,72 @@ const formSchema = reactive<FormSchema[]>([
     field: 'wx_server_app_id',
     label: 'AppID',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'wx_server_app_secret',
     label: 'AppSecret',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'wx_server_email',
     label: '官方邮件',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'wx_server_phone',
     label: '服务热线',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'wx_server_site',
     label: '官方邮箱',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       style: {
-        width: '500px'
-      }
-    }
+        width: '500px',
+      },
+    },
   },
   {
     field: 'active',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -96,15 +96,15 @@ const formSchema = reactive<FormSchema[]>([
               </BaseButton>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules = reactive({
   wx_server_app_id: [required()],
-  wx_server_app_secret: [required()]
+  wx_server_app_secret: [required()],
 })
 
 const { formRegister, formMethods } = useForm()

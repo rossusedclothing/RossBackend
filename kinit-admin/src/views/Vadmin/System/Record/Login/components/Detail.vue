@@ -10,8 +10,8 @@ import 'vue3-json-viewer/dist/index.css'
 defineProps({
   currentRow: {
     type: Object as PropType<Nullable<any>>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 const platformOptions = ref<DictDetail[]>([])
@@ -31,12 +31,12 @@ const detailSchema = reactive<DescriptionsSchema[]>([
     field: 'id',
     label: '编号',
     minWidth: 100,
-    span: 24
+    span: 24,
   },
   {
     field: 'telephone',
     label: '手机号',
-    span: 24
+    span: 24,
   },
   {
     field: 'status',
@@ -49,8 +49,8 @@ const detailSchema = reactive<DescriptionsSchema[]>([
             <ElSwitch modelValue={data.status} size="small" disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'platform',
@@ -63,8 +63,8 @@ const detailSchema = reactive<DescriptionsSchema[]>([
             <div>{selectDictLabel(platformOptions.value, data.platform)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'login_method',
@@ -77,38 +77,38 @@ const detailSchema = reactive<DescriptionsSchema[]>([
             <div>{selectDictLabel(loginMethodOptions.value, data.login_method)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'ip',
     label: '登录地址',
-    span: 24
+    span: 24,
   },
   {
     field: 'address',
     label: '登录地点',
-    span: 24
+    span: 24,
   },
   {
     field: 'postal_code',
     label: '邮政编码',
-    span: 24
+    span: 24,
   },
   {
     field: 'area_code',
     label: '地区区号',
-    span: 24
+    span: 24,
   },
   {
     field: 'browser',
     label: '浏览器',
-    span: 24
+    span: 24,
   },
   {
     field: 'system',
     label: '操作系统',
-    span: 24
+    span: 24,
   },
   {
     field: 'response',
@@ -121,8 +121,8 @@ const detailSchema = reactive<DescriptionsSchema[]>([
             <JsonViewer value={JSON.parse(data.request)} copyable boxed sort />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'request',
@@ -135,14 +135,14 @@ const detailSchema = reactive<DescriptionsSchema[]>([
             <JsonViewer value={JSON.parse(data.request)} copyable boxed sort />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'create_datetime',
     label: '创建时间',
-    span: 24
-  }
+    span: 24,
+  },
 ])
 </script>
 

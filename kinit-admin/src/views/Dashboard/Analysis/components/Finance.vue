@@ -8,7 +8,7 @@ import {
   ElTableColumn,
   ElRadioGroup,
   ElRadioButton,
-  ElDatePicker
+  ElDatePicker,
 } from 'element-plus'
 import { formatMoney } from '@/utils'
 import { ref, reactive } from 'vue'
@@ -28,7 +28,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: '天斧88d 3u',
@@ -36,7 +36,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: '格力空调',
@@ -44,7 +44,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: '海尔冰箱',
@@ -52,7 +52,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: '小米电视',
@@ -60,7 +60,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: '荣耀笔记本',
@@ -68,7 +68,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: 'iPhone12',
@@ -76,7 +76,7 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
+    sales_volume: '90',
   },
   {
     name: 'Macbook Pro',
@@ -84,8 +84,8 @@ const tableData = ref([
     order_quantity: '131',
     buy_user_number: '72',
     sales: '36981',
-    sales_volume: '90'
-  }
+    sales_volume: '90',
+  },
 ])
 
 const radio = ref(0)
@@ -180,7 +180,7 @@ const disabledDateFn = (time: any) => {
       :headerCellStyle="{
         'background-color': '#f5f7fa',
         color: '#787a7d',
-        'font-size': '12px'
+        'font-size': '12px',
       }"
     >
       <ElTableColumn type="index" width="50" />

@@ -5,7 +5,7 @@ export const uploadImageToOSSApi = (data: any): Promise<IResponse> => {
   return request.post({
     url: `/vadmin/system/upload/image/to/oss`,
     headersType: 'multipart/form-data',
-    data
+    data,
   })
 }
 
@@ -14,7 +14,7 @@ export const uploadVideoToOSSApi = (data: any): Promise<IResponse> => {
   return request.post({
     url: `/vadmin/system/upload/video/to/oss`,
     headersType: 'multipart/form-data',
-    data
+    data,
   })
 }
 
@@ -23,6 +23,6 @@ export const uploadFileToOSSApi = (data: any): Promise<IResponse> => {
   return request.post({
     url: `/vadmin/system/upload/file/to/oss`,
     headersType: 'multipart/form-data',
-    data
+    data,
   })
 }

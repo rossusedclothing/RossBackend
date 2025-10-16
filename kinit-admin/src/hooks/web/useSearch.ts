@@ -81,11 +81,11 @@ export const useSearch = () => {
     getFormData: async <T = Recordable>(): Promise<T> => {
       const search = await getSearch()
       return search?.formModel as T
-    }
+    },
   }
 
   return {
     searchRegister: register,
-    searchMethods: methods
+    searchMethods: methods,
   }
 }

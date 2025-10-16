@@ -206,7 +206,7 @@ export const useTable = (config: UseTableConfig) => {
         ElMessageBox.confirm(t('common.delMessage'), t('common.delWarning'), {
           confirmButtonText: t('common.delOk'),
           cancelButtonText: t('common.delCancel'),
-          type: 'warning'
+          type: 'warning',
         }).then(async () => {
           const result = await fetchDelApi(value)
           if (result) {
@@ -261,7 +261,7 @@ export const useTable = (config: UseTableConfig) => {
       } finally {
         loading.value = false
       }
-    }
+    },
   }
 
   return {
@@ -272,7 +272,7 @@ export const useTable = (config: UseTableConfig) => {
       pageSize,
       total,
       dataList,
-      loading
-    }
+      loading,
+    },
   }
 }

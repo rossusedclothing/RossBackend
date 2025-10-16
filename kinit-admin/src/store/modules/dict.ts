@@ -8,12 +8,12 @@ export interface DictState {
 
 export const useDictStore = defineStore('dict', {
   state: (): DictState => ({
-    dictObj: {}
+    dictObj: {},
   }),
   getters: {
     getDictObjData(): Recordable {
       return this.dictObj
-    }
+    },
   },
   actions: {
     async getDictObj(dictTypes: string[]) {
@@ -37,9 +37,9 @@ export const useDictStore = defineStore('dict', {
         }
       }
       return result
-    }
+    },
   },
-  persist: true
+  persist: true,
 })
 
 export const useDictStoreWithOut = () => {

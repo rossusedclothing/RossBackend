@@ -6,7 +6,7 @@ import {
   paySuccesslineOptions,
   newCustomerlineOptions,
   memberPieOptions,
-  customerConversionLineOptions
+  customerConversionLineOptions,
 } from './user-echarts-data'
 import { EChartsOption } from 'echarts'
 import { getRandomNumberApi } from '@/api/dashboard/analysis/index'
@@ -71,7 +71,7 @@ const getAllApi = async () => {
     getPotentialTotalNumber(),
     getCustomerTotalNumber(),
     getMemberTotalNumber(),
-    getPaySuccessCustomerTotalNumber()
+    getPaySuccessCustomerTotalNumber(),
   ])
   loading.value = false
 }

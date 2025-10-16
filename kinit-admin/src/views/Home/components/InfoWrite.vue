@@ -18,74 +18,74 @@ const formSchema = reactive<FormSchema[]>([
     label: '用户名称',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
-      rules: [required()]
+      rules: [required()],
     },
     componentProps: {
       style: {
-        width: '50%'
-      }
-    }
+        width: '50%',
+      },
+    },
   },
   {
     field: 'nickname',
     label: '用户昵称',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '50%'
-      }
-    }
+        width: '50%',
+      },
+    },
   },
   {
     field: 'telephone',
     label: '手机号',
     component: 'Input',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
-      rules: [required(), { validator: isTelephone, trigger: 'blur' }]
+      rules: [required(), { validator: isTelephone, trigger: 'blur' }],
     },
     componentProps: {
       style: {
-        width: '50%'
+        width: '50%',
       },
-      maxlength: 11
-    }
+      maxlength: 11,
+    },
   },
   {
     field: 'gender',
     label: '性别',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
-      rules: [required()]
+      rules: [required()],
     },
     component: 'RadioGroup',
     componentProps: {
       options: [
         {
           label: '男',
-          value: '0'
+          value: '0',
         },
         {
           label: '女',
-          value: '1'
-        }
-      ]
-    }
+          value: '1',
+        },
+      ],
+    },
   },
   {
     field: 'save',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -99,10 +99,10 @@ const formSchema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
