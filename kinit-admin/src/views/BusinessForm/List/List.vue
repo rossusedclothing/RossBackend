@@ -104,6 +104,11 @@ import {
   ElTableColumn,
 } from 'element-plus'
 
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+
 const tableData = ref<any[]>([])
 const loading = ref(false)
 const dialogVisible = ref(false)
@@ -140,9 +145,20 @@ const loadData = async () => {
 }
 
 const editRow = (row: any) => {
+  /*#ref-o：
   editMode.value = true
   Object.assign(form, row)
   dialogVisible.value = true
+  */
+  // 构建编辑页面的URL，传递记录ID
+  const editUrl = `/businessform/publicform?id=${row.id}`
+
+  // 方式1：使用 router.push 跳转（推荐）
+  router.push(editUrl)
+
+  // 方式2：或者使用 window.location.href 跳转
+  // window.location.href = editUrl
+
 }
 
 /*~~

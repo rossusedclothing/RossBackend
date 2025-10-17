@@ -24,6 +24,7 @@ class BusinessFormParams(QueryParams):
         has_export_experience: Optional[bool] = Query(None, description="是否有外贸经验"),
         student_identity: Optional[str] = Query(None, description="学员身份"),
         company_size: Optional[str] = Query(None, description="公司规模"),
+        bt: Optional[int] = Query(None, description="分享人用户ID"),  # 新增 bt 参数
         params: Paging = Depends()
     ):
         super().__init__(params)
@@ -34,3 +35,4 @@ class BusinessFormParams(QueryParams):
         self.has_export_experience = has_export_experience
         self.student_identity = student_identity
         self.company_size = company_size
+        self.bt = bt  # 新增

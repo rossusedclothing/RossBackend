@@ -111,6 +111,32 @@ export const constantRouterMap: AppRouteRecordRaw[] = [
       noTagsView: true,
     },
   },
+  /*~~~~~~
+  // 新增二维码页面路由 - 添加到 constantRouterMap
+  {
+    path: '/businessform',
+    component: Layout,
+    name: 'BusinessForm',
+    meta: {
+      title: '业务表单',
+      icon: 'ep-document',
+    },
+    children: [
+      {
+        path: 'qrcode',
+        component: () => import('@/views/BusinessForm/QRCode/QRCodePage.vue'),
+        name: 'QRCode',
+        meta: {
+          title: '二维码',
+          icon: 'ep-search',
+        },
+      },
+    ],
+  },
+  */
+
+
+
 ]
 
 export const asyncRouterMap: AppRouteRecordRaw[] = [
@@ -153,6 +179,17 @@ const router = createRouter({
   strict: true,
   routes: constantRouterMap as RouteRecordRaw[],
   scrollBehavior: () => ({ left: 0, top: 0 }),
+})
+
+// 动态添加公开路由【~~~~apd~~~~】
+router.addRoute({
+  path: '/businessform/publicform2',
+  name: 'PublicBusinessForm2',
+  component: () => import('@/views/Public/BusinessPublicForm.vue'),
+  meta: {
+    title: '客户信息登记表',
+    noAuth: true
+  }
 })
 
 export const resetRouter = (): void => {

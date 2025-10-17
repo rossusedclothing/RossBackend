@@ -26,6 +26,7 @@ class BusinessForm(BaseModel):
     student_identity: Optional[str] = Field(None, max_length=50, title="学员身份")
     num_members_tradeteam: int = Field(0, ge=0, title="外贸团队人数")
     company_size: Optional[str] = Field(None, max_length=50, title="公司人数规模")
+    bt: Optional[int] = None  # 新增
 
 
 class BusinessFormSimpleOut(BusinessForm):
@@ -36,7 +37,9 @@ class BusinessFormSimpleOut(BusinessForm):
     create_datetime: DatetimeStr = Field(..., title="创建时间")
     update_datetime: DatetimeStr = Field(..., title="更新时间")
     # 新增 is_delete 字段，默认值0，对应数据库默认逻辑
-    is_delete: int = Field(0, ge=0, le=1, title="是否删除：0-否，1-是")
+    #ref-o：is_delete: int = Field(0, ge=0, le=1, title="是否删除：0-否，1-是")
+    is_delete: Optional[int] = 0  # 修改这里，提供默认值
+    #or-use：is_delete: int = Field(default=0)  # 使用 Field 提供默认值
 
 
 class BusinessFormCreate(BusinessForm):
@@ -57,5 +60,7 @@ class BusinessFormUpdate(BaseModel):
     student_identity: Optional[str] = Field(None, max_length=50, title="学员身份")
     num_members_tradeteam: Optional[int] = Field(None, ge=0, title="外贸团队人数")
     company_size: Optional[str] = Field(None, max_length=50, title="公司人数规模")
+    bt: Optional[int] = None  # 新增
+
     # 新增 is_delete 更新字段，支持修改删除状态
     is_delete: Optional[int] = Field(None, ge=0, le=1, title="是否删除：0-否，1-是")

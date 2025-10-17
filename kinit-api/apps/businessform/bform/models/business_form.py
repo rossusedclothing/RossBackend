@@ -30,6 +30,10 @@ class BusinessForm(Base):
     student_identity = mapped_column(String(50), nullable=True, comment='学员身份')
     num_members_tradeteam = mapped_column(Integer, nullable=True, default=0, comment='外贸团队人数')
     company_size = mapped_column(String(50), nullable=True, comment='公司人数规模')
+
+    # 新增 bt 字段
+    bt = Column(Integer, nullable=True, comment="分享人用户ID")  # 新增
+
     # 可选：若需前端传递，添加该字段（默认0，与数据库默认值一致）
     #B：is_delete: Optional[int] = Field(0, ge=0, le=1, title="是否删除：0-否，1-是")
     # 修正 is_delete 字段的定义（移除 Field，使用 SQLAlchemy 参数）
