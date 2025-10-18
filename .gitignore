@@ -15,7 +15,6 @@ kinit-api/*.pyc
 
 # 前端
 kinit-admin/node_modules/
-kinit-admin/dist/
 kinit-admin/.env
 kinit-admin/.env.*
 kinit-admin/*.log
