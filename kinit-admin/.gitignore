@@ -5,5 +5,4 @@ dist-ssr
 *-lock.*
 pnpm-debug
 stats.html
-dist-pro
 .vscode
