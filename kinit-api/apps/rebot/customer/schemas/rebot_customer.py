@@ -16,6 +16,10 @@ class RebotCustomer(BaseModel):
     customer_name: str | None = Field(None, title="客户名称")
     platform: str | None = Field("whatsapp", title="平台")
     meta_data: str | None = Field(None, title="元数据")
+    tag: str | None = Field(None, title="标签")
+    is_tag_changed: int | None = Field(0, title="是否修改标签: 0-否 1-是")
+    summary_content: str | None = Field(None, title="近期聊天总结")
+
 
 
 class RebotCustomerSimpleOut(RebotCustomer):

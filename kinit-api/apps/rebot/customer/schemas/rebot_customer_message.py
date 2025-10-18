@@ -22,6 +22,10 @@ class AddRebotCustomerMessage(BaseModel):
     customer_name: str | None = Field(None, title="客户名称")
     customer_message: str | None = Field(None, title="客户消息")
     receiver_message: str | None = Field("", title="回复消息")
+    tag: str | None = Field(None, title="标签")
+    is_tag_changed: int | None = Field(0, title="是否修改标签: 0-否 1-是")
+    summary_content: str | None = Field(None, title="近期聊天总结")
+
 
 class RebotCustomerMessageSimpleOut(RebotCustomerMessage):
     model_config = ConfigDict(from_attributes=True)

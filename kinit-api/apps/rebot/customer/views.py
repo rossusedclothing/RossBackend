@@ -77,10 +77,9 @@ async def create_rebot_customer_message(data: schemas.AddRebotCustomerMessage, d
     customer = await crud.RebotCustomerDal(db).get_data(customer_phone=data.customer_phone, v_return_none=True)
     if customer is None:
         customer_data = data.model_dump()
-        customer_data.pop("sales_agent_id")
         d = schemas.RebotCustomer(**customer_data)
         await crud.RebotCustomerDal(db).create_data(data=d)
-    message_data = data.model_dump(exclude={'sales_agent_id'})
+    message_data = data.model_dump(exclude={'sales_agent_id','tag','summary_content','is_tag_changed',})
     return SuccessResponse(await crud.RebotCustomerMessageDal(db).create_data(data=message_data))
 
 
