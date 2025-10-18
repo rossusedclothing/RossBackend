@@ -175,6 +175,7 @@ class CrudGenerate(GenerateBase):
 if __name__ == '__main__':
      #from apps.xxx.your_app.models import YourModel
      from apps.businessform.bform.models.business_form
+     #oked：from apps.businessform.bform.models.business_form import BusinessForm
 
      crud = CrudGenerate(BusinessForm, "业务表单", "business_form")
      #只打印代码，不执行创建写入
