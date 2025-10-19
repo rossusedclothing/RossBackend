@@ -12,6 +12,7 @@ from core.data_types import DatetimeStr
 
 class Question(BaseModel):
     question: str = Field("", title="问题")
+    template_id: int = Field(..., title="模板ID")
 
 
 class QuestionSimpleOut(Question):

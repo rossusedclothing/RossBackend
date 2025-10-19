@@ -39,3 +39,23 @@ export const putAnswerListApi = (data: any): Promise<IResponse> => {
 export const delAnswerListApi = (data: any): Promise<IResponse> => {
   return request.delete({ url: '/bot/qa/answer', data })
 }
+
+export const getQuestionTemplateListApi = (params: any): Promise<IResponse> => {
+  return request.get({ url: '/bot/qa/template', params })
+}
+
+export const getQuestionTemplateApi = (id: number): Promise<IResponse> => {
+  return request.get({ url: `/bot/qa/template/${id}` })
+}
+
+export const createQuestionTemplateApi = (data: any): Promise<IResponse> => {
+  return request.post({ url: '/bot/qa/template', data })
+}
+
+export const updateQuestionTemplateApi = (id: number, data: any): Promise<IResponse> => {
+  return request.put({ url: `/bot/qa/template/${id}`, data })
+}
+
+export const deleteQuestionTemplateApi = (data: any): Promise<IResponse> => {
+  return request.delete({ url: '/bot/qa/template', data })
+}

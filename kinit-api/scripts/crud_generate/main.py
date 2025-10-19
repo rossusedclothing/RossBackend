@@ -16,6 +16,7 @@ from application.settings import BASE_DIR
 from apps.rebot.activationcode.models.activation_codes import RossApplyCode
 from apps.rebot.customer.models import ReBotCustomer, ReBotCustomerMessage, SalesAgentConfig, SalesAgentWorkflow
 from apps.rebot.panel.models.panel import ApiKeys, Feedback, AppUpdate
+from apps.rebot.qa.models.question import RossQuestionTemplate
 from apps.test.console.models.console import Console
 from apps.vadmin.resource.models import RossFiles
 from core.database import Base
@@ -172,13 +173,13 @@ class CrudGenerate(GenerateBase):
 
 
 # scripts/crud_generate/main.py
-if __name__ == '__main__':
-     #from apps.xxx.your_app.models import YourModel
-     from apps.businessform.bform.models.business_form
-     #oked：from apps.businessform.bform.models.business_form import BusinessForm
-
-     crud = CrudGenerate(BusinessForm, "业务表单", "business_form")
-     #只打印代码，不执行创建写入
-     crud.generate_codes()
-    # 创建并写入代码
-     crud.main()
+# if __name__ == '__main__':
+#      #from apps.xxx.your_app.models import YourModel
+#      # from apps.businessform.bform.models.business_form
+#      #oked：from apps.businessform.bform.models.business_form import BusinessForm
+#
+#      crud = CrudGenerate(RossQuestionTemplate, "问题模板", "question_template")
+#      #只打印代码，不执行创建写入
+#      crud.generate_codes()
+#     # 创建并写入代码
+#      crud.main()

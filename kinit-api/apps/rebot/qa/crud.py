@@ -5,11 +5,12 @@
 # @File           : crud.py
 # @IDE            : PyCharm
 # @desc           : 数据访问层
+from apps.rebot.qa import schemas
+from apps.rebot.qa.models.question import RossQuestion, RossAnswer
+from . import models, schemas
+from core.crud import DalBase
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from apps.rebot.qa.models.question import RossQuestion, RossAnswer
-from apps.rebot.qa import  schemas
-from core.crud import DalBase
 
 
 class QuestionDal(DalBase):
@@ -28,3 +29,12 @@ class AnswerDal(DalBase):
         self.db = db
         self.model = RossAnswer
         self.schema = schemas.AnswerSimpleOut
+
+
+class QuestionTemplateDal(DalBase):
+
+    def __init__(self, db: AsyncSession):
+        super(QuestionTemplateDal, self).__init__()
+        self.db = db
+        self.model = models.RossQuestionTemplate
+        self.schema = schemas.QuestionTemplateSimpleOut

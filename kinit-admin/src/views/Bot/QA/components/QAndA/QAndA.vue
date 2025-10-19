@@ -4,28 +4,30 @@
       <div class="bg-white rounded-lg shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
           <h1 class="text-3xl font-bold text-gray-800">
-            问答配置
-            <button class="btn" @click="fetchQuestionList">⭕️</button>
+            {{props.tabParams.title}}
+            <ElButton  @click="fetchQuestionList" color="blue">✔保存</ElButton>
+            <ElButton  @click="fetchQuestionList" color="amber">⭕刷新</ElButton>
           </h1>
-          <button
+          <ElButton
             @click="openQuestionForm"
+            color="blue"
             class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition-colors"
           >
             新增问题
-          </button>
+          </ElButton>
         </div>
 
         <!-- 问题列表 -->
         <div class="space-y-4">
           <div
-            v-for="question in questions"
+            v-for="(question,index) in questions"
             :key="question.id"
             class="border border-gray-200 rounded-lg p-4"
           >
             <div class="flex justify-between items-start mb-3">
               <div class="flex-1">
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">
-                  问题 #{{ question.id }} {{ question.question }}
+                  问题 #{{ index + 1 }}: {{ question.question }}
                 </h3>
                 <p class="text-gray-600">{{ question.question }}</p>
               </div>
@@ -116,9 +118,9 @@
         <div v-if="questions.length > 0" class="mt-8 bg-gray-50 p-4 rounded-lg">
           <h3 class="text-lg font-semibold mb-4 text-gray-800">问题流程图</h3>
           <div class="space-y-2">
-            <div v-for="question in questions" :key="question.id" class="text-sm">
+            <div v-for="(question,index) in questions" :key="question.id" class="text-sm">
               <span class="font-medium text-blue-600"
-                >问题 #{{ question.id }} {{ question.question }}</span
+                >问题 #{{ index+1 }} {{ question.question }}</span
               >
               <div class="ml-4 mt-1">
                 <div
@@ -150,13 +152,14 @@
         <form @submit.prevent="saveQuestion">
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">问题内容</label>
-            <textarea
+            <ElInput
+              type="textarea"
               v-model="questionForm.question"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               rows="4"
               placeholder="请输入问题内容..."
               required
-            ></textarea>
+            />
           </div>
           <div class="flex justify-end space-x-3">
             <button
@@ -189,26 +192,41 @@
         <form @submit.prevent="saveAnswer">
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">答案内容</label>
-            <textarea
+            <ElInput
+              type="textarea"
               v-model="answerForm.answer"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
               rows="3"
               placeholder="请输入答案内容..."
               required
-            ></textarea>
+            />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-2">客户打的标签（可选）</label>
+            <ElInput
+              type="text"
+              v-model="answerForm.customer_tag"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              placeholder="回答这问题之后给客户打的标签,默认为空"
+            />
           </div>
           <div class="mb-4">
             <label class="block text-sm font-medium text-gray-700 mb-2">下一个问题（可选）</label>
-            <select
+            <ElSelect
               v-model="answerForm.next_question"
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             >
-              <option value="">无跳转</option>
-              <option v-for="q in questions" :key="q.id" :value="q.id">
+              <ElOption value="">无跳转</ElOption>
+              <ElOption
+                v-for="q in questions"
+                :key="q.id"
+                :value="q.id"
+                :label="q.question.substring(0, 50)"
+              >
                 问题 #{{ q.id }}: {{ q.question.substring(0, 50)
                 }}{{ q.question.length > 50 ? '...' : '' }}
-              </option>
-            </select>
+              </ElOption>
+            </ElSelect>
           </div>
           <div class="flex justify-end space-x-3">
             <button
@@ -232,7 +250,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, watchEffect } from 'vue'
 import {
   getQuestionListApi,
   delQuestionApi,
@@ -243,9 +261,15 @@ import {
   putAnswerListApi,
   delAnswerListApi,
 } from '@/api/bot/qa/questiong'
-import { ElTabs, ElTabPane } from 'element-plus'
+import { ElButton, ElInput, ElOption, ElSelect, ElTabs, ElTabPane } from 'element-plus'
 
-const activeName = ref('服装')
+const props = defineProps({
+  tabParams: {
+    type: Object,
+    default: () => ({}),
+  },
+})
+const emit = defineEmits(['switch-tab'])
 
 // 数据状态
 const questions = ref([
@@ -274,12 +298,15 @@ const editingAnswer = ref(null)
 // 表单数据
 const questionForm = reactive({
   question: '',
+  sale_agent_id: props.tabParams.sale_agent_id,
+  template_id: props.tabParams.id,
 })
 
 const answerForm = reactive({
   question_id: null,
   answer: '',
   next_question: '',
+  customer_tag: '',
 })
 
 onMounted(() => {
@@ -288,10 +315,10 @@ onMounted(() => {
 
 const fetchQuestionList = async () => {
   const res = await getQuestionListApi()
-  if (res.code == 200 && res.data) {
+  if (res.code === 200 && res.data) {
     questions.value = res.data
     const ansRes = await getAnswerListApi()
-    if (ansRes.code == 200 && ansRes.data) {
+    if (ansRes.code === 200 && ansRes.data) {
       answers.value = ansRes.data
     } else {
       answers.value = []
@@ -345,6 +372,8 @@ function saveQuestion() {
   if (editingQuestion.value) {
     // 更新问题
     editingQuestion.value.question = questionForm.question
+    editingQuestion.value.sale_agent_id = props.tabParams.sale_agent_id
+    editingQuestion.value.template_id = props.tabParams.id
     putQuestionListApi(editingQuestion.value).then((res) => {
       if (res.value) {
         const index = questions.value.findIndex((q) => q.id === editingQuestion.value.id)
@@ -360,6 +389,8 @@ function saveQuestion() {
     // 新增问题
     addQuestionListApi({
       question: questionForm.question,
+      sale_agent_id: props.tabParams.sale_agent_id,
+      template_id: props.tabParams.id,
     }).then((res) => {
       if (res.value) {
         questions.value.push({
@@ -369,6 +400,7 @@ function saveQuestion() {
       }
     })
   }
+  fetchQuestionList()
   closeQuestionForm()
 }
 
@@ -377,7 +409,9 @@ function deleteQuestion(questionId) {
     questions.value = questions.value.filter((q) => q.id !== questionId)
     answers.value = answers.value.filter((a) => a.question_id !== questionId)
     expandedQuestions.value.delete(questionId)
-    delQuestionApi([questionId]).then((res) => {})
+    delQuestionApi([questionId]).then((res) => {
+      fetchQuestionList()
+    })
   }
 }
 
@@ -398,6 +432,7 @@ function resetAnswerForm() {
   answerForm.question_id = null
   answerForm.answer = ''
   answerForm.next_question = ''
+  answerForm.customer_tag = ''
 }
 
 function editAnswer(answer) {
@@ -405,6 +440,7 @@ function editAnswer(answer) {
   answerForm.question_id = answer.question_id
   answerForm.answer = answer.answer
   answerForm.next_question = answer.next_question || ''
+  answerForm.customer_tag = answer.customer_tag || ''
   showAnswerForm.value = true
 }
 
@@ -413,6 +449,7 @@ function saveAnswer() {
     // 更新答案
     editingAnswer.value.answer = answerForm.answer
     editingAnswer.value.next_question = answerForm.next_question || null
+    editingAnswer.value.customer_tag = answerForm.customer_tag || ''
     putAnswerListApi(editingAnswer.value).then((res) => {
       if (res.value) {
         const index = answers.value.findIndex((a) => a.id === editingAnswer.value.id)
@@ -421,6 +458,7 @@ function saveAnswer() {
             ...answers.value[index],
             answer: answerForm.answer,
             next_question: answerForm.next_question || null,
+            customer_tag: answerForm.customer_tag || '',
           }
         }
       }
@@ -431,6 +469,7 @@ function saveAnswer() {
       question_id: answerForm.question_id,
       answer: answerForm.answer,
       next_question: answerForm.next_question || null,
+      customer_tag: answerForm.customer_tag || '',
     }
     addAnswerListApi(newAnswers).then((res) => {
       if (res.value) {
@@ -439,6 +478,7 @@ function saveAnswer() {
           question_id: answerForm.question_id,
           answer: answerForm.answer,
           next_question: answerForm.next_question || null,
+          customer_tag: answerForm.customer_tag || '',
         })
       }
     })
@@ -464,4 +504,8 @@ function toggleAnswers(questionId) {
     expandedQuestions.value.add(questionId)
   }
 }
+
+onMounted(async () => {
+  console.log('===================', props)
+})
 </script>
