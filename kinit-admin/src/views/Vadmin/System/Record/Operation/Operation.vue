@@ -12,7 +12,7 @@ import { Dialog } from '@/components/Dialog'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'SystemRecordOperation'
+  name: 'SystemRecordOperation',
 })
 
 const { t } = useI18n()
@@ -23,13 +23,13 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getRecordOperationListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -41,95 +41,95 @@ const tableColumns = reactive<TableColumn[]>([
     label: '操作人编号',
     show: true,
     disabled: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'user_name',
     label: '操作人',
     show: true,
     disabled: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'telephone',
     label: '手机号',
     show: true,
     disabled: true,
-    width: '130px'
+    width: '130px',
   },
   {
     field: 'request_method',
     label: '请求方法',
     show: true,
     disabled: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'client_ip',
     label: '客户端地址',
     width: '130px',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'tags',
     label: '标签',
     width: '130px',
-    show: true
+    show: true,
   },
   {
     field: 'summary',
     label: '操作内容',
-    show: true
+    show: true,
   },
   {
     field: 'description',
     label: '描述',
-    show: false
+    show: false,
   },
   {
     field: 'status_code',
     label: '操作状态',
     show: true,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'route_name',
     label: '接口函数',
     show: false,
-    width: '150px'
+    width: '150px',
   },
   {
     field: 'api_path',
     label: '接口地址',
-    show: false
+    show: false,
   },
   {
     field: 'params',
     label: '请求参数',
-    show: false
+    show: false,
   },
   {
     field: 'browser',
     label: '浏览器',
     show: true,
-    width: '150px'
+    width: '150px',
   },
   {
     field: 'system',
     label: '系统',
     show: false,
-    width: '150px'
+    width: '150px',
   },
   {
     field: 'process_time',
     label: '总耗时',
-    show: true
+    show: true,
   },
   {
     field: 'create_datetime',
     label: '操作时间',
-    show: true
+    show: true,
   },
   {
     field: 'action',
@@ -146,9 +146,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -157,25 +157,25 @@ const searchSchema = reactive<FormSchema[]>([
     label: '手机号',
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
+      clearable: false,
+    },
   },
   {
     field: 'request_method',
     label: '请求方法',
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
+      clearable: false,
+    },
   },
   {
     field: 'summary',
     label: '操作内容',
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
-  }
+      clearable: false,
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -211,7 +211,7 @@ const action = (row: any, type: string) => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

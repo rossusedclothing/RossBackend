@@ -15,7 +15,7 @@ import { useDictStore } from '@/store/modules/dict'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'SystemRecordLogin'
+  name: 'SystemRecordLogin',
 })
 
 const { t } = useI18n()
@@ -38,13 +38,13 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getRecordLoginListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -56,14 +56,14 @@ const tableColumns = reactive<TableColumn[]>([
     label: '编号',
     show: true,
     disabled: true,
-    width: '120px'
+    width: '120px',
   },
   {
     field: 'telephone',
     label: '手机号',
     width: '150px',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'status',
@@ -76,8 +76,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={data.row.status} size="small" disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'platform',
@@ -91,8 +91,8 @@ const tableColumns = reactive<TableColumn[]>([
             <div>{selectDictLabel(platformOptions.value, data.row.platform)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'login_method',
@@ -106,58 +106,58 @@ const tableColumns = reactive<TableColumn[]>([
             <div>{selectDictLabel(loginMethodOptions.value, data.row.login_method)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'ip',
     label: '登录地址',
     show: true,
     disabled: true,
-    width: '150px'
+    width: '150px',
   },
   {
     field: 'address',
     label: '登录地点',
-    show: true
+    show: true,
   },
   {
     field: 'postal_code',
     label: '邮政编码',
-    show: false
+    show: false,
   },
   {
     field: 'area_code',
     label: '地区区号',
-    show: false
+    show: false,
   },
   {
     field: 'browser',
     label: '浏览器',
-    show: true
+    show: true,
   },
   {
     field: 'system',
     label: '操作系统',
-    show: true
+    show: true,
   },
   {
     field: 'response',
     label: '响应信息',
     show: false,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'request',
     label: '请求信息',
     show: false,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'create_datetime',
     label: '创建时间',
     show: true,
-    sortable: true
+    sortable: true,
   },
   {
     field: 'action',
@@ -174,9 +174,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -187,9 +187,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'platform',
@@ -197,10 +197,10 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
-      options: platformOptions.value
-    }
+      options: platformOptions.value,
+    },
   },
   {
     field: 'ip',
@@ -209,9 +209,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'address',
@@ -220,9 +220,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'status',
@@ -230,20 +230,20 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
       options: [
         {
           label: '登录成功',
-          value: true
+          value: true,
         },
         {
           label: '登录失败',
-          value: false
-        }
-      ]
-    }
-  }
+          value: false,
+        },
+      ],
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -279,7 +279,7 @@ const action = (row: any, type: string) => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

@@ -1204,6 +1204,6 @@ export default {
     'tdesign:work-off',
     'tdesign:wry-smile',
     'tdesign:zoom-in',
-    'tdesign:zoom-out'
-  ]
+    'tdesign:zoom-out',
+  ],
 }

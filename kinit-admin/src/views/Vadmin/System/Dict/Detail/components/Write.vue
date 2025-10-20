@@ -11,9 +11,9 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
+    default: () => null,
   },
-  dictTypeId: propTypes.number.def(undefined)
+  dictTypeId: propTypes.number.def(undefined),
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -21,124 +21,124 @@ const formSchema = reactive<FormSchema[]>([
     field: 'dict_type_id',
     label: '字典类型',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Select',
     componentProps: {
       clearable: false,
       style: {
-        width: '100%'
-      }
+        width: '100%',
+      },
     },
     optionApi: async () => {
       const res = await getDictTypeOptionsApi()
       return res.data
     },
     formItemProps: {
-      rules: [required()]
+      rules: [required()],
     },
-    value: props.dictTypeId
+    value: props.dictTypeId,
   },
   {
     field: 'label',
     label: '字典标签',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'value',
     label: '字典键值',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'order',
     label: '排序',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'InputNumber',
     componentProps: {
       style: {
-        width: '50%'
-      }
+        width: '50%',
+      },
     },
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'is_default',
     label: '是否默认',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '是',
-          value: true
+          value: true,
         },
         {
           label: '否',
-          value: false
-        }
-      ]
+          value: false,
+        },
+      ],
     },
     value: false,
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'disabled',
     label: '是否禁用',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '启用',
-          value: false
+          value: false,
         },
         {
           label: '禁用',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
     value: false,
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'remark',
     label: '备注',
     colProps: {
-      span: 24
+      span: 24,
     },
-    component: 'Input'
-  }
+    component: 'Input',
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -161,12 +161,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

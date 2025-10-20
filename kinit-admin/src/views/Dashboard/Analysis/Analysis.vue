@@ -6,7 +6,7 @@ import User from './components/User.vue'
 import { ContentWrap } from '@/components/ContentWrap'
 
 defineOptions({
-  name: 'DashboardAnalysis'
+  name: 'DashboardAnalysis',
 })
 
 const activeName = ref('user')

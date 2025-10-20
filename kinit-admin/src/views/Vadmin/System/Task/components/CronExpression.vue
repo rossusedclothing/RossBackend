@@ -10,7 +10,7 @@ import {
   ElCheckbox,
   ElTable,
   ElTableColumn,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 import type { TableColumnCtx } from 'element-plus'
 import cron from 'cron-validate'
@@ -29,7 +29,7 @@ const tableData = ref([
     day: '*',
     month: '*',
     week: '?',
-    year: ''
+    year: '',
   },
   {
     title: 'Cron 表达式',
@@ -39,8 +39,8 @@ const tableData = ref([
     day: '',
     month: '',
     week: '',
-    year: ''
-  }
+    year: '',
+  },
 ])
 
 const seconds = ref('0')
@@ -220,7 +220,7 @@ const arraySpanMethod = ({ row, column, rowIndex, columnIndex }: SpanMethodProps
   if (rowIndex === 1 && columnIndex >= 1 && columnIndex <= 6) {
     return {
       rowspan: 1,
-      colspan: 6
+      colspan: 6,
     }
   }
 }
@@ -293,8 +293,8 @@ const validate = () => {
       useLastDayOfMonth: true,
       useLastDayOfWeek: true,
       useNearestWeekday: true,
-      useNthWeekdayOfMonth: true
-    }
+      useNthWeekdayOfMonth: true,
+    },
   }).isValid()
   if (result) {
     ElMessage.success('验证成功')

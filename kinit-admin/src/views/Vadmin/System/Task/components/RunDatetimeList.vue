@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { propTypes } from '@/utils/propTypes'
 
 const props = defineProps({
-  expression: propTypes.string.def('')
+  expression: propTypes.string.def(''),
 })
 
 let dateArr = []
@@ -558,7 +558,7 @@ expressionChange(props.expression)
 
 <template>
   <ol class="text-center">
-    <li v-for="(item, index) in resultList" :key="index" class="leading-9"> {{ item }}</li>
+    <li v-for="(item, index) in resultList" :key="index" class="leading-9">{{ item }}</li>
   </ol>
 </template>
 

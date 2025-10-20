@@ -12,8 +12,8 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 // let treeData = ref([] as any[])
@@ -80,94 +80,94 @@ const formSchema = reactive<FormSchema[]>([
     field: 'name',
     label: '角色名称',
     colProps: {
-      span: 12
+      span: 12,
     },
-    component: 'Input'
+    component: 'Input',
   },
   {
     field: 'role_key',
     label: '权限字符',
     colProps: {
-      span: 12
+      span: 12,
     },
-    component: 'Input'
+    component: 'Input',
   },
   {
     field: 'disabled',
     label: '角色状态',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '正常',
-          value: false
+          value: false,
         },
         {
           label: '禁用',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
-    value: false
+    value: false,
   },
   {
     field: 'is_admin',
     label: '最高权限',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '使用',
-          value: true
+          value: true,
         },
         {
           label: '不使用',
-          value: false
-        }
-      ]
+          value: false,
+        },
+      ],
     },
-    value: false
+    value: false,
   },
   {
     field: 'order',
     label: '显示排序',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'InputNumber',
     componentProps: {
       style: {
-        width: '100%'
-      }
-    }
+        width: '100%',
+      },
+    },
   },
   {
     field: 'desc',
     label: '角色描述',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
       rows: 4,
       type: 'textarea',
       style: {
-        width: '600px'
-      }
-    }
-  }
+        width: '600px',
+      },
+    },
+  },
   // {
   //   field: 'menu_ids',
   //   label: '菜单权限',
@@ -218,7 +218,7 @@ const formSchema = reactive<FormSchema[]>([
 const rules = reactive({
   name: [required()],
   role_key: [required()],
-  order: [required()]
+  order: [required()],
 })
 
 const { formRegister, formMethods } = useForm()
@@ -245,14 +245,14 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 // getMenuRoleTreeOptions()
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

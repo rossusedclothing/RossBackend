@@ -5,7 +5,7 @@ import DcitType from './Type/DictType.vue'
 import { ref } from 'vue'
 
 defineOptions({
-  name: 'SystemDict'
+  name: 'SystemDict',
 })
 
 const dictTypeId = ref<number | undefined>()

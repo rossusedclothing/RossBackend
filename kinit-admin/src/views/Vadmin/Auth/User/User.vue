@@ -6,7 +6,7 @@ import {
   delUserListApi,
   putUserListApi,
   getUserApi,
-  postExportUserQueryListApi
+  postExportUserQueryListApi,
 } from '@/api/vadmin/auth/user'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -25,7 +25,7 @@ import PasswordSendEmail from './components/PasswordSendEmail.vue'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'AuthUser'
+  name: 'AuthUser',
 })
 
 const { t } = useI18n()
@@ -36,11 +36,11 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getUserListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
@@ -53,12 +53,12 @@ const { tableRegister, tableState, tableMethods } = useTable({
       {
         page: unref(currentPage),
         limit: unref(pageSize),
-        ...unref(searchParams)
+        ...unref(searchParams),
       },
       headers
     )
     return res
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -79,37 +79,37 @@ const tableColumns = reactive<TableColumn[]>([
     field: 'selection',
     type: 'selection',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'id',
     label: '用户编号',
     width: '100px',
     show: false,
-    disabled: false
+    disabled: false,
   },
   {
     field: 'name',
     label: '姓名',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'nickname',
     label: '昵称',
-    show: true
+    show: true,
   },
   {
     field: 'telephone',
     label: '手机号',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'email',
     label: '邮箱',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'gender',
@@ -123,8 +123,8 @@ const tableColumns = reactive<TableColumn[]>([
             <div>{selectDictLabel(unref(genderOptions), row.gender)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'roles',
@@ -138,8 +138,8 @@ const tableColumns = reactive<TableColumn[]>([
             <div class="text-truncate">{row.roles.map((item) => item.name).join()}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'depts',
@@ -153,8 +153,8 @@ const tableColumns = reactive<TableColumn[]>([
             <div class="text-truncate">{row.depts.map((item) => item.name).join()}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'is_active',
@@ -168,8 +168,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={row.is_active} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'is_staff',
@@ -183,20 +183,20 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={row.is_staff} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'last_login',
     label: '最近登录时间',
     show: true,
-    width: '190px'
+    width: '190px',
   },
   {
     field: 'create_datetime',
     label: '创建时间',
     width: '190px',
-    show: false
+    show: false,
   },
   {
     field: 'action',
@@ -231,9 +231,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -244,12 +244,12 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
+        width: '214px',
+      },
     },
     formItemProps: {
-      labelWidth: '47px'
-    }
+      labelWidth: '47px',
+    },
   },
   {
     field: 'telephone',
@@ -258,9 +258,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'is_active',
@@ -268,19 +268,19 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
       options: [
         {
           label: '正常',
-          value: true
+          value: true,
         },
         {
           label: '停用',
-          value: false
-        }
-      ]
-    }
+          value: false,
+        },
+      ],
+    },
   },
   {
     field: 'is_staff',
@@ -288,20 +288,20 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
       options: [
         {
           label: '是',
-          value: true
+          value: true,
         },
         {
           label: '否',
-          value: false
-        }
-      ]
-    }
-  }
+          value: false,
+        },
+      ],
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -431,7 +431,7 @@ const save = async () => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

@@ -10,76 +10,76 @@ const prefixCls = getPrefixCls('button')
 const props = defineProps({
   size: {
     type: String as PropType<ComponentSize>,
-    default: undefined
+    default: undefined,
   },
   type: {
     type: String as PropType<ButtonType>,
-    default: 'default'
+    default: 'default',
   },
   disabled: {
     type: Boolean,
-    default: false
+    default: false,
   },
   plain: {
     type: Boolean,
-    default: false
+    default: false,
   },
   text: {
     type: Boolean,
-    default: false
+    default: false,
   },
   bg: {
     type: Boolean,
-    default: false
+    default: false,
   },
   link: {
     type: Boolean,
-    default: false
+    default: false,
   },
   round: {
     type: Boolean,
-    default: false
+    default: false,
   },
   circle: {
     type: Boolean,
-    default: false
+    default: false,
   },
   loading: {
     type: Boolean,
-    default: false
+    default: false,
   },
   loadingIcon: {
     type: [String, Object] as PropType<String | Component>,
-    default: undefined
+    default: undefined,
   },
   icon: {
     type: [String, Object] as PropType<String | Component>,
-    default: undefined
+    default: undefined,
   },
   autofocus: {
     type: Boolean,
-    default: false
+    default: false,
   },
   nativeType: {
     type: String as PropType<'button' | 'submit' | 'reset'>,
-    default: 'button'
+    default: 'button',
   },
   autoInsertSpace: {
     type: Boolean,
-    default: false
+    default: false,
   },
   color: {
     type: String,
-    default: ''
+    default: '',
   },
   darker: {
     type: Boolean,
-    default: false
+    default: false,
   },
   tag: {
     type: [String, Object] as PropType<String | Component>,
-    default: 'button'
-  }
+    default: 'button',
+  },
 })
 const emits = defineEmits(['click'])
 const color = computed(() => {

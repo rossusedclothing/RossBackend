@@ -42,7 +42,7 @@ export const useTagsView = () => {
     await nextTick()
     replace({
       path: '/redirect' + path,
-      query: query
+      query: query,
     })
     callback?.()
   }
@@ -58,6 +58,6 @@ export const useTagsView = () => {
     closeOther,
     closeCurrent,
     refreshPage,
-    setTitle
+    setTitle,
   }
 }

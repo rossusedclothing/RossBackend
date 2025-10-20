@@ -294,6 +294,6 @@ export default {
     'ep:watermelon',
     'ep:wind-power',
     'ep:zoom-in',
-    'ep:zoom-out'
-  ]
+    'ep:zoom-out',
+  ],
 }

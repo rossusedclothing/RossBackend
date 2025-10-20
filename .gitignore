@@ -1,10 +1,28 @@
-*/.idea
-/.idea/kinit-master.iml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/prettier.xml
-/.idea/inspectionProfiles/profiles_settings.xml
-/.idea/inspectionProfiles/Project_Default.xml
-/.idea/vcs.xml
-/.idea/data_source_mapping.xml
-/.idea/dataSources.xml
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 后端
+kinit-api/alembic/versions_dev/
+kinit-api/*.sql
+kinit-api/*.sqlmysqldump
+kinit-api/*.exe
+kinit-api/mysqldump
+kinit-api/__pycache__/
+kinit-api/*.pyc
+
+# 前端
+kinit-admin/node_modules/
+kinit-admin/.env
+kinit-admin/.env.*
+kinit-admin/*.log
+
+# 临时文件
+kinit-apiL/
+*.log
+.DS_Store
+Thumbs.db
+*.tmp
+*.temp

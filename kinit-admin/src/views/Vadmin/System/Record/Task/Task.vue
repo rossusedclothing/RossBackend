@@ -15,7 +15,7 @@ import { getTaskRecordListApi } from '@/api/vadmin/system/task'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'SystemRecordTask'
+  name: 'SystemRecordTask',
 })
 
 const { t } = useI18n()
@@ -40,13 +40,13 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getTaskRecordListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -58,24 +58,24 @@ const tableColumns = reactive<TableColumn[]>([
     label: '任务编号',
     show: true,
     disabled: true,
-    width: '240px'
+    width: '240px',
   },
   {
     field: 'name',
     label: '任务名称',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'group',
     label: '任务分组',
     show: true,
-    span: 2
+    span: 2,
   },
   {
     field: 'job_class',
     label: '调用目标',
-    show: true
+    show: true,
   },
   {
     field: 'exec_strategy',
@@ -89,32 +89,32 @@ const tableColumns = reactive<TableColumn[]>([
             <div>{selectDictLabel(execStrategyOptions.value, row.exec_strategy)}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'expression',
     label: '表达式',
     show: true,
-    span: 24
+    span: 24,
   },
   {
     field: 'start_time',
     label: '开始执行时间',
     show: false,
-    width: '200px'
+    width: '200px',
   },
   {
     field: 'end_time',
     label: '执行完成时间',
     width: '200px',
-    show: true
+    show: true,
   },
   {
     field: 'process_time',
     label: '耗时(秒)',
     width: '110px',
-    show: true
+    show: true,
   },
   {
     field: 'retval',
@@ -124,20 +124,20 @@ const tableColumns = reactive<TableColumn[]>([
       default: (data: any) => {
         const row = data.row
         return JSON.parse(row.retval)
-      }
-    }
+      },
+    },
   },
   {
     field: 'exception',
     label: '异常信息',
     show: false,
-    span: 24
+    span: 24,
   },
   {
     field: 'traceback',
     label: '堆栈跟踪',
     show: false,
-    width: '100px'
+    width: '100px',
   },
   {
     field: 'action',
@@ -155,9 +155,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -168,19 +168,19 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: true,
       style: {
-        width: '240px'
-      }
+        width: '240px',
+      },
     },
-    value: job_id
+    value: job_id,
   },
   {
     field: 'name',
     label: '任务名称',
     component: 'Input',
     componentProps: {
-      clearable: true
-    }
-  }
+      clearable: true,
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -223,7 +223,7 @@ if (job_id) {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

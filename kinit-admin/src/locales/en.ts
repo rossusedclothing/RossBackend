@@ -53,7 +53,7 @@ export default {
     // 列设置
     setting: 'Setting',
     selectAll: 'Select all',
-    SerialNumberColumn: 'Index column'
+    SerialNumberColumn: 'Index column',
   },
   lock: {
     lockScreen: 'Lock screen',
@@ -63,13 +63,13 @@ export default {
     backToLogin: 'Back to login',
     entrySystem: 'Entry the system',
     placeholder: 'Please enter the lock screen password',
-    message: 'Lock screen password error'
+    message: 'Lock screen password error',
   },
   error: {
     noPermission: `Sorry, you don't have permission to access this page.`,
     pageError: 'Sorry, the page you visited does not exist.',
     networkError: 'Sorry, the server reported an error.',
-    returnToHome: 'Return to home'
+    returnToHome: 'Return to home',
   },
   setting: {
     projectSetting: 'Project setting',
@@ -102,12 +102,12 @@ export default {
     dynamicRouter: 'Enable dynamic router',
     serverDynamicRouter: 'Server dynamic router',
     reExperienced: 'Please exit the login experience again',
-    fixedMenu: 'Fixed menu'
+    fixedMenu: 'Fixed menu',
   },
   size: {
     default: 'Default',
     large: 'Large',
-    small: 'Small'
+    small: 'Small',
   },
   login: {
     welcome: 'Welcome to the system',
@@ -133,7 +133,7 @@ export default {
     SMSCode: 'sms code',
     getSMSCode: 'get sms code',
     SMSCodePlaceholder: 'Please input sms code',
-    SMSCodeRetry: 'S retry'
+    SMSCodeRetry: 'S retry',
   },
   router: {
     login: 'Login',
@@ -196,10 +196,10 @@ export default {
     videoPlayer: 'Video player',
     // 表格视频预览
     tableVideoPreview: 'Table video preview',
-    cardTable: 'Card table'
+    cardTable: 'Card table',
   },
   permission: {
-    hasPermission: 'Please set the operation permission value'
+    hasPermission: 'Please set the operation permission value',
   },
   analysis: {
     newUser: 'New user',
@@ -235,7 +235,7 @@ export default {
     thursday: 'Thursday',
     friday: 'Friday',
     saturday: 'Saturday',
-    sunday: 'Sunday'
+    sunday: 'Sunday',
   },
   workplace: {
     goodMorning: 'Good morning',
@@ -258,7 +258,7 @@ export default {
     dynamic: 'Dynamic',
     push: 'push',
     pushCode: 'Archer push code to Github',
-    follow: 'Follow'
+    follow: 'Follow',
   },
   formDemo: {
     input: 'Input',
@@ -343,13 +343,13 @@ export default {
     upload: 'Upload',
     // 用户头像
     userAvatar: 'User avatar',
-    iconPicker: 'Icon picker'
+    iconPicker: 'Icon picker',
   },
   guideDemo: {
     guide: 'Guide',
     start: 'Start',
     message:
-      'The guide page is very useful for some people who enter the project for the first time. You can briefly introduce the functions of the project. The boot page is based on driver.js'
+      'The guide page is very useful for some people who enter the project for the first time. You can briefly introduce the functions of the project. The boot page is based on driver.js',
   },
   iconDemo: {
     icon: 'Icon',
@@ -358,12 +358,12 @@ export default {
     recommendedUse: 'Recommended use',
     recommendeDes:
       'Iconify component basically contains all icons. You can query any icon you want. And packaging will only package the icons used.',
-    accessAddress: 'Access address'
+    accessAddress: 'Access address',
   },
   echartDemo: {
     echart: 'Echart',
     echartDes:
-      'Based on the secondary packaging components of eckarts, the width is adaptive. The corresponding chart can be displayed by passing in the options and height attributes.'
+      'Based on the secondary packaging components of eckarts, the width is adaptive. The corresponding chart can be displayed by passing in the options and height attributes.',
   },
   countToDemo: {
     countTo: 'CountTo',
@@ -377,13 +377,13 @@ export default {
     startVal: 'Start val',
     start: 'Start',
     pause: 'Pause',
-    resume: 'Resume'
+    resume: 'Resume',
   },
   watermarkDemo: {
     watermark: 'Watermark',
     createdWatermark: 'Created watermark',
     clearWatermark: 'Clear watermark',
-    resetWatermark: 'Reset watermark'
+    resetWatermark: 'Reset watermark',
   },
   qrcodeDemo: {
     qrcode: 'Qrcode',
@@ -396,21 +396,21 @@ export default {
     invalid: 'Invalid',
     logoConfig: 'Logo config',
     logoStyle: 'Logo style',
-    size: 'size config'
+    size: 'size config',
   },
   highlightDemo: {
     highlight: 'Highlight',
     message: 'The best time to plant a tree is ten years ago, followed by now.',
     keys1: 'ten years ago',
-    keys2: 'now'
+    keys2: 'now',
   },
   infotipDemo: {
     infotip: 'Infotip',
     infotipDes: 'Secondary packaging of components based on Highlight',
-    title: 'matters needing attention'
+    title: 'matters needing attention',
   },
   levelDemo: {
-    menu: 'Multi level menu cache'
+    menu: 'Multi level menu cache',
   },
   searchDemo: {
     search: 'Search',
@@ -433,10 +433,10 @@ export default {
     // 还原单选框
     restoreRadio: 'Restore radio',
     loading: 'Loading',
-    reset: 'Reset'
+    reset: 'Reset',
   },
   stickyDemo: {
-    sticky: 'Sticky'
+    sticky: 'Sticky',
   },
   tableDemo: {
     table: 'Table',
@@ -474,13 +474,13 @@ export default {
     preview: 'Preview',
     showOrHiddenSortable: 'Show or hidden sortable',
     videoPreview: 'Video preview',
-    cardTable: 'Card table'
+    cardTable: 'Card table',
   },
   richText: {
     richText: 'Rich text',
     richTextDes: 'Secondary packaging based on wangeditor',
     jsonEditor: 'JSON Editor',
-    jsonEditorDes: 'Secondary packaging based on vue-json-pretty'
+    jsonEditorDes: 'Secondary packaging based on vue-json-pretty',
   },
   dialogDemo: {
     dialog: 'Dialog',
@@ -488,12 +488,12 @@ export default {
     open: 'Open',
     close: 'Close',
     combineWithForm: 'Combine with form',
-    submit: 'Submit'
+    submit: 'Submit',
   },
   imageViewerDemo: {
     open: 'Open',
     imageViewer: 'Image viewer',
-    imageViewerDes: 'Secondary packaging of ImageViewer components based on ElementPlus'
+    imageViewerDes: 'Secondary packaging of ImageViewer components based on ElementPlus',
   },
   descriptionsDemo: {
     descriptions: 'Descriptions',
@@ -503,7 +503,7 @@ export default {
     phone: 'Phone',
     email: 'Email',
     addr: 'Address',
-    form: 'Combined with Form component'
+    form: 'Combined with Form component',
   },
   exampleDemo: {
     title: 'Title',
@@ -517,7 +517,7 @@ export default {
     important: 'Important',
     content: 'Content',
     save: 'Save',
-    detail: 'Detail'
+    detail: 'Detail',
   },
   userDemo: {
     title: 'User management',
@@ -544,7 +544,7 @@ export default {
     status: 'Status',
     enable: 'Enable',
     disable: 'Disable',
-    superiorDepartment: 'Superior department'
+    superiorDepartment: 'Superior department',
   },
   menu: {
     menuName: 'Menu name',
@@ -562,16 +562,16 @@ export default {
     noTagsView: 'No tags view',
     activeMenu: 'Active menu',
     canTo: 'Can to',
-    name: 'Name'
+    name: 'Name',
   },
   role: {
     roleName: 'Role name',
     role: 'Role',
     // 菜单分配
-    menu: 'Menu allocation'
+    menu: 'Menu allocation',
   },
   inputPasswordDemo: {
     title: 'InputPassword',
-    inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus'
-  }
+    inputPasswordDes: 'Secondary packaging of Input components based on ElementPlus',
+  },
 }

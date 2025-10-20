@@ -9,7 +9,7 @@ import {
   ElTooltip,
   UploadProps,
   ElMessage,
-  ElPopconfirm
+  ElPopconfirm,
 } from 'element-plus'
 import { getImportTemplateApi, postImportUserApi } from '@/api/vadmin/auth/user'
 import { ref } from 'vue'
@@ -40,7 +40,7 @@ const handleUpload = async (file) => {
   tableData.value.push({
     filename: file.file.name,
     filesize: (file.file.size / 1024).toFixed(1) + 'KB',
-    status: '上传成功'
+    status: '上传成功',
   })
   importFile.value = file.file
 }
@@ -64,7 +64,7 @@ const handleImport = async () => {
         filename: importFile.value.name,
         success_number: res.data.success_number,
         error_number: res.data.error_number,
-        error_url: res.data.error_url
+        error_url: res.data.error_url,
       })
       successTotalNumber.value += res.data.success_number
       handleDelete()

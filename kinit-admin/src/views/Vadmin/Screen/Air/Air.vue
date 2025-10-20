@@ -34,7 +34,7 @@ const generateData = () => {
     pm25: randomNumberStr(5, 50),
     temp: randomNumberStr(5, 50),
     hum: randomNumberStr(5, 50),
-    hcho: randomNumberStr(5, 50)
+    hcho: randomNumberStr(5, 50),
   }
 
   menus.value = [
@@ -45,7 +45,7 @@ const generateData = () => {
     '人力资源部',
     '技术支持部',
     '客服部',
-    '老板办公室'
+    '老板办公室',
   ]
 
   centerBottomData.value = []
@@ -58,7 +58,7 @@ const generateData = () => {
       randomNumberStr(5, 50),
       randomNumberStr(5, 50),
       randomNumberStr(5, 50),
-      moment(new Date()).format('YYYY-MM-DD HH:mm:ss')
+      moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
     ])
   }
 
@@ -66,7 +66,7 @@ const generateData = () => {
     pm25: randArray(14, 10, 50),
     temp: randArray(14, 10, 50),
     hum: randArray(14, 10, 50),
-    hcho: randArray(14, 10, 50)
+    hcho: randArray(14, 10, 50),
   }
 
   activeIndex.value++

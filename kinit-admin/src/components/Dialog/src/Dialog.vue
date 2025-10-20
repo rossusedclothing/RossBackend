@@ -12,7 +12,7 @@ const props = defineProps({
   fullscreen: propTypes.bool.def(true),
   top: propTypes.string.def('8vh'),
   height: propTypes.oneOfType([String, Number]).def('500px'),
-  width: propTypes.oneOfType([String, Number]).def('700px')
+  width: propTypes.oneOfType([String, Number]).def('700px'),
 })
 
 const getBindValue = computed(() => {
@@ -47,13 +47,13 @@ watch(
     }
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 
 const dialogStyle = computed(() => {
   return {
-    height: unref(dialogHeight)
+    height: unref(dialogHeight),
   }
 })
 </script>

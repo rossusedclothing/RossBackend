@@ -98,14 +98,14 @@ import {
   ElMessageBox,
   ElMessage,
   ElSelect,
-  ElOption
+  ElOption,
 } from 'element-plus'
 import {
   getApiKeysListApi,
   addApiKeyApi,
   updateApiKeyApi,
   delApiKeyApi,
-  getApiKeyDetailApi
+  getApiKeyDetailApi,
 } from '@/api/bot/panel/panel'
 
 const list = ref<any[]>([])
@@ -120,7 +120,7 @@ const form = reactive({
   platform: '',
   key_value: '',
   useapp_name: '',
-  desc: ''
+  desc: '',
 })
 
 const platformList = reactive([
@@ -132,7 +132,7 @@ const platformList = reactive([
   { label: 'tongyi', value: 'tongyi' },
   { label: 'coze', value: 'coze' },
   { label: 'huosan', value: 'huosan' },
-  { label: 'other', value: 'other' }
+  { label: 'other', value: 'other' },
 ])
 
 const formRef = ref()
@@ -181,7 +181,7 @@ const onEdit = async (row: any) => {
       platform: row.platform,
       key_value: row.key_value,
       useapp_name: row.useapp_name,
-      desc: row.desc
+      desc: row.desc,
     })
   }
   showDialog.value = true
@@ -190,7 +190,7 @@ const onEdit = async (row: any) => {
 const onView = async (row: any) => {
   const res: any = await getApiKeyDetailApi(row.id)
   ElMessageBox.alert(JSON.stringify(res.data || row, null, 2), 'ApiKey 详情', {
-    dangerouslyUseHTMLString: false
+    dangerouslyUseHTMLString: false,
   })
 }
 

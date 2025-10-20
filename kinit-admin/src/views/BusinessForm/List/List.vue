@@ -21,19 +21,58 @@
       <el-table-column fixed type="selection" width="50" />
       <el-table-column prop="id" label="ID" width="80" />
       <el-table-column prop="code" label="客户名称" tooltipEffect width="100">
-        <!--        <template #default="scope">-->
-        <!--          <label-->
-        <!--            style="-->
-        <!--              display: -webkit-box;-->
-        <!--              -webkit-line-clamp: 2;-->
-        <!--              -webkit-box-orient: vertical;-->
-        <!--              overflow: hidden;-->
-        <!--              word-break: break-all;-->
-        <!--            "-->
-        <!--          ></label>-->
-        <!--        </template>-->
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.name }}</label
+          >
+        </template>
       </el-table-column>
-      <el-table-column prop="type" label="公司规模" width="100" />
+      <el-table-column prop="position" label="职位" width="100" />
+      <el-table-column prop="region" label="地区" width="100" />
+      <el-table-column prop="factory_spec" label="公司规模" width="100" />
+      <el-table-column prop="product" label="产品" width="100" />
+      <el-table-column prop="website" label="网站链接" width="100" />
+      <el-table-column prop="has_export_experience" label="有没有做过外贸" width="100">
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.has_export_experience == 1 ? '做过' : '未做过' }}</label
+          >
+        </template>
+      </el-table-column>
+      <el-table-column prop="export_market" label="产品出口市场" width="100" />
+      <el-table-column prop="student_identity" label="学员身份" width="100" />
+      <el-table-column prop="num_members_tradeteam" label="外贸团队人数" width="100" />
+      <el-table-column prop="company_size" label="公司人数规模" width="100" />
+      <el-table-column prop="create_datetime" label="表单创建时间" width="100" />
+      <el-table-column prop="update_datetime" label="表单修改时间" width="100" />
+      <el-table-column prop="is_delete" label="删除状态" width="100">
+        <template #default="scope">
+          <label
+            style="
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+              overflow: hidden;
+              word-break: break-all;
+            "
+            >{{ scope.row.is_delete == 1 ? '已删除' : '未删除' }}</label
+          >
+        </template>
+      </el-table-column>
       <el-table-column fixed="right" label="操作" width="160">
         <template #default="scope">
           <el-button size="small" type="primary" @click="editRow(scope.row)">编辑</el-button>
@@ -62,8 +101,13 @@ import {
   ElMessageBox,
   ElPagination,
   ElTable,
-  ElTableColumn
+  ElTableColumn,
 } from 'element-plus'
+
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 
 const tableData = ref<any[]>([])
 const loading = ref(false)
@@ -76,7 +120,7 @@ const searchForm = reactive({
   page: 1,
   limit: 10,
   v_order: 'desc',
-  v_order_field: undefined
+  v_order_field: undefined,
 })
 
 const form = reactive({
@@ -85,7 +129,7 @@ const form = reactive({
   type: 'trial',
   status: 'active',
   user_limit: 1,
-  duration_days: 30
+  duration_days: 30,
 })
 
 const loadData = async () => {
@@ -101,28 +145,39 @@ const loadData = async () => {
 }
 
 const editRow = (row: any) => {
+  /*#ref-o：
   editMode.value = true
   Object.assign(form, row)
   dialogVisible.value = true
+  */
+  // 构建编辑页面的URL，传递记录ID
+  const editUrl = `/businessform/publicform?id=${row.id}`
+
+  // 方式1：使用 router.push 跳转（推荐）
+  router.push(editUrl)
+
+  // 方式2：或者使用 window.location.href 跳转
+  // window.location.href = editUrl
+
 }
 
 /*~~
-    const saveData = async () => {
-        try {
-            if (editMode.value && form.id) {
-                await updateRecord(form.id, form)
-                ElMessage.success('更新成功')
-            } else {
-                await createRecord(form)
-                ElMessage.success('创建成功')
+        const saveData = async () => {
+            try {
+                if (editMode.value && form.id) {
+                    await updateRecord(form.id, form)
+                    ElMessage.success('更新成功')
+                } else {
+                    await createRecord(form)
+                    ElMessage.success('创建成功')
+                }
+                dialogVisible.value = false
+                loadData()
+            } catch {
+                ElMessage.error('操作失败')
             }
-            dialogVisible.value = false
-            loadData()
-        } catch {
-            ElMessage.error('操作失败')
         }
-    }
-    */
+        */
 
 const handleDelete = async () => {
   ElMessageBox.confirm('确认删除选中的记录吗？', '提示').then(async () => {

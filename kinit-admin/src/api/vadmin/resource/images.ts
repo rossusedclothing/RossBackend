@@ -12,7 +12,7 @@ export const addImagesApi = (data: any): Promise<IResponse> => {
   return request.post({
     url: '/vadmin/resource/images',
     headersType: 'multipart/form-data',
-    data
+    data,
   })
 }
 

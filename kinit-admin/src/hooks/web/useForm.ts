@@ -149,11 +149,11 @@ export const useForm = () => {
     getFormExpose: async () => {
       await getForm()
       return unref(formRef)
-    }
+    },
   }
 
   return {
     formRegister: register,
-    formMethods: methods
+    formMethods: methods,
   }
 }

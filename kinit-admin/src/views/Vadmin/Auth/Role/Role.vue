@@ -5,7 +5,7 @@ import {
   addRoleListApi,
   delRoleListApi,
   putRoleListApi,
-  getRoleApi
+  getRoleApi,
 } from '@/api/vadmin/auth/role'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -22,7 +22,7 @@ import { useDictStore } from '@/store/modules/dict'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'AuthRole'
+  name: 'AuthRole',
 })
 
 const { t } = useI18n()
@@ -33,17 +33,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getRoleListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delRoleListApi(value)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -64,18 +64,18 @@ const tableColumns = reactive<TableColumn[]>([
     field: 'id',
     label: '角色编号',
     show: false,
-    disabled: false
+    disabled: false,
   },
   {
     field: 'name',
     label: '角色名称',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'role_key',
     label: '权限字符',
-    show: true
+    show: true,
   },
   {
     field: 'data_range',
@@ -89,13 +89,13 @@ const tableColumns = reactive<TableColumn[]>([
             <div>{selectDictLabel(unref(dataRangeOptions), row.data_range.toString())}</div>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'order',
     label: '显示顺序',
-    show: true
+    show: true,
   },
   {
     field: 'disabled',
@@ -109,8 +109,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.disabled} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'is_admin',
@@ -124,13 +124,13 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={row.is_admin} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'create_datetime',
     label: '创建时间',
-    show: true
+    show: true,
   },
   {
     field: 'action',
@@ -176,9 +176,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -189,9 +189,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'role_key',
@@ -200,9 +200,9 @@ const searchSchema = reactive<FormSchema[]>([
     componentProps: {
       clearable: false,
       style: {
-        width: '214px'
-      }
-    }
+        width: '214px',
+      },
+    },
   },
   {
     field: 'disabled',
@@ -210,20 +210,20 @@ const searchSchema = reactive<FormSchema[]>([
     component: 'Select',
     componentProps: {
       style: {
-        width: '214px'
+        width: '214px',
       },
       options: [
         {
           label: '正常',
-          value: false
+          value: false,
         },
         {
           label: '停用',
-          value: true
-        }
-      ]
-    }
-  }
+          value: true,
+        },
+      ],
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -322,7 +322,7 @@ const save = async () => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @refresh="getList"

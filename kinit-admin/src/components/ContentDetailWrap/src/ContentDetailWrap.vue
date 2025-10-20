@@ -9,7 +9,7 @@ const prefixCls = getPrefixCls('content-detail-wrap')
 
 defineProps({
   title: propTypes.string.def(''),
-  message: propTypes.string.def('')
+  message: propTypes.string.def(''),
 })
 </script>
 

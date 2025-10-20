@@ -5,7 +5,7 @@ import {
   addDictTypeListApi,
   delDictTypeListApi,
   putDictTypeListApi,
-  getDictTypeApi
+  getDictTypeApi,
 } from '@/api/vadmin/system/dict'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -28,11 +28,11 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const res = await getDictTypeListApi({
       page: unref(currentPage),
       limit: unref(pageSize),
-      ...unref(searchParams)
+      ...unref(searchParams),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
@@ -41,7 +41,7 @@ const { tableRegister, tableState, tableMethods } = useTable({
       await clearCurrentRow()
     }
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading, total, pageSize, currentPage } = tableState
@@ -53,13 +53,13 @@ const tableColumns = reactive<TableColumn[]>([
     label: '字典编号',
     width: '80px',
     show: false,
-    disabled: false
+    disabled: false,
   },
   {
     field: 'dict_name',
     label: '字典名称',
     show: true,
-    disabled: true
+    disabled: true,
   },
   {
     field: 'dict_type',
@@ -85,8 +85,8 @@ const tableColumns = reactive<TableColumn[]>([
             <span>{row.dict_type}</span>
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'disabled',
@@ -101,18 +101,18 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.disabled} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'remark',
     label: '备注',
-    show: false
+    show: false,
   },
   {
     field: 'create_datetime',
     label: '创建时间',
-    show: false
+    show: false,
   },
   {
     field: 'action',
@@ -138,9 +138,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const searchSchema = reactive<FormSchema[]>([
@@ -148,24 +148,24 @@ const searchSchema = reactive<FormSchema[]>([
     field: 'dict_name',
     label: '字典名称',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
+      clearable: false,
+    },
   },
   {
     field: 'dict_type',
     label: '字典类型',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     componentProps: {
-      clearable: false
-    }
-  }
+      clearable: false,
+    },
+  },
 ])
 
 const searchParams = ref({})
@@ -265,7 +265,7 @@ const clearCurrentRow = async () => {
       :data="dataList"
       :loading="loading"
       :pagination="{
-        total
+        total,
       }"
       @register="tableRegister"
       @current-change="handleCurrentChange"

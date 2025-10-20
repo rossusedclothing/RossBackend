@@ -13,9 +13,9 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
+    default: () => null,
   },
-  parentId: propTypes.number.def(undefined)
+  parentId: propTypes.number.def(undefined),
 })
 
 const toIconify = () => {
@@ -27,57 +27,57 @@ const formSchema = reactive<FormSchema[]>([
     field: 'parent_id',
     label: '上级菜单',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'TreeSelect',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       checkStrictly: true,
       placeholder: '请选择上级菜单',
       nodeKey: 'value',
-      defaultExpandAll: true
+      defaultExpandAll: true,
     },
     optionApi: async () => {
       const res = await getMenuTreeOptionsApi()
       return res.data
     },
-    value: props.parentId
+    value: props.parentId,
   },
   {
     field: 'menu_type',
     label: '菜单类型',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '目录',
-          value: '0'
+          value: '0',
         },
         {
           label: '菜单',
-          value: '1'
+          value: '1',
         },
         {
           label: '按钮',
-          value: '2'
-        }
-      ]
+          value: '2',
+        },
+      ],
     },
-    value: '0'
+    value: '0',
   },
   {
     field: 'icon',
     label: '菜单图标',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     formItemProps: {
@@ -95,144 +95,144 @@ const formSchema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
+        },
+      },
     },
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'title',
     label: '菜单名称',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'order',
     label: '显示排序',
     component: 'InputNumber',
     colProps: {
-      span: 12
+      span: 12,
     },
     componentProps: {
       style: {
-        width: '100%'
-      }
-    }
+        width: '100%',
+      },
+    },
   },
   {
     field: 'path',
     label: '路由地址',
     component: 'Input',
     colProps: {
-      span: 12
+      span: 12,
     },
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'component',
     label: '组件路径',
     component: 'Input',
     colProps: {
-      span: 12
+      span: 12,
     },
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'redirect',
     label: '重定向',
     component: 'Input',
     colProps: {
-      span: 12
+      span: 12,
     },
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'hidden',
     label: '显示状态',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '显示',
-          value: false
+          value: false,
         },
         {
           label: '隐藏',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
     value: false,
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'disabled',
     label: '菜单状态',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '正常',
-          value: false
+          value: false,
         },
         {
           label: '停用',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
     value: false,
-    ifshow: (formModel) => formModel.menu_type !== '2'
+    ifshow: (formModel) => formModel.menu_type !== '2',
   },
   {
     field: 'perms',
     label: '权限标识',
     component: 'Input',
     colProps: {
-      span: 12
+      span: 12,
     },
-    ifshow: (formModel) => formModel.menu_type === '2'
+    ifshow: (formModel) => formModel.menu_type === '2',
   },
   {
     field: 'noCache',
     label: '页面缓存',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '缓存',
-          value: false
+          value: false,
         },
         {
           label: '不缓存',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
     value: false,
     ifshow: (formModel) => formModel.menu_type === '1',
-    labelMessage: '开启页面缓存,需要组件名称必须与xx.vue页面的name一致'
-  }
+    labelMessage: '开启页面缓存,需要组件名称必须与xx.vue页面的name一致',
+  },
 ])
 
 const rules = reactive({
@@ -242,7 +242,7 @@ const rules = reactive({
   hidden: [required()],
   path: [required()],
   noCache: [required()],
-  order: [required()]
+  order: [required()],
 })
 
 const { formRegister, formMethods } = useForm()
@@ -265,12 +265,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

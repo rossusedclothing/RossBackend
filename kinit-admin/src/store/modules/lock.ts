@@ -16,13 +16,13 @@ export const useLockStore = defineStore('lock', {
       lockInfo: {
         // isLock: false, // 是否锁定屏幕
         // password: '' // 锁屏密码
-      }
+      },
     }
   },
   getters: {
     getLockInfo(): lockInfo {
       return this.lockInfo
-    }
+    },
   },
   actions: {
     setLockInfo(lockInfo: lockInfo) {
@@ -38,9 +38,9 @@ export const useLockStore = defineStore('lock', {
       } else {
         return false
       }
-    }
+    },
   },
-  persist: true
+  persist: true,
 })
 
 export const useLockStoreWithOut = () => {

@@ -86,14 +86,14 @@ import {
   ElFormItem,
   ElPagination,
   ElMessageBox,
-  ElMessage
+  ElMessage,
 } from 'element-plus'
 import {
   getAppUpdateListApi,
   addAppUpdateApi,
   updateAppUpdateApi,
   delAppUpdateApi,
-  getAppUpdateDetailApi
+  getAppUpdateDetailApi,
 } from '@/api/bot/panel/panel'
 
 const list = ref<any[]>([])
@@ -108,7 +108,7 @@ const form = reactive({ app_name: '', version: '', update_json: '', desc: '' })
 const load = async () => {
   const res: any = await getAppUpdateListApi({
     ...paging,
-    ...filters
+    ...filters,
   })
   if (res?.data) {
     list.value = res.data || []

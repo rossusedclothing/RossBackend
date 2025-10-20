@@ -14,10 +14,10 @@ defineProps({
   schema: {
     type: Array as PropType<Array<string | InfoTipSchema>>,
     required: true,
-    default: () => []
+    default: () => [],
   },
   showIndex: propTypes.bool.def(true),
-  highlightColor: propTypes.string.def('var(--el-color-primary)')
+  highlightColor: propTypes.string.def('var(--el-color-primary)'),
 })
 
 const emit = defineEmits(['click'])
@@ -31,7 +31,7 @@ const keyClick = (key: string) => {
   <div
     :class="[
       prefixCls,
-      'p-20px mb-20px border-1px border-solid border-[var(--el-color-primary)] bg-[var(--el-color-primary-light-9)]'
+      'p-20px mb-20px border-1px border-solid border-[var(--el-color-primary)] bg-[var(--el-color-primary-light-9)]',
     ]"
   >
     <div v-if="title" :class="[`${prefixCls}__header`, 'flex items-center']">

@@ -24,20 +24,20 @@ const tabs = [
     name: 'apiKeys',
     label: 'API密钥管理',
     component: ApiKeysPage,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'appUpdate',
     label: '应用更新',
     component: AppUpdate,
-    hidden: false
+    hidden: false,
   },
   {
     name: 'feedback',
     label: '用户反馈',
     component: FeedbackPage,
-    hidden: false // 可以根据需要显示/隐藏
-  }
+    hidden: false, // 可以根据需要显示/隐藏
+  },
 ]
 
 // 计算属性：可见的标签页

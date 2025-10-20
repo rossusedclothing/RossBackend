@@ -9,8 +9,8 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -18,59 +18,59 @@ const formSchema = reactive<FormSchema[]>([
     field: 'dict_name',
     label: '字典名称',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'dict_type',
     label: '字典类型',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'Input',
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'disabled',
     label: '是否禁用',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '启用',
-          value: false
+          value: false,
         },
         {
           label: '禁用',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
     value: false,
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'remark',
     label: '备注',
     colProps: {
-      span: 24
+      span: 24,
     },
-    component: 'Input'
-  }
+    component: 'Input',
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -93,12 +93,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

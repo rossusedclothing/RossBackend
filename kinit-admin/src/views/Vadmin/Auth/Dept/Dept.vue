@@ -4,7 +4,7 @@ import {
   getDeptListApi,
   delDeptListApi,
   addDeptListApi,
-  putDeptListApi
+  putDeptListApi,
 } from '@/api/vadmin/auth/dept'
 import { useTable } from '@/hooks/web/useTable'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -16,7 +16,7 @@ import { Dialog } from '@/components/Dialog'
 import { BaseButton } from '@/components/Button'
 
 defineOptions({
-  name: 'AuthDept'
+  name: 'AuthDept',
 })
 
 const { t } = useI18n()
@@ -26,17 +26,17 @@ const { tableRegister, tableState, tableMethods } = useTable({
     const { pageSize, currentPage } = tableState
     const res = await getDeptListApi({
       page: unref(currentPage),
-      limit: unref(pageSize)
+      limit: unref(pageSize),
     })
     return {
       list: res.data || [],
-      total: res.count || 0
+      total: res.count || 0,
     }
   },
   fetchDelApi: async (value) => {
     const res = await delDeptListApi(value)
     return res.code === 200
-  }
+  },
 })
 
 const { dataList, loading } = tableState
@@ -47,38 +47,38 @@ const tableColumns = reactive<TableColumn[]>([
     field: 'name',
     label: '部门名称',
     disabled: true,
-    show: true
+    show: true,
   },
   {
     field: 'dept_key',
     label: '部门标识',
-    show: true
+    show: true,
   },
   {
     field: 'owner',
     label: '负责人',
-    show: true
+    show: true,
   },
   {
     field: 'phone',
     label: '联系电话',
-    show: true
+    show: true,
   },
   {
     field: 'email',
     label: '邮箱',
-    show: true
+    show: true,
   },
   {
     field: 'desc',
     label: '描述',
-    show: true
+    show: true,
   },
   {
     field: 'order',
     label: '排序',
     width: '120px',
-    show: true
+    show: true,
   },
   {
     field: 'disabled',
@@ -93,8 +93,8 @@ const tableColumns = reactive<TableColumn[]>([
             <ElSwitch modelValue={!row.disabled} disabled />
           </>
         )
-      }
-    }
+      },
+    },
   },
   {
     field: 'action',
@@ -123,9 +123,9 @@ const tableColumns = reactive<TableColumn[]>([
             </BaseButton>
           </>
         )
-      }
-    }
-  }
+      },
+    },
+  },
 ])
 
 const delLoading = ref(false)

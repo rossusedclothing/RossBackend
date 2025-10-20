@@ -19,7 +19,7 @@ export const useRenderSelect = () => {
               default: () =>
                 option?.options?.map((v) => {
                   return renderSelectOptionItem(item, v)
-                })
+                }),
             }}
           </ElOptionGroup>
         )
@@ -46,13 +46,13 @@ export const useRenderSelect = () => {
         value={option[valueAlias || 'value']}
       >
         {{
-          default: () => (optionDefaultSlot ? optionDefaultSlot(option) : undefined)
+          default: () => (optionDefaultSlot ? optionDefaultSlot(option) : undefined),
         }}
       </ElOption>
     )
   }
 
   return {
-    renderSelectOptions
+    renderSelectOptions,
   }
 }

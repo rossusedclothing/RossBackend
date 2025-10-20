@@ -11,9 +11,9 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
+    default: () => null,
   },
-  parentId: propTypes.number.def(undefined)
+  parentId: propTypes.number.def(undefined),
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -21,116 +21,116 @@ const formSchema = reactive<FormSchema[]>([
     field: 'parent_id',
     label: '上级部门',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'TreeSelect',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       checkStrictly: true,
       placeholder: '请选择上级部门',
       nodeKey: 'value',
-      defaultExpandAll: true
+      defaultExpandAll: true,
     },
     optionApi: async () => {
       const res = await getDeptTreeOptionsApi()
       return res.data
     },
-    value: props.parentId
+    value: props.parentId,
   },
   {
     field: 'name',
     label: '部门名称',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'dept_key',
     label: '部门标识',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'owner',
     label: '负责人',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'phone',
     label: '联系电话',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'email',
     label: '邮箱',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'desc',
     label: '描述',
     component: 'Input',
     colProps: {
-      span: 12
-    }
+      span: 12,
+    },
   },
   {
     field: 'order',
     label: '显示排序',
     component: 'InputNumber',
     colProps: {
-      span: 12
+      span: 12,
     },
     componentProps: {
       style: {
-        width: '100%'
-      }
-    }
+        width: '100%',
+      },
+    },
   },
   {
     field: 'disabled',
     label: '是否禁用',
     colProps: {
-      span: 12
+      span: 12,
     },
     component: 'RadioGroup',
     componentProps: {
       style: {
-        width: '100%'
+        width: '100%',
       },
       options: [
         {
           label: '正常',
-          value: false
+          value: false,
         },
         {
           label: '停用',
-          value: true
-        }
-      ]
+          value: true,
+        },
+      ],
     },
-    value: false
-  }
+    value: false,
+  },
 ])
 
 const rules = reactive({
   name: [required()],
   dept_key: [required()],
   disabled: [required()],
-  order: [required()]
+  order: [required()],
 })
 
 const { formRegister, formMethods } = useForm()
@@ -153,12 +153,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

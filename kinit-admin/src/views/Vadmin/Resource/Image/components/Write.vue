@@ -9,7 +9,7 @@ import type {
   UploadUserFile,
   UploadRequestOptions,
   UploadFile,
-  UploadFiles
+  UploadFiles,
 } from 'element-plus'
 import { Icon } from '@/components/Icon'
 
@@ -18,8 +18,8 @@ const { required } = useValidator()
 const props = defineProps({
   currentRow: {
     type: Object as PropType<any>,
-    default: () => null
-  }
+    default: () => null,
+  },
 })
 
 const formSchema = reactive<FormSchema[]>([
@@ -27,31 +27,31 @@ const formSchema = reactive<FormSchema[]>([
     field: 'upload_method',
     label: '上传方式',
     colProps: {
-      span: 24
+      span: 24,
     },
     component: 'RadioGroup',
     componentProps: {
       options: [
         {
           label: '同时上传',
-          value: '1'
+          value: '1',
         },
         {
           label: '按顺序上传',
-          value: '2'
-        }
-      ]
+          value: '2',
+        },
+      ],
     },
     value: '1',
     formItemProps: {
-      rules: [required()]
-    }
+      rules: [required()],
+    },
   },
   {
     field: 'images',
     label: '',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       rules: [required()],
@@ -102,10 +102,10 @@ const formSchema = reactive<FormSchema[]>([
               </ElUpload>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const { formRegister, formMethods } = useForm()
@@ -177,12 +177,12 @@ watch(
   },
   {
     deep: true,
-    immediate: true
+    immediate: true,
   }
 )
 
 defineExpose({
-  submit
+  submit,
 })
 </script>
 

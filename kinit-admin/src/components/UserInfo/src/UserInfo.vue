@@ -28,7 +28,7 @@ const loginOut = () => {
   ElMessageBox.confirm(t('common.loginOutMessage'), t('common.reminder'), {
     confirmButtonText: t('common.ok'),
     cancelButtonText: t('common.cancel'),
-    type: 'warning'
+    type: 'warning',
   })
     .then(() => {
       authStore.logout()

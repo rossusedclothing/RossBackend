@@ -11,7 +11,7 @@ import { ContentWrap } from '@/components/ContentWrap'
 import { getSystemSettingsTabsApi } from '@/api/vadmin/system/settings'
 
 defineOptions({
-  name: 'SystemSettings'
+  name: 'SystemSettings',
 })
 
 const activeName = ref('web_basic')

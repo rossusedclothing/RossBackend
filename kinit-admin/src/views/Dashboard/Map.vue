@@ -5,7 +5,7 @@ import { getSystemSettingsApi } from '@/api/vadmin/system/settings'
 import { getUserLoginDistributeApi } from '@/api/dashboard/map/index'
 
 defineOptions({
-  name: 'DashboardMap'
+  name: 'DashboardMap',
 })
 
 let map = shallowRef()
@@ -21,7 +21,7 @@ const initMap = async () => {
     AMapLoader.load({
       key: res.data.map_key, // 申请好的Web端开发者Key，首次调用 load 时必填
       version: '2.0', // 指定要加载的 JSAPI 的版本，缺省时默认为 1.4.15
-      plugins: [''] // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+      plugins: [''], // 需要使用的的插件列表，如比例尺'AMap.Scale'等
     })
       .then(async (A) => {
         AMap.value = A
@@ -33,7 +33,7 @@ const initMap = async () => {
           zoom: res.data.map_zoom, // 初始化地图级别
           resizeEnable: true,
           mapStyle: res.data.map_style, // 设置地图的显示样式
-          center: JSON.parse(res.data.map_center) // 初始化地图中心点位置
+          center: JSON.parse(res.data.map_center), // 初始化地图中心点位置
         })
         await setValues()
       })
@@ -48,7 +48,7 @@ const setValues = async () => {
     offset: new AMap.value.Pixel(2, 15),
     closeWhenClickMap: true,
     isCustom: true,
-    anchor: 'top-left'
+    anchor: 'top-left',
   })
   const res = await getUserLoginDistributeApi()
   if (res) {
@@ -58,7 +58,7 @@ const setValues = async () => {
       if (item.total > 40) {
         circleMarker.value = new AMap.value.Marker({
           position: center,
-          offset: new AMap.value.Pixel(0, 15) //点偏移量
+          offset: new AMap.value.Pixel(0, 15), //点偏移量
         })
         // 创建标记点的div
         var markerDiv = document.createElement('div')
@@ -78,7 +78,7 @@ const setValues = async () => {
           zIndex: 10,
           bubble: true,
           cursor: 'pointer',
-          clickable: true
+          clickable: true,
         })
       }
       // 鼠标移入标记点事件

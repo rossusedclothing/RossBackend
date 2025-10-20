@@ -7,9 +7,9 @@ import { CenterTopPropsType } from '../typers'
 const props = defineProps({
   centerTopData: {
     type: Object as PropType<CenterTopPropsType>,
-    required: true
+    required: true,
   },
-  activeMenuName: propTypes.string
+  activeMenuName: propTypes.string,
 })
 
 const lineOptions = ref({})
@@ -33,30 +33,30 @@ watch(
           '16H',
           '17H',
           '18H',
-          '19H'
+          '19H',
         ],
-        type: 'category'
+        type: 'category',
       },
       textStyle: {
         fontFamily: 'Microsoft YaHei',
         fontSize: 20,
         fontStyle: 'normal',
         fontWeight: 'normal',
-        color: '#ecc460'
+        color: '#ecc460',
       },
       grid: {
         left: 20,
         right: 20,
         bottom: 20,
         top: 80,
-        containLabel: true
+        containLabel: true,
       },
       tooltip: {
         trigger: 'axis',
         axisPointer: {
-          type: 'cross'
+          type: 'cross',
         },
-        padding: [5, 10]
+        padding: [5, 10],
       },
       yAxis: [
         {
@@ -64,16 +64,16 @@ watch(
           name: '',
           min: 0,
           axisLabel: {
-            formatter: '{value}'
-          }
-        }
+            formatter: '{value}',
+          },
+        },
       ],
       legend: {
         data: ['PM2.5', '甲醛', '温度', '湿度'],
         // top: 50,
         textStyle: {
-          color: '#c3f19d'
-        }
+          color: '#c3f19d',
+        },
       },
       series: [
         {
@@ -81,45 +81,45 @@ watch(
           type: 'bar',
           color: '#bbff67',
           emphasis: {
-            focus: 'series'
+            focus: 'series',
           },
           data: val.pm25,
           showBackground: false,
-          barGap: 0
+          barGap: 0,
         },
         {
           name: '甲醛',
           type: 'bar',
           color: '#6deedf',
           emphasis: {
-            focus: 'series'
+            focus: 'series',
           },
           data: val.hcho,
           showBackground: false,
-          barGap: 0
+          barGap: 0,
         },
         {
           name: '温度',
           type: 'line',
           emphasis: {
-            focus: 'series'
+            focus: 'series',
           },
-          data: val.temp
+          data: val.temp,
         },
         {
           name: '湿度',
           type: 'line',
           emphasis: {
-            focus: 'series'
+            focus: 'series',
           },
-          data: val.hum
-        }
-      ]
+          data: val.hum,
+        },
+      ],
     }
   },
   {
     immediate: true,
-    deep: true
+    deep: true,
   }
 )
 </script>

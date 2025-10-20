@@ -16,41 +16,41 @@ const formSchema = reactive<FormSchema[]>([
   {
     field: 'title',
     colProps: {
-      span: 24
-    }
+      span: 24,
+    },
   },
   {
     field: 'password',
     label: '新密码',
     component: 'InputPassword',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '50%'
+        width: '50%',
       },
-      placeholder: '请输入新密码'
-    }
+      placeholder: '请输入新密码',
+    },
   },
   {
     field: 'password_two',
     label: '确认密码',
     component: 'InputPassword',
     colProps: {
-      span: 24
+      span: 24,
     },
     componentProps: {
       style: {
-        width: '50%'
+        width: '50%',
       },
-      placeholder: '请再次输入新密码'
-    }
+      placeholder: '请再次输入新密码',
+    },
   },
   {
     field: 'save',
     colProps: {
-      span: 24
+      span: 24,
     },
     formItemProps: {
       slots: {
@@ -64,21 +64,21 @@ const formSchema = reactive<FormSchema[]>([
               </div>
             </>
           )
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  },
 ])
 
 const rules = {
   password: [
     required(),
-    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' }
+    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' },
   ],
   password_two: [
     required(),
-    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' }
-  ]
+    { min: 8, max: 16, message: '长度需为8-16个字符,请重新输入。', trigger: 'blur' },
+  ],
 }
 
 const { formRegister, formMethods } = useForm()

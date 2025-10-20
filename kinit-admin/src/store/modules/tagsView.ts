@@ -16,7 +16,7 @@ export const useTagsViewStore = defineStore('tagsView', {
   state: (): TagsViewState => ({
     visitedViews: [],
     cachedViews: new Set(),
-    selectedTag: undefined
+    selectedTag: undefined,
   }),
   getters: {
     getVisitedViews(): RouteLocationNormalizedLoaded[] {
@@ -27,7 +27,7 @@ export const useTagsViewStore = defineStore('tagsView', {
     },
     getSelectedTag(): RouteLocationNormalizedLoaded | undefined {
       return this.selectedTag
-    }
+    },
   },
   actions: {
     // 新增缓存和tag
@@ -41,7 +41,7 @@ export const useTagsViewStore = defineStore('tagsView', {
       if (view.meta?.noTagsView) return
       this.visitedViews.push(
         Object.assign({}, view, {
-          title: view.meta?.title || 'no-name'
+          title: view.meta?.title || 'no-name',
         })
       )
     },
@@ -152,9 +152,9 @@ export const useTagsViewStore = defineStore('tagsView', {
           break
         }
       }
-    }
+    },
   },
-  persist: false
+  persist: false,
 })
 
 export const useTagsViewStoreWithOut = () => {

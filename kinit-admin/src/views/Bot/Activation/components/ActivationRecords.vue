@@ -39,7 +39,7 @@ const searchForm = ref({
   page: 1,
   limit: 10,
   v_order: 'desc',
-  v_order_field: undefined
+  v_order_field: undefined,
 })
 const total = ref(0)
 

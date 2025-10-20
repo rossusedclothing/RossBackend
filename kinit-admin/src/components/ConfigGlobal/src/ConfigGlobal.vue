@@ -13,7 +13,7 @@ const { variables } = useDesign()
 const appStore = useAppStore()
 
 const props = defineProps({
-  size: propTypes.oneOf<ComponentSize>(['default', 'small', 'large']).def('default')
+  size: propTypes.oneOf<ComponentSize>(['default', 'small', 'large']).def('default'),
 })
 
 provide('configGlobal', props)
@@ -40,7 +40,7 @@ watch(
     }
   },
   {
-    immediate: true
+    immediate: true,
   }
 )
 

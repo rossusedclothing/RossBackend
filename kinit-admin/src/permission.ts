@@ -12,13 +12,26 @@ const { start, done } = useNProgress()
 
 const { loadStart, loadDone } = usePageLoading()
 
-const whiteList = ['/login', '/docs/privacy', '/docs/agreement'] // 不重定向白名单
+const whiteList = ['/login', '/docs/privacy', '/docs/agreement',
+  '/businessform/qrcode',
+  '/businessform/publicform',
+
+  '/businessform/publicform2'  // 添加这一行
+] // 不重定向白名单
 
 router.beforeEach(async (to, from, next) => {
   start()
   loadStart()
   const permissionStore = usePermissionStoreWithOut()
   const authStore = useAuthStoreWithOut()
+
+
+  // 首先检查是否在白名单中 【apd：Glien-Kim】
+  if (whiteList.includes(to.path)) {
+    next()
+    return
+  }
+
 
   if (authStore.getToken) {
     if (to.path === '/login') {

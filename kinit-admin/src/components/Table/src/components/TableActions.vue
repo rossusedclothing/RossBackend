@@ -10,7 +10,7 @@ import {
   ElCheckbox,
   ElScrollbar,
   ElTable,
-  ElDivider
+  ElDivider,
 } from 'element-plus'
 import { Icon } from '@/components/Icon'
 import { useI18n } from '@/hooks/web/useI18n'
@@ -31,14 +31,14 @@ export default defineComponent({
   props: {
     columns: {
       type: Array as PropType<TableColumn[]>,
-      default: () => []
+      default: () => [],
     },
     elTableRef: {
       type: Object as PropType<ComponentRef<typeof ElTable>>,
-      default: () => {}
+      default: () => {},
     },
     // 表格工具栏缓存唯一标识符
-    activeUID: propTypes.string.def('')
+    activeUID: propTypes.string.def(''),
   },
   emits: ['refresh', 'changSize'],
   setup(props, { emit }) {
@@ -67,7 +67,7 @@ export default defineComponent({
         label: '序号',
         type: 'index',
         show: false,
-        disabled: true
+        disabled: true,
       }
       if (tableColumns.value[0].type === 'selection') {
         tableColumns.value.splice(1, 0, indexColumn)
@@ -151,7 +151,7 @@ export default defineComponent({
           cacheData[item.field] = {
             show: item.show,
             index: i,
-            fixed: item.fixed
+            fixed: item.fixed,
           }
         }
         setStorage(cacheTableHeadersKey, JSON.stringify(cacheData))
@@ -160,7 +160,7 @@ export default defineComponent({
         elTableRef.value?.doLayout()
       },
       {
-        deep: true
+        deep: true,
       }
     )
 
@@ -172,7 +172,7 @@ export default defineComponent({
         elTableRef.value?.doLayout()
       },
       {
-        deep: true
+        deep: true,
       }
     )
 
@@ -234,11 +234,11 @@ export default defineComponent({
                               </ElDropdownItem>
                             )
                           })
-                        }
+                        },
                       }}
                     </ElDropdownMenu>
                   )
-                }
+                },
               }}
             </ElDropdown>
           </ElTooltip>
@@ -325,13 +325,13 @@ export default defineComponent({
                       hoverColor="var(--el-color-primary)"
                     />
                   )
-                }
+                },
               }}
             </ElPopover>
           </ElTooltip>
         </div>
       </>
     )
-  }
+  },
 })
 </script>

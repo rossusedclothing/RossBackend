@@ -6,21 +6,21 @@ import { Icon } from '@/components/Icon'
 const props = defineProps({
   show: {
     type: Boolean,
-    default: false
+    default: false,
   },
   url: {
     type: String,
     default: '',
-    required: true
+    required: true,
   },
   poster: {
     type: String,
-    default: ''
+    default: '',
   },
   id: {
     type: String,
-    default: ''
-  }
+    default: '',
+  },
 })
 const visible = ref(props.show)
 const close = async () => {

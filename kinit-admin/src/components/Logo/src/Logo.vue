@@ -56,7 +56,7 @@ watch(
       :class="[
         prefixCls,
         layout !== 'classic' ? `${prefixCls}__Top` : '',
-        'flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden'
+        'flex !h-[var(--logo-height)] items-center cursor-pointer pl-8px relative decoration-none overflow-hidden',
       ]"
       to="/"
     >
@@ -71,8 +71,8 @@ watch(
           {
             'text-[var(--logo-title-text-color)]': layout === 'classic',
             'text-[var(--top-header-text-color)]':
-              layout === 'topLeft' || layout === 'top' || layout === 'cutMenu'
-          }
+              layout === 'topLeft' || layout === 'top' || layout === 'cutMenu',
+          },
         ]"
       >
         {{ title }}

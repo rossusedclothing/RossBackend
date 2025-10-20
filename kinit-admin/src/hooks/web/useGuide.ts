@@ -20,30 +20,30 @@ export const useGuide = (options?: Config) => {
           popover: {
             title: t('common.menu'),
             description: t('common.menuDes'),
-            side: 'right'
-          }
+            side: 'right',
+          },
         },
         {
           element: `#${variables.namespace}-tool-header`,
           popover: {
             title: t('common.tool'),
             description: t('common.toolDes'),
-            side: 'left'
-          }
+            side: 'left',
+          },
         },
         {
           element: `#${variables.namespace}-tags-view`,
           popover: {
             title: t('common.tagsView'),
             description: t('common.tagsViewDes'),
-            side: 'bottom'
-          }
-        }
-      ]
+            side: 'bottom',
+          },
+        },
+      ],
     }
   )
 
   return {
-    ...driverObj
+    ...driverObj,
   }
 }

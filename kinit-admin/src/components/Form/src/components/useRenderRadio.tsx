@@ -27,6 +27,6 @@ export const useRenderRadio = () => {
   }
 
   return {
-    renderRadioOptions
+    renderRadioOptions,
   }
 }
