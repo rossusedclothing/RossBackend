@@ -16,6 +16,14 @@ class RebotCustomer(BaseModel):
     customer_name: str | None = Field(None, title="客户名称")
     platform: str | None = Field("whatsapp", title="平台")
     meta_data: str | None = Field(None, title="元数据")
+    user_tag: str | None = Field(None, title="用户标签")
+    summary_content: str | None = Field(None, title="摘要内容")
+    sales_repp_phone: str | None = Field(None, title="销售代表手机号")
+    sales_agent: str | None = Field(None, title="业务员手机号")
+    is_tagged: int | None = Field(0, title="是否打标签 0 未打标签 1 已打标签")
+    answering_progress: int | None = Field(1, title="问题进度")
+
+
 
 
 class RebotCustomerSimpleOut(RebotCustomer):

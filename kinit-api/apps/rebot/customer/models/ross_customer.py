@@ -36,7 +36,7 @@ class ReBotCustomer(BaseModel):
     user_tag = mapped_column(String(50), nullable=True, comment='用户标签')
     summary_content = mapped_column(Text, nullable=True, comment='摘要内容')
     sales_repp_phone = mapped_column(String(20), nullable=True, comment='销售代表手机号')
-    sales_agent_phone = mapped_column(String(20), nullable=True, comment='业务员手机号')
+    sales_agent = mapped_column(String(20), nullable=True, comment='业务员手机号')
     is_tagged = mapped_column(Integer, default=0, nullable=True, comment='是否打标签 0 未打标签 1 已打标签')
     answering_progress = mapped_column(Integer, default=1, nullable=True, comment='问题进度')
 
