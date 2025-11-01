@@ -16,6 +16,10 @@ export const putQuestionListApi = (data: any): Promise<IResponse> => {
   return request.put({ url: `/bot/qa/question/${data.id}`, data })
 }
 
+export const getTemplateQuestionListApi = (data: any): Promise<IResponse> => {
+  return request.get({ url: `/bot/qa/question/template/${data.template_id}` })
+}
+
 export const getQuestionTreeOptionsApi = (): Promise<IResponse> => {
   return request.get({ url: '/bot/qa/question/tree/options' })
 }

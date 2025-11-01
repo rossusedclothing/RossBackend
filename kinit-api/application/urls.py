@@ -18,10 +18,12 @@ from apps.rebot.activationcode.views import app as rebot_activationcode_app
 from apps.businessform.bform.views import app as businessform_beform_app #by：Glien-Kim
 from apps.rebot.panel.views import app as rebot_panel_app
 from apps.rebot.customer.views import app as rebot_customer_app
+from apps.fb.message.views import app as fb_message_app
 
 
 # 引入应用中的路由
 urlpatterns = [
+    {"ApiRouter": fb_message_app, "prefix": "/fb", "tags": ["Facebook Message"]},
     {"ApiRouter": rebot_customer_app, "prefix": "/customer", "tags": ["客户管理"]},
     {"ApiRouter": rebot_activationcode_app, "prefix": "/bot/activation", "tags": ["注册码|激活码"]},
     {"ApiRouter": rebot_panel_app, "prefix": "/bot/panel", "tags": ["运行配置"]},

@@ -23,14 +23,14 @@ app = APIRouter()
 #    问答配置
 ###########################################################
 @app.get("/question", summary="获取问答配置列表", tags=["问答配置"])
-async def get_question_list(p: params.QuestionParams = Depends(), auth: Auth = Depends(AllUserAuth())):
-    datas, count = await crud.QuestionDal(auth.db).get_datas(**p.dict(), v_return_count=True)
+async def get_question_list(p: params.QuestionParams = Depends(), db: AsyncSession = Depends(db_getter)):
+    datas, count = await crud.QuestionDal(db).get_datas(**p.dict(), v_return_count=True)
     return SuccessResponse(datas, count=count)
 
 
 @app.post("/question", summary="创建问答配置", tags=["问答配置"])
-async def create_question(data: schemas.Question, auth: Auth = Depends(AllUserAuth())):
-    return SuccessResponse(await crud.QuestionDal(auth.db).create_data(data=data))
+async def create_question(data: schemas.Question, db: AsyncSession = Depends(db_getter)):
+    return SuccessResponse(await crud.QuestionDal(db).create_data(data=data))
 
 
 @app.delete("/question", summary="删除问答配置", description="硬删除", tags=["问答配置"])
@@ -48,6 +48,13 @@ async def put_question(data_id: int, data: schemas.Question, auth: Auth = Depend
 async def get_question(data_id: int, db: AsyncSession = Depends(db_getter)):
     schema = schemas.QuestionSimpleOut
     return SuccessResponse(await crud.QuestionDal(db).get_data(data_id, v_schema=schema))
+
+
+@app.get("/question/template/{template_id}", summary="获取问题模板信息", tags=["问答配置"])
+async def get_question(template_id: int, db: AsyncSession = Depends(db_getter)):
+    schema = schemas.QuestionSimpleOut
+    return SuccessResponse(await crud.QuestionDal(db).get_datas(template_id=template_id, v_schema=schema))
+
 
 
 

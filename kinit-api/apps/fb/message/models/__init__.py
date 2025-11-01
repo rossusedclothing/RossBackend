@@ -1,0 +1,1 @@
+from .fb_message import FbMessage

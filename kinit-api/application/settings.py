@@ -153,3 +153,14 @@ MIDDLEWARES = [
 """
 # 发布/订阅通道，与定时任务程序相互关联，请勿随意更改
 SUBSCRIBE = 'kinit_queue'
+
+"""
+facebook message verify token 
+"""
+FB_VERIFY_TOKEN = "ROSS_FB_GANJINGPAOLU_8848"
+
+"""
+coze token and workflow
+"""
+COZE_TOKEN = "pat_xZVLJeciXyQcqH3Dv0HljLobAYz8QfCDH1K9Klq1RJHJGu6AJVn6jG3EirwXfjNs"
+COZE_WORKFLOW_ID = "7548827826318245898"

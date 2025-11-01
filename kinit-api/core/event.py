@@ -5,7 +5,8 @@
 # @File           : event.py
 # @IDE            : PyCharm
 # @desc           : 全局事件
-
+import asyncio
+import json
 
 from fastapi import FastAPI
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -18,15 +19,28 @@ from utils.tools import import_modules_async
 from sqlalchemy.exc import ProgrammingError
 from core.logger import logger
 
-
+STREAMS = {
+    "fbmessage": "fb_group",
+    "insmessage": "ins_group"
+}
 @asynccontextmanager
 async def lifespan(app: FastAPI):
 
     await import_modules_async(EVENTS, "全局事件", app=app, status=True)
+    REDIS_URL = "redis://:12345678@118.31.237.235:6379"
+    redis_client = aioredis.from_url(REDIS_URL, decode_responses=True)
+
+    task_fb = asyncio.create_task(consumer_worker(redis_client, "fbmessage", "fb_group", "fb_worker_1"))
+    task_ig = asyncio.create_task(consumer_worker(redis_client, "insmessage", "ins_group", "ig_worker_1"))
 
     yield
 
     await import_modules_async(EVENTS, "全局事件", app=app, status=False)
+    task_fb.cancel()
+    task_ig.cancel()
+    await redis_client.aclose()
+    print("🧹 FastAPI shutting down...")
+
 
 
 async def connect_redis(app: FastAPI, status: bool):
@@ -88,6 +102,36 @@ async def connect_redis(app: FastAPI, status: bool):
         print("Redis 连接关闭")
         await app.state.redis.close()
 
+
+
+
+
+async def setup_group(redis, stream, group):
+    try:
+        await redis.xgroup_create(stream, group, id="0", mkstream=True)
+    except Exception as e:
+        if "BUSYGROUP" in str(e):
+            pass
+
+
+async def consumer_worker(redis,stream, group, consumer_name):
+    await setup_group(redis, stream, group)
+
+    while True:
+        # 阻塞读取
+        res = await redis.xreadgroup(group, consumer_name, {stream: ">"}, count=1, block=5000)
+        if res:
+            _, msgs = res[0]
+            for msg_id, fields in msgs:
+                data = json.loads(fields["message"])
+                try:
+                    print(f"[{consumer_name}] Processing {msg_id}: {data}")
+                    # 处理成功 → ack
+                    await redis.xack(stream, group, msg_id)
+                    print(f"[{consumer_name}] ✅ Acked {msg_id}")
+                    await redis.xdel(stream, msg_id)
+                except Exception as e:
+                    print(f"[{consumer_name}] ❌ Failed {msg_id}, will retry later: {e}")
 
 async def connect_mongo(app: FastAPI, status: bool):
     """

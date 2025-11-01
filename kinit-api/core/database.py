@@ -45,7 +45,7 @@ from motor.motor_asyncio import AsyncIOMotorDatabase
 # 创建数据库连接
 async_engine = create_async_engine(
     SQLALCHEMY_DATABASE_URL,
-    echo=False,
+    echo=True,
     echo_pool=False,
     pool_pre_ping=True,
     pool_recycle=3600,

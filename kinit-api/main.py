@@ -43,7 +43,7 @@ def create_app():
         version=settings.VERSION,
         lifespan=lifespan,
         docs_url=None,
-        redoc_url=None
+        redoc_url=None,
     )
     import_modules(settings.MIDDLEWARES, "中间件", app=app)
     # 全局异常捕捉处理

@@ -13,6 +13,7 @@ from pathlib import Path
 from typing import Type
 
 from application.settings import BASE_DIR
+from apps.fb.message.models.fb_message import FbMessage
 from apps.rebot.activationcode.models.activation_codes import RossApplyCode
 from apps.rebot.customer.models import ReBotCustomer, ReBotCustomerMessage, SalesAgentConfig, SalesAgentWorkflow
 from apps.rebot.panel.models.panel import ApiKeys, Feedback, AppUpdate
@@ -178,7 +179,8 @@ class CrudGenerate(GenerateBase):
 #      # from apps.businessform.bform.models.business_form
 #      #oked：from apps.businessform.bform.models.business_form import BusinessForm
 #
-#      crud = CrudGenerate(RossQuestionTemplate, "问题模板", "question_template")
+#
+#      crud = CrudGenerate(FbMessage, "facebook message", "fb_message")
 #      #只打印代码，不执行创建写入
 #      crud.generate_codes()
 #     # 创建并写入代码

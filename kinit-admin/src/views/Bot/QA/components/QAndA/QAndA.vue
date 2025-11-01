@@ -4,9 +4,9 @@
       <div class="bg-white rounded-lg shadow-lg p-6">
         <div class="flex justify-between items-center mb-6">
           <h1 class="text-3xl font-bold text-gray-800">
-            {{props.tabParams.title}}
-            <ElButton  @click="fetchQuestionList" color="blue">✔保存</ElButton>
-            <ElButton  @click="fetchQuestionList" color="amber">⭕刷新</ElButton>
+            {{ props.tabParams.title }}
+            <ElButton @click="saveQATemplate" color="blue">✔保存</ElButton>
+            <ElButton @click="fetchQuestionList" color="amber">⭕刷新</ElButton>
           </h1>
           <ElButton
             @click="openQuestionForm"
@@ -20,7 +20,7 @@
         <!-- 问题列表 -->
         <div class="space-y-4">
           <div
-            v-for="(question,index) in questions"
+            v-for="(question, index) in questions"
             :key="question.id"
             class="border border-gray-200 rounded-lg p-4"
           >
@@ -118,9 +118,9 @@
         <div v-if="questions.length > 0" class="mt-8 bg-gray-50 p-4 rounded-lg">
           <h3 class="text-lg font-semibold mb-4 text-gray-800">问题流程图</h3>
           <div class="space-y-2">
-            <div v-for="(question,index) in questions" :key="question.id" class="text-sm">
+            <div v-for="(question, index) in questions" :key="question.id" class="text-sm">
               <span class="font-medium text-blue-600"
-                >问题 #{{ index+1 }} {{ question.question }}</span
+                >问题 #{{ index + 1 }} {{ question.question }}</span
               >
               <div class="ml-4 mt-1">
                 <div
@@ -250,7 +250,7 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted, watchEffect } from 'vue'
+import { ref, reactive, computed, onMounted, watchEffect, watch } from 'vue'
 import {
   getQuestionListApi,
   delQuestionApi,
@@ -260,6 +260,7 @@ import {
   addAnswerListApi,
   putAnswerListApi,
   delAnswerListApi,
+  getTemplateQuestionListApi,
 } from '@/api/bot/qa/questiong'
 import { ElButton, ElInput, ElOption, ElSelect, ElTabs, ElTabPane } from 'element-plus'
 
@@ -272,21 +273,9 @@ const props = defineProps({
 const emit = defineEmits(['switch-tab'])
 
 // 数据状态
-const questions = ref([
-  { id: 1, question: '您对我们的产品满意吗？' },
-  { id: 2, question: '您希望我们改进哪些方面？' },
-  { id: 3, question: '您会推荐给朋友吗？' },
-])
+const questions = ref([])
 
-const answers = ref([
-  { id: 1, question_id: 1, answer: '非常满意', next_question: 3 },
-  { id: 2, question_id: 1, answer: '一般满意', next_question: 2 },
-  { id: 3, question_id: 1, answer: '不满意', next_question: 2 },
-  { id: 4, question_id: 2, answer: '价格方面', next_question: null },
-  { id: 5, question_id: 2, answer: '功能方面', next_question: null },
-  { id: 6, question_id: 3, answer: '会推荐', next_question: null },
-  { id: 7, question_id: 3, answer: '不会推荐', next_question: null },
-])
+const answers = ref([])
 
 // UI状态
 const showQuestionForm = ref(false)
@@ -298,7 +287,6 @@ const editingAnswer = ref(null)
 // 表单数据
 const questionForm = reactive({
   question: '',
-  sale_agent_id: props.tabParams.sale_agent_id,
   template_id: props.tabParams.id,
 })
 
@@ -309,12 +297,19 @@ const answerForm = reactive({
   customer_tag: '',
 })
 
+const saveQATemplate = async () => {
+  console.log(props.tabParams)
+}
+
 onMounted(() => {
   fetchQuestionList()
 })
 
 const fetchQuestionList = async () => {
-  const res = await getQuestionListApi()
+  // const res = await getQuestionListApi({
+  const res = await getTemplateQuestionListApi({
+    template_id: props.tabParams.id || 0,
+  })
   if (res.code === 200 && res.data) {
     questions.value = res.data
     const ansRes = await getAnswerListApi()
@@ -372,7 +367,6 @@ function saveQuestion() {
   if (editingQuestion.value) {
     // 更新问题
     editingQuestion.value.question = questionForm.question
-    editingQuestion.value.sale_agent_id = props.tabParams.sale_agent_id
     editingQuestion.value.template_id = props.tabParams.id
     putQuestionListApi(editingQuestion.value).then((res) => {
       if (res.value) {
@@ -389,7 +383,6 @@ function saveQuestion() {
     // 新增问题
     addQuestionListApi({
       question: questionForm.question,
-      sale_agent_id: props.tabParams.sale_agent_id,
       template_id: props.tabParams.id,
     }).then((res) => {
       if (res.value) {
@@ -504,7 +497,14 @@ function toggleAnswers(questionId) {
     expandedQuestions.value.add(questionId)
   }
 }
-
+watch(
+  () => props.tabParams.id,
+  (newVal, oldVal) => {
+    console.log('tabParams changed:', newVal)
+    // fetchQuestionList()
+  },
+  { deep: true } // 👈 必须加 deep 才能监听对象内部变化
+)
 onMounted(async () => {
   console.log('===================', props)
 })
