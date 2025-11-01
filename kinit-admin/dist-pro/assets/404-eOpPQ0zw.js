@@ -1,0 +1,1 @@
+import{_ as e}from"./Error.vue_vue_type_script_setup_true_lang-B5qOP5gI.js";import{f as s,ao as t,h as a,E as n,u as c}from"./vue-chunks-wbK7PffK.js";import"./index-SAHUQZ2g.js";import"./element-plus-C0vem28W.js";const k=s({__name:"404",setup(p){const{push:o}=t(),r=()=>{o("/")};return(_,m)=>(a(),n(c(e),{onErrorClick:r}))}});export{k as default};

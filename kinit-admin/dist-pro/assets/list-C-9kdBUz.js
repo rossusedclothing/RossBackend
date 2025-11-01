@@ -1,0 +1,1 @@
+import{r}from"./index-SAHUQZ2g.js";const o=s=>r.get({url:"/businessform/bform/list",params:s}),u=s=>r.get({url:`/businessform/bform/list/${s}`}),n=s=>r.delete({url:"/businessform/bform/list",data:s}),i=s=>r.post({url:"/businessform/bform/list",data:s}),m=(s,e)=>r.put({url:`/businessform/bform/list/${s}`,data:e});export{u as a,i as c,n as d,o as g,m as u};

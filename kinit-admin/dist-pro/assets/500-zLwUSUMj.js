@@ -1,0 +1,1 @@
+import{_ as e}from"./Error.vue_vue_type_script_setup_true_lang-B5qOP5gI.js";import{f as t,ao as s,h as a,E as n,u as c}from"./vue-chunks-wbK7PffK.js";import"./index-SAHUQZ2g.js";import"./element-plus-C0vem28W.js";const k=t({__name:"500",setup(p){const{push:o}=s(),r=()=>{o("/")};return(_,m)=>(a(),n(c(e),{type:"500",onErrorClick:r}))}});export{k as default};
